@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: landing_delta
+    database: lh_weather
+    schema: dbo
+#    loaded_at_field: m_updated_at_dttm
+    tables:
+    - name: ld_city
+      identifier: ld_city
