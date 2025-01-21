@@ -11,6 +11,10 @@
 # META       "default_lakehouse": "8c3179ca-6f42-4378-8b2b-7a2e62924e9a",
 # META       "default_lakehouse_name": "lh_weather",
 # META       "default_lakehouse_workspace_id": "a65228af-1fd8-41a6-8294-aceec3a6ebd5"
+# META     },
+# META     "environment": {
+# META       "environmentId": "516c9a07-f6e6-4247-b48e-18f7c6bfe52d",
+# META       "workspaceId": "00000000-0000-0000-0000-000000000000"
 # META     }
 # META   }
 # META }
@@ -96,7 +100,7 @@ if "feature" in ws_env:
     branch = ws_env
 else:
     branch = ws_env[len(ws_env) - 3:]
-
+print(branch)
 
 # METADATA ********************
 
@@ -123,7 +127,7 @@ client = notebookutils.credentials.getSecret(str(keyvault),str(secret_name_clien
 secret = notebookutils.credentials.getSecret(str(keyvault),str(secret_name_secret))
 
 file_path = f"{repo}""/"f"{dbt_repo_dir}""/profiles.yml"
-
+print(file_path)
 if os.path.isfile(file_path):
 
     os.remove(f"{file_path}")
