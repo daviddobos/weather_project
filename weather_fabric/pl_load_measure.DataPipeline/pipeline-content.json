@@ -1,0 +1,128 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "SetVariable",
+        "typeProperties": {
+          "variableName": "v_load_dt",
+          "value": {
+            "value": "@if(empty(pipeline().parameters.p_load_dt), formatDateTime(utcNow(), 'yyyy-MM-dd HH:mm:ss'), pipeline().parameters.p_load_dt)\n",
+            "type": "Expression"
+          }
+        },
+        "policy": {
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Set v_load_dt",
+        "dependsOn": []
+      },
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "batchCount": 2,
+          "items": {
+            "value": "@range(1, add(pipeline().parameters.p_load_days_no, 1))\n",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "3ed09b68-ea10-408c-afe4-6bc5a69a10bc",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "p_load_dt": {
+                    "value": {
+                      "value": "@variables('v_load_dt')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "p_load_days_no": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "int"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "nb_load_measure",
+              "dependsOn": []
+            }
+          ]
+        },
+        "name": "For each data load for each day",
+        "dependsOn": [
+          {
+            "activity": "Set v_load_dt",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "d1003514-5b64-4b1d-8147-18fe0a274d44",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "parameters": {
+            "p_target_language_cd": {
+              "value": "en",
+              "type": "string"
+            },
+            "p_table_nm": {
+              "value": "weather_hourly_measures",
+              "type": "string"
+            },
+            "p_column_nm": {
+              "value": "country",
+              "type": "string"
+            }
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Translate country names",
+        "dependsOn": [
+          {
+            "activity": "For each data load for each day",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ],
+    "parameters": {
+      "p_load_dt": {
+        "type": "string"
+      },
+      "p_load_days_no": {
+        "type": "int"
+      }
+    },
+    "variables": {
+      "v_load_dt": {
+        "type": "String"
+      },
+      "v_load_days_no": {
+        "type": "Integer"
+      }
+    }
+  }
+}

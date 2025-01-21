@@ -1,0 +1,4 @@
+dependencies:
+  - pip:
+      - deep-translator==1.11.4
+      - googletrans==4.0.2
