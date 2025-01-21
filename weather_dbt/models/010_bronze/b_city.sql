@@ -1,18 +1,20 @@
-WITH ld_cities AS (
+WITH ld_city AS (
     SELECT 
         *
-    FROM {{ source('landing_delta', 'ld_city') }}
+    FROM {{ source('landing_delta', 'city') }}
 ),
 
 b_city AS (
     SELECT
-        CONVERT(VARCHAR(2), country) AS country_cd
-        ,CONVERT(INT, id) as id
-        ,CONVERT(VARCHAR(400))
-        ,CONVERT(DECIMAL())
+        CONVERT(VARCHAR(50), Country) AS country_cd
+        ,CONVERT(VARCHAR(50), County) AS county_nm
+        ,CONVERT(VARCHAR(50), City) AS city_nm
+    FROM ld_city
 )
 
 SELECT * FROM b_city
+
+
 {# 
     ,CONVERT(DECIMAL({{var('decimal_precision')}}, {{var('decimal_scale')}}), duration_in_ms) AS duration_in_ms_num
     ,CONVERT(VARCHAR(8000), [message]) AS message_txt

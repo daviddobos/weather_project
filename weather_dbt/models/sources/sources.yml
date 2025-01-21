@@ -6,5 +6,27 @@ sources:
     schema: dbo
 #    loaded_at_field: m_updated_at_dttm
     tables:
-    - name: ld_city
-      identifier: ld_city
+    - name: city
+      identifier: city
+    - name: weather_astro
+      identifier: weather_astro
+    - name: weather_forecast_astro
+      identifier: weather_forecast_astro
+    - name: weather_forecast
+      identifier: weather_forecast
+    - name: weather_hourly_measures
+      identifier: weather_hourly_measures
+
+  - name: seed
+    database: wh_weather
+    schema: dbt
+    tables:
+    - name: city
+      identifier: city
+
+  - name: int
+    database: wh_weather
+    schema: dbt_int
+    tables:
+    - name: country_codes
+      identifier: country_codes
