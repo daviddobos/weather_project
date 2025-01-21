@@ -1,0 +1,67 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "ExecutePipeline",
+        "typeProperties": {
+          "pipeline": {
+            "referenceName": "8c14a339-bfdc-467e-b914-a1b9cc2f00ac",
+            "type": "PipelineReference"
+          },
+          "parameters": {},
+          "waitOnCompletion": true
+        },
+        "policy": {
+          "secureInput": false
+        },
+        "name": "Invoke pl_load_city",
+        "dependsOn": []
+      },
+      {
+        "type": "ExecutePipeline",
+        "typeProperties": {
+          "pipeline": {
+            "referenceName": "c3bfc5da-4d50-4154-ac8f-6cd75e0c40df",
+            "type": "PipelineReference"
+          },
+          "parameters": {
+            "p_load_days_no": "@pipeline().parameters.p_load_days_no"
+          },
+          "waitOnCompletion": true
+        },
+        "policy": {
+          "secureInput": false
+        },
+        "name": "Invoke pl_load_measure",
+        "dependsOn": [
+          {
+            "activity": "Wait 10s",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Wait",
+        "typeProperties": {
+          "waitTimeInSeconds": 10
+        },
+        "name": "Wait 10s",
+        "dependsOn": [
+          {
+            "activity": "Invoke pl_load_city",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ],
+    "parameters": {
+      "p_load_days_no": {
+        "type": "int"
+      }
+    }
+  }
+}
