@@ -18,8 +18,6 @@
 # PARAMETERS CELL ********************
 
 # Parameters
-p_load_dt = ''
-p_load_days_no = '3'
 api_key = "f91f17bc73414f4ba3e123841243011"
 location = ""
 
@@ -47,6 +45,8 @@ import json
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import lit
 from datetime import datetime, timedelta
+from pyspark.sql.functions import current_timestamp
+from pyspark.sql.functions import date_format
 
 # Initialize Spark session
 spark = SparkSession.builder \
@@ -54,6 +54,10 @@ spark = SparkSession.builder \
     .config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension") \
     .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.delta.catalog.DeltaCatalog") \
     .getOrCreate()
+
+p_load_dt = spark.sql("SELECT current_timestamp()").first()[0]
+# Convert to string with desired format
+p_load_dt = str(p_load_dt)
 
 # # Define current date
 # current_date = datetime.now()
@@ -125,8 +129,10 @@ def send_bulk_request(locations_batch):
                     # Save hourly forecast data to Delta table
                     hour_df.write \
                         .format("delta") \
-                        .mode("append") \
                         .option("mergeSchema", "true") \
+                        .partitionBy("forecast_date") \
+                        .option("partitionOverwriteMode", "dynamic") \
+                        .mode("overwrite") \
                         .save(forecast_table_path)
 
                     # Astro data
@@ -141,8 +147,10 @@ def send_bulk_request(locations_batch):
                     # Save astro data to Delta table
                     astro_df.write \
                         .format("delta") \
-                        .mode("append") \
                         .option("mergeSchema", "true") \
+                        .partitionBy("forecast_date") \
+                        .option("partitionOverwriteMode", "dynamic") \
+                        .mode("overwrite") \
                         .save(forecast_astro_table_path)
 
                     # # Air quality data

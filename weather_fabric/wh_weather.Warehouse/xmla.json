@@ -1447,6 +1447,666 @@
         ]
       },
       {
+        "name": "g_weather_avg",
+        "sourceLineageTag": "[dbt_gold].[g_weather_avg]",
+        "columns": [
+          {
+            "name": "city_nm",
+            "dataType": "string",
+            "sourceColumn": "city_nm",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "city_nm",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "country_cd",
+            "dataType": "string",
+            "sourceColumn": "country_cd",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "country_cd",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "month_dt",
+            "dataType": "string",
+            "sourceColumn": "month_dt",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "month_dt",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "temperature_c_avg_2m",
+            "dataType": "double",
+            "sourceColumn": "temperature_c_avg_2m",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "temperature_c_avg_2m",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "sunrise_t_avg_6m",
+            "dataType": "int64",
+            "sourceColumn": "sunrise_t_avg_6m",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "sunrise_t_avg_6m",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "temperature_c_avg_4m",
+            "dataType": "double",
+            "sourceColumn": "temperature_c_avg_4m",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "temperature_c_avg_4m",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "temperature_c_avg_6m",
+            "dataType": "double",
+            "sourceColumn": "temperature_c_avg_6m",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "temperature_c_avg_6m",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "cloud_coverage_avg_2m",
+            "dataType": "int64",
+            "sourceColumn": "cloud_coverage_avg_2m",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "cloud_coverage_avg_2m",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "cloud_coverage_avg_4m",
+            "dataType": "int64",
+            "sourceColumn": "cloud_coverage_avg_4m",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "cloud_coverage_avg_4m",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "cloud_coverage_avg_6m",
+            "dataType": "int64",
+            "sourceColumn": "cloud_coverage_avg_6m",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "cloud_coverage_avg_6m",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "precipitation_mm_avg_2m",
+            "dataType": "double",
+            "sourceColumn": "precipitation_mm_avg_2m",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "precipitation_mm_avg_2m",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "precipitation_mm_avg_4m",
+            "dataType": "double",
+            "sourceColumn": "precipitation_mm_avg_4m",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "precipitation_mm_avg_4m",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "precipitation_mm_avg_6m",
+            "dataType": "double",
+            "sourceColumn": "precipitation_mm_avg_6m",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "precipitation_mm_avg_6m",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "humidity_avg_2m",
+            "dataType": "int64",
+            "sourceColumn": "humidity_avg_2m",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "humidity_avg_2m",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "humidity_avg_4m",
+            "dataType": "int64",
+            "sourceColumn": "humidity_avg_4m",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "humidity_avg_4m",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "humidity_avg_6m",
+            "dataType": "int64",
+            "sourceColumn": "humidity_avg_6m",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "humidity_avg_6m",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "gust_kph_avg_2m",
+            "dataType": "double",
+            "sourceColumn": "gust_kph_avg_2m",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "gust_kph_avg_2m",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "gust_kph_avg_4m",
+            "dataType": "double",
+            "sourceColumn": "gust_kph_avg_4m",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "gust_kph_avg_4m",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "gust_kph_avg_6m",
+            "dataType": "double",
+            "sourceColumn": "gust_kph_avg_6m",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "gust_kph_avg_6m",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "heatindex_c_no_avg_2m",
+            "dataType": "double",
+            "sourceColumn": "heatindex_c_no_avg_2m",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "heatindex_c_no_avg_2m",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "heatindex_c_no_avg_4m",
+            "dataType": "double",
+            "sourceColumn": "heatindex_c_no_avg_4m",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "heatindex_c_no_avg_4m",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "heatindex_c_no_avg_6m",
+            "dataType": "double",
+            "sourceColumn": "heatindex_c_no_avg_6m",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "heatindex_c_no_avg_6m",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "wind_kph_no_avg_2m",
+            "dataType": "double",
+            "sourceColumn": "wind_kph_no_avg_2m",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "wind_kph_no_avg_2m",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "wind_kph_no_avg_4m",
+            "dataType": "double",
+            "sourceColumn": "wind_kph_no_avg_4m",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "wind_kph_no_avg_4m",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "wind_kph_no_avg_6m",
+            "dataType": "double",
+            "sourceColumn": "wind_kph_no_avg_6m",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "wind_kph_no_avg_6m",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "windchill_c_no_avg_2m",
+            "dataType": "double",
+            "sourceColumn": "windchill_c_no_avg_2m",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "windchill_c_no_avg_2m",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "windchill_c_no_avg_4m",
+            "dataType": "double",
+            "sourceColumn": "windchill_c_no_avg_4m",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "windchill_c_no_avg_4m",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "windchill_c_no_avg_6m",
+            "dataType": "double",
+            "sourceColumn": "windchill_c_no_avg_6m",
+            "sourceProviderType": "float",
+            "sourceLineageTag": "windchill_c_no_avg_6m",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ]
+          },
+          {
+            "name": "moonrise_t_avg_2m",
+            "dataType": "int64",
+            "sourceColumn": "moonrise_t_avg_2m",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "moonrise_t_avg_2m",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "moonrise_t_avg_4m",
+            "dataType": "int64",
+            "sourceColumn": "moonrise_t_avg_4m",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "moonrise_t_avg_4m",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "moonrise_t_avg_6m",
+            "dataType": "int64",
+            "sourceColumn": "moonrise_t_avg_6m",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "moonrise_t_avg_6m",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "moonset_t_avg_2m",
+            "dataType": "int64",
+            "sourceColumn": "moonset_t_avg_2m",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "moonset_t_avg_2m",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "moonset_t_avg_4m",
+            "dataType": "int64",
+            "sourceColumn": "moonset_t_avg_4m",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "moonset_t_avg_4m",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "moonset_t_avg_6m",
+            "dataType": "int64",
+            "sourceColumn": "moonset_t_avg_6m",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "moonset_t_avg_6m",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "sunrise_t_avg_2m",
+            "dataType": "int64",
+            "sourceColumn": "sunrise_t_avg_2m",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "sunrise_t_avg_2m",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "sunrise_t_avg_4m",
+            "dataType": "int64",
+            "sourceColumn": "sunrise_t_avg_4m",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "sunrise_t_avg_4m",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "sunset_t_avg_2m",
+            "dataType": "int64",
+            "sourceColumn": "sunset_t_avg_2m",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "sunset_t_avg_2m",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "sunset_t_avg_4m",
+            "dataType": "int64",
+            "sourceColumn": "sunset_t_avg_4m",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "sunset_t_avg_4m",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "sunset_t_avg_6m",
+            "dataType": "int64",
+            "sourceColumn": "sunset_t_avg_6m",
+            "formatString": "0",
+            "sourceProviderType": "int",
+            "sourceLineageTag": "sunset_t_avg_6m",
+            "summarizeBy": "sum",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "{{Partition_Name}}",
+            "mode": "directLake",
+            "source": {
+              "type": "entity",
+              "entityName": "g_weather_avg",
+              "expressionSource": "DatabaseQuery",
+              "schemaName": "dbt_gold"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "IsTableInBiModel",
+            "value": "False"
+          }
+        ]
+      },
+      {
         "name": "s_astro",
         "sourceLineageTag": "[dbt_silver].[s_astro]",
         "columns": [
@@ -1603,6 +2263,20 @@
             "formatString": "General Date",
             "sourceProviderType": "datetime2",
             "sourceLineageTag": "p_load_dt",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "country_cd",
+            "dataType": "string",
+            "sourceColumn": "country_cd",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "country_cd",
             "summarizeBy": "none",
             "annotations": [
               {

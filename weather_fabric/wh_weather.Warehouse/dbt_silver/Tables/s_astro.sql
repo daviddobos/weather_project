@@ -3,6 +3,7 @@ CREATE TABLE [dbt_silver].[s_astro] (
 	[astro_pk] varchar(256) NULL, 
 	[forecast_dt] datetime2(6) NULL, 
 	[city_nm] varchar(50) NULL, 
+	[country_cd] varchar(2) NOT NULL, 
 	[country_nm] varchar(50) NULL, 
 	[moon_illumination_no] int NULL, 
 	[moon_phase_cd] varchar(20) NULL, 

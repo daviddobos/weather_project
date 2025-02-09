@@ -52,7 +52,7 @@ filtered_cities_df = city_lesser_df.filter(col("County") == p_county_nm)
 # Save filtered records
 filtered_cities_df.write \
         .format("delta") \
-        .mode("append") \
+        .mode("overwrite") \
         .option("mergeSchema", "true") \
         .save(target_table_path)
 
