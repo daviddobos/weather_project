@@ -39,7 +39,7 @@
                 "secureInput": false,
                 "secureOutput": false
               },
-              "name": "nb_load_measure",
+              "name": "nb_load_measure_source_to_lr",
               "dependsOn": []
             },
             {
@@ -58,7 +58,7 @@
               "name": "Set variable1",
               "dependsOn": [
                 {
-                  "activity": "nb_load_measure",
+                  "activity": "nb_load_measure_source_to_lr",
                   "dependencyConditions": [
                     "Succeeded"
                   ]
@@ -69,75 +69,6 @@
         },
         "name": "For each data load for each day",
         "dependsOn": []
-      },
-      {
-        "type": "ForEach",
-        "typeProperties": {
-          "batchCount": 2,
-          "items": {
-            "value": "@createArray('weather_hourly_measures','weather_astro')",
-            "type": "Expression"
-          },
-          "activities": [
-            {
-              "type": "TridentNotebook",
-              "typeProperties": {
-                "notebookId": "d1003514-5b64-4b1d-8147-18fe0a274d44",
-                "workspaceId": "00000000-0000-0000-0000-000000000000",
-                "parameters": {
-                  "p_target_language_cd": {
-                    "value": "en",
-                    "type": "string"
-                  },
-                  "p_table_nm": {
-                    "value": {
-                      "value": "@item()",
-                      "type": "Expression"
-                    },
-                    "type": "string"
-                  },
-                  "p_column_nm": {
-                    "value": "country",
-                    "type": "string"
-                  }
-                }
-              },
-              "policy": {
-                "timeout": "0.12:00:00",
-                "retry": 0,
-                "retryIntervalInSeconds": 30,
-                "secureInput": false,
-                "secureOutput": false
-              },
-              "name": "Translate country names",
-              "dependsOn": []
-            }
-          ]
-        },
-        "name": "For each translate column",
-        "dependsOn": [
-          {
-            "activity": "Wait 5s",
-            "dependencyConditions": [
-              "Succeeded"
-            ]
-          }
-        ]
-      },
-      {
-        "type": "Wait",
-        "typeProperties": {
-          "waitTimeInSeconds": 5
-        },
-        "name": "Wait 5s",
-        "dependsOn": [
-          {
-            "activity": "For each data load for each day",
-            "dependencyConditions": [
-              "Succeeded"
-            ]
-          }
-        ]
       }
     ],
     "parameters": {

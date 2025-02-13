@@ -2,10 +2,10 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
     "type": "DataPipeline",
-    "displayName": "pl_load_measure_source_to_lr"
+    "displayName": "pl_load_measure_lr_to_ld"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "c3bfc5da-4d50-4154-ac8f-6cd75e0c40df"
+    "logicalId": "7bc308b3-4622-8cf8-4a6c-e18cd425c86c"
   }
 }

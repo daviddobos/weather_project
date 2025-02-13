@@ -15,11 +15,185 @@
 # META   }
 # META }
 
+# PARAMETERS CELL ********************
+
+p_load_dt = '20250125'
+p_load_days_no = '0'
+p_source_sytem_cd = "weatherapi"
+p_in_table_name = "weather_astro"
+p_root_path = 'Files/landing'
+p_out_table_name = "weather_astro"
+p_debug = 1
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
 # CELL ********************
 
-# Welcome to your new notebook
-# Type here in the cell editor to add code!
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import *
+import os
+from datetime import datetime, timedelta
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+#check for parameter date, if there is none use yesterday's date
+if not p_load_dt:
+    yesterday = datetime.now() - timedelta(days=1) - timedelta(days=int(p_load_days_no))
+    v_valid_dt = yesterday.strftime("%Y%m%d")
+else:
+    v_valid_dt = p_load_dt
+    v_valid_dt = datetime.strptime(v_valid_dt, "%Y%m%d") - timedelta(days=int(p_load_days_no))
+    v_valid_dt = v_valid_dt.strftime("%Y%m%d")
+print('v_valid_dt:', v_valid_dt)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+if not p_debug:
+    v_debug = 0
+else:
+    v_debug = p_debug
+
+print('v_debug: ', v_debug)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# Create a SparkSession
+spark = SparkSession.builder.appName("MergeParquetToDelta").getOrCreate()
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+v_workspace_name = mssparkutils.env.getWorkspaceName()
+print('v_workspace_name:', v_workspace_name)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+v_folder_path = p_root_path + '/' + p_source_sytem_cd + '/' + v_workspace_name + '/' + p_in_table_name + '/' + v_valid_dt
+print(v_folder_path)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# List files in the folder
+v_folder_path = p_root_path + '/' + p_source_sytem_cd + '/' + v_workspace_name + '/' + p_in_table_name + '/' + v_valid_dt
+v_files = mssparkutils.fs.ls(v_folder_path)
+
+# Sort files alphabetically by name
+v_sorted_files = sorted(v_files, key=lambda x: x.name)
+
+# Get path for the last file in alphabetical order
+v_latest_file_path = v_sorted_files[-1].path
+print('Latest file path in alphabetical order is: ', v_latest_file_path)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# Read the Parquet files recursively
+parquet_df = spark.read.format("parquet").option("mergeSchema", "true").option("recursiveFileLookup", "true").option("ignoreCorruptFiles", "true").load(v_latest_file_path)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# Cast all columns to string
+parquet_string_df = parquet_df.select([col(c).cast("string").alias(c) for c in parquet_df.columns])
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# Create m_updated_at_dttm
+parquet_upd_df = parquet_string_df.withColumn("m_updated_at_dttm", from_utc_timestamp(current_timestamp(), "Europe/Budapest"))
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+if v_debug:
+    display(parquet_upd_df)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# Write the Delta table
+parquet_upd_df.write.format("delta")\
+                .option("mergeSchema", "true")\
+                .partitionBy("m_valid_dt")\
+                .option("partitionOverwriteMode", "dynamic")\
+                .mode("overwrite")\
+                .saveAsTable(p_out_table_name)
 
 # METADATA ********************
 

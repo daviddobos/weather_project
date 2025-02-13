@@ -18,6 +18,7 @@
 # PARAMETERS CELL ********************
 
 p_load_dt = '20240808'
+p_load_days_no = '0'
 p_source_sytem_cd = "weatherapi"
 p_in_table_name = "weather_measure"
 p_root_path = 'Files/landing'
@@ -49,12 +50,13 @@ from datetime import datetime, timedelta
 
 #check for parameter date, if there is none use yesterday's date
 if not p_load_dt:
-    yesterday = datetime.now() - timedelta(days=1)
+    yesterday = datetime.now() - timedelta(days=1) - timedelta(days=int(p_load_days_no))
     v_valid_dt = yesterday.strftime("%Y%m%d")
 else:
     v_valid_dt = p_load_dt
-
-print(v_valid_dt)
+    v_valid_dt = datetime.strptime(v_valid_dt, "%Y%m%d") - timedelta(days=int(p_load_days_no))
+    v_valid_dt = v_valid_dt.strftime("%Y%m%d")
+print('v_valid_dt:', v_valid_dt)
 
 # METADATA ********************
 
