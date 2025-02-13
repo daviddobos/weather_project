@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
     "type": "Notebook",
-    "displayName": "nb_load_measure_source_to_lr",
+    "displayName": "load_pollen_source_to_lr",
     "description": "New notebook"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "3ed09b68-ea10-408c-afe4-6bc5a69a10bc"
+    "logicalId": "18a0ad62-3fef-84f7-4edb-0cb18d7dca59"
   }
 }

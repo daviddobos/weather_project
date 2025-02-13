@@ -22,7 +22,7 @@ p_load_dt = '20250125'
 p_load_days_no = '0'
 p_save_path_root = 'Files/landing'
 p_source_system_cd = 'weatherapi'
-p_table_name = 'weather_measure'
+p_table_name = 'weather_astro'
 
 base_url = "http://api.weatherapi.com/v1/history.json"
 
@@ -191,7 +191,7 @@ locations = [{"q": row.City, "custom_id": f"{row.Country}-{row.County}-{row.City
 
 # CELL ********************
 
-all_measure_dfs = []
+all_astro_dfs = []
 
 # Save to or update the table
 def save_data(df):
@@ -228,28 +228,19 @@ def send_bulk_request(locations_batch):
                     forecast_day = location_data["query"]["forecast"]["forecastday"][0]
                     forecast_date = forecast_day["date"]
 
-                    # Hour data
-                    hour_data = forecast_day["hour"]
-                    measure_df = spark.read.json(spark.sparkContext.parallelize(hour_data))
+                    # Astro data
+                    astro_data = [forecast_day["astro"]]
+                    astro_df = spark.read.json(spark.sparkContext.parallelize(astro_data))
 
                     # Add city, country, forecast_date, and p_load_dt columns
-                    measure_df = measure_df.withColumn("city", lit(location["name"]))
-                    measure_df = measure_df.withColumn("country", lit(location["country"]))
-                    measure_df = measure_df.withColumn("forecast_date", lit(forecast_date))
+                    astro_df = astro_df.withColumn("city", lit(location["name"]))
+                    astro_df = astro_df.withColumn("country", lit(location["country"]))
+                    astro_df = astro_df.withColumn("forecast_date", lit(forecast_date))
 
-                    # Select the necessary columns
-                    selected_columns = [
-                        "chance_of_rain", "chance_of_snow", "cloud", "feelslike_c", "gust_kph",
-                        "humidity", "heatindex_c", "is_day", "precip_mm", "pressure_mb", "temp_c", 
-                        "time", "time_epoch", "uv", "vis_km", "wind_dir", "wind_kph", "windchill_c", 
-                        "city", "country", "forecast_date"
-                    ]
-                    measure_df = measure_df.select(*selected_columns)
-
-                    all_measure_dfs.append(measure_df)
+                    all_astro_dfs.append(astro_df)
 
             except KeyError as e:
-                print(f"No history data found for {location_data['query']['q']}. Skipping history processing.")
+                print(f"No astro data found for {location_data['query']['q']}. Skipping astro processing.")
     else:
         print(f"Error: {response.status_code}, {response.text}")
 
@@ -263,14 +254,14 @@ for batch in location_batches:
     send_bulk_request(batch)
 
 # Combine and save dataframes
-final_measure_df = all_measure_dfs[0]
-for df in all_measure_dfs[1:]:
-    final_measure_df = final_measure_df.union(df)
+final_astro_df = all_astro_dfs[0]
+for df in all_astro_dfs[1:]:
+    final_astro_df = final_astro_df.union(df)
 
 if v_debug:
-    final_measure_df.show()
+    final_astro_df.show()
 
-save_data(final_measure_df)
+save_data(final_astro_df)
 
 
 # METADATA ********************

@@ -1,5 +1,110 @@
 {
   "properties": {
-    "activities": []
+    "activities": [
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "89a16a4f-8c8e-47c9-ac8b-bc034cdd087c",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "parameters": {
+            "p_load_days_no": {
+              "value": {
+                "value": "@pipeline().parameters.p_load_days_no",
+                "type": "Expression"
+              },
+              "type": "int"
+            },
+            "p_load_dt": {
+              "value": "",
+              "type": "string"
+            }
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "nb_load_forecast",
+        "dependsOn": []
+      },
+      {
+        "type": "Wait",
+        "typeProperties": {
+          "waitTimeInSeconds": 5
+        },
+        "name": "Wait 5s",
+        "dependsOn": [
+          {
+            "activity": "nb_load_forecast",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "batchCount": 2,
+          "items": {
+            "value": "@createArray('weather_forecast','weather_forecast_astro')",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "d1003514-5b64-4b1d-8147-18fe0a274d44",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "p_target_language_cd": {
+                    "value": "en",
+                    "type": "string"
+                  },
+                  "p_table_nm": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "p_column_nm": {
+                    "value": "country",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Translate country names",
+              "dependsOn": []
+            }
+          ]
+        },
+        "name": "For each translate column",
+        "dependsOn": [
+          {
+            "activity": "Wait 5s",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ],
+    "parameters": {
+      "p_load_days_no": {
+        "type": "int",
+        "defaultValue": 1
+      }
+    }
   }
 }

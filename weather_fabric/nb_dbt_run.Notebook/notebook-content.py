@@ -90,7 +90,7 @@ client = fabric.FabricRestClient()
 
 # GET personal access token for github texhnical user
 git_pat = notebookutils.credentials.getSecret(str(keyvault),str(secret_name_git_pat))
-
+print(git_pat)
 # quick and dirty, will have to make changes to pull all the repo information from the workspace like what we have for ADO
 repo = "weather_project"
 repo_URL = f"https://oauth2:{git_pat}@github.com/daviddobos/"
@@ -101,6 +101,7 @@ if "feature" in ws_env:
 else:
     branch = ws_env[len(ws_env) - 3:]
 print(branch)
+print(repo_URL)
 
 # METADATA ********************
 

@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
     "type": "Notebook",
-    "displayName": "nb_load_measure_source_to_lr",
+    "displayName": "nb_load_astro_source_to_lr",
     "description": "New notebook"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "3ed09b68-ea10-408c-afe4-6bc5a69a10bc"
+    "logicalId": "bf5589ae-54a9-b6ac-43a8-da7df13701ca"
   }
 }
