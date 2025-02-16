@@ -1,0 +1,58 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "batchCount": 2,
+          "items": {
+            "value": "@range(0, add(pipeline().parameters.p_load_days_no, 1))",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "bf5589ae-54a9-b6ac-43a8-da7df13701ca",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "p_load_dt": {
+                    "value": "@pipeline().parameters.p_load_dt",
+                    "type": "string"
+                  },
+                  "p_load_days_no": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "int"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "nb_load_astro_source_to_lr",
+              "dependsOn": []
+            }
+          ]
+        },
+        "name": "For each data load for each day",
+        "dependsOn": []
+      }
+    ],
+    "parameters": {
+      "p_load_dt": {
+        "type": "string"
+      },
+      "p_load_days_no": {
+        "type": "int",
+        "defaultValue": 0
+      }
+    }
+  }
+}

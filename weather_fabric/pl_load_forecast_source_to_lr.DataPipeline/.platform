@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "pl_load_forecast_source_to_lr"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "54fbe679-cc1a-b41c-4bb4-6dd23560d054"
+  }
+}

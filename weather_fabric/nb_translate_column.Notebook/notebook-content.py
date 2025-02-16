@@ -22,10 +22,25 @@
 # PARAMETERS CELL ********************
 
 p_target_language_cd = 'en'
-p_table_nm = 'weather_astro'
+p_table_nm = 'weather_measure'
 p_column_nm = 'country'
 
-table_path = "Tables/dbo/" + p_table_nm
+table_path = 'Tables/dbo/' + p_table_nm
+p_debug = 1
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+from pyspark.sql import SparkSession
+from deep_translator import GoogleTranslator  # Importing GoogleTranslator from deep-translator
+from pyspark.sql.functions import col
+from pyspark.sql.types import StringType
 
 # METADATA ********************
 
@@ -85,13 +100,48 @@ table_path = "Tables/dbo/" + p_table_nm
 
 # CELL ********************
 
-from pyspark.sql import SparkSession
-from deep_translator import GoogleTranslator  # Importing GoogleTranslator from deep-translator
-from pyspark.sql.functions import col
-from pyspark.sql.types import StringType
+if not p_debug:
+    v_debug = 0
+else:
+    v_debug = p_debug
 
-# Initialize Spark session
-spark = SparkSession.builder.appName("TranslateColumn").getOrCreate()
+print('v_debug: ', v_debug)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# Load the table
+df = spark.read.format("delta").load(table_path)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# Egyedi értékek kigyűjtése a megadott oszlopból
+distinct_values_df = df.select(col(p_column_nm)).distinct()
+
+# Eredmény megjelenítése
+distinct_values_df.show()
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
 
 # Load the table
 df = spark.read.format("delta").load(table_path)
@@ -125,23 +175,63 @@ def translate_partition(rows):
     return iter(row_dicts)
 
 # Apply translation to the DataFrame
-translated_rdd = df.rdd.mapPartitions(translate_partition)
+translated_rdd = distinct_values_df.rdd.mapPartitions(translate_partition)
 translated_df = spark.createDataFrame(translated_rdd)
 
-# Show the updated DataFrame
-translated_df.show(n=1000)
+if v_debug:
+    translated_df.show(n=1000)
 
-# Overwrite the table with the translations
-translated_df.write \
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+p_target_language_cd = p_target_language_cd.upper()
+translated_column = f"{p_column_nm}_{p_target_language_cd}"
+
+if v_debug:
+    print('p_target_language_cd:', p_target_language_cd)
+    print('translated_column:', translated_column)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# TODO: find a solution to fill the translated column with new data instead of remaking it
+df = df.drop(translated_column)
+
+# Join df with translated_df on the 'country' column
+df = df.join(translated_df, on=p_column_nm, how="left")
+
+if v_debug:
+# Show the result to verify
+    df.show()
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+df.write \
     .format("delta") \
     .option("mergeSchema", "true") \
-    .partitionBy('forecast_date') \
+    .partitionBy('m_valid_dt') \
     .option("partitionOverwriteMode", "dynamic") \
     .mode("overwrite") \
-    .save(table_path)
-
-# Stop the Spark session
-spark.stop()
+    .saveAsTable(p_table_nm)
 
 # METADATA ********************
 

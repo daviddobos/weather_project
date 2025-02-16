@@ -1,0 +1,37 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "01c21c9a-33aa-b1dd-4304-8e7882c5b36b",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "parameters": {
+            "p_load_days_no": {
+              "value": {
+                "value": "@pipeline().parameters.p_load_days_no",
+                "type": "Expression"
+              },
+              "type": "int"
+            }
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "nb_load_forecast_source_to_lr",
+        "dependsOn": []
+      }
+    ],
+    "parameters": {
+      "p_load_days_no": {
+        "type": "int",
+        "defaultValue": 0
+      }
+    }
+  }
+}
