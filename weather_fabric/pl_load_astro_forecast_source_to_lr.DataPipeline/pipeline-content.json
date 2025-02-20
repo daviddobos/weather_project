@@ -1,0 +1,34 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "dcd8356b-276c-a5df-4109-d39821539391",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "parameters": {
+            "p_load_days_no": {
+              "value": "@pipeline().parameters.p_load_days_no",
+              "type": "int"
+            }
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "nb_load_astro_forecast_source_to_lr",
+        "dependsOn": []
+      }
+    ],
+    "parameters": {
+      "p_load_days_no": {
+        "type": "int",
+        "defaultValue": 0
+      }
+    }
+  }
+}

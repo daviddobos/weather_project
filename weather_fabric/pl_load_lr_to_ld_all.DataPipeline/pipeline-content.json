@@ -1,0 +1,102 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "ExecutePipeline",
+        "typeProperties": {
+          "pipeline": {
+            "referenceName": "7bc308b3-4622-8cf8-4a6c-e18cd425c86c",
+            "type": "PipelineReference"
+          },
+          "parameters": {
+            "p_load_dt": "@pipeline().parameters.p_load_dt\n",
+            "p_load_days_no": {
+              "value": "@pipeline().parameters.p_load_days_no\n",
+              "type": "Expression"
+            }
+          },
+          "waitOnCompletion": true
+        },
+        "policy": {
+          "secureInput": false
+        },
+        "name": "pl_load_measure_lr_to_ld",
+        "dependsOn": []
+      },
+      {
+        "type": "ExecutePipeline",
+        "typeProperties": {
+          "pipeline": {
+            "referenceName": "faac4c7e-cc7c-9773-4d3b-8c7afb0eb916",
+            "type": "PipelineReference"
+          },
+          "parameters": {
+            "p_load_dt": "@pipeline().parameters.p_load_dt\n",
+            "p_load_days_no": {
+              "value": "@pipeline().parameters.p_load_days_no\n",
+              "type": "Expression"
+            }
+          },
+          "waitOnCompletion": true
+        },
+        "policy": {
+          "secureInput": false
+        },
+        "name": "pl_load_forecast_lr_to_ld",
+        "dependsOn": []
+      },
+      {
+        "type": "ExecutePipeline",
+        "typeProperties": {
+          "pipeline": {
+            "referenceName": "e92f4e08-ce79-88c6-4ecf-0e6b842670b2",
+            "type": "PipelineReference"
+          },
+          "parameters": {
+            "p_load_dt": "@pipeline().parameters.p_load_dt\n",
+            "p_load_days_no": {
+              "value": "@pipeline().parameters.p_load_days_no\n",
+              "type": "Expression"
+            }
+          },
+          "waitOnCompletion": true
+        },
+        "policy": {
+          "secureInput": false
+        },
+        "name": "pl_load_astro_lr_to_ld",
+        "dependsOn": []
+      },
+      {
+        "type": "ExecutePipeline",
+        "typeProperties": {
+          "pipeline": {
+            "referenceName": "fc261b3b-2f1a-894c-407b-ebc7632c2612",
+            "type": "PipelineReference"
+          },
+          "parameters": {
+            "p_load_dt": "@pipeline().parameters.p_load_dt\n",
+            "p_load_days_no": {
+              "value": "@pipeline().parameters.p_load_days_no\n",
+              "type": "Expression"
+            }
+          },
+          "waitOnCompletion": true
+        },
+        "policy": {
+          "secureInput": false
+        },
+        "name": "pl_load_astro_forecast_lr_to_ld",
+        "dependsOn": []
+      }
+    ],
+    "parameters": {
+      "p_load_dt": {
+        "type": "string"
+      },
+      "p_load_days_no": {
+        "type": "int"
+      }
+    }
+  }
+}

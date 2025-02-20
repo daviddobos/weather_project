@@ -1,0 +1,107 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "d1003514-5b64-4b1d-8147-18fe0a274d44",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "parameters": {
+            "p_target_language_cd": {
+              "value": "en",
+              "type": "string"
+            },
+            "p_table_nm": {
+              "value": "weather_astro_forecast",
+              "type": "string"
+            },
+            "p_column_nm": {
+              "value": "country",
+              "type": "string"
+            }
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Translate country names",
+        "dependsOn": [
+          {
+            "activity": "Wait 5s",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "batchCount": 2,
+          "items": {
+            "value": "@range(0, add(pipeline().parameters.p_load_days_no, 1))",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "24392b1f-75a7-aa34-49fc-460e37559a35",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "p_load_dt": {
+                    "value": "@pipeline().parameters.p_load_dt",
+                    "type": "string"
+                  },
+                  "p_load_days_no": {
+                    "value": "@item()",
+                    "type": "int"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "nb_load_astro_forecast_lr_to_ld",
+              "dependsOn": []
+            }
+          ]
+        },
+        "name": "For each data load for each day",
+        "dependsOn": []
+      },
+      {
+        "type": "Wait",
+        "typeProperties": {
+          "waitTimeInSeconds": 5
+        },
+        "name": "Wait 5s",
+        "dependsOn": [
+          {
+            "activity": "For each data load for each day",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ],
+    "parameters": {
+      "p_load_dt": {
+        "type": "string"
+      },
+      "p_load_days_no": {
+        "type": "int",
+        "defaultValue": 0
+      }
+    }
+  }
+}

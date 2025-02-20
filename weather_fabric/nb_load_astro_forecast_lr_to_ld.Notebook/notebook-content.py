@@ -20,9 +20,9 @@
 p_load_dt = '20250216'
 p_load_days_no = '0'
 p_source_sytem_cd = "weatherapi"
-p_in_table_name = "weather_forecast"
+p_in_table_name = "weather_astro_forecast"
 p_root_path = 'Files/landing'
-p_out_table_name = "weather_forecast"
+p_out_table_name = "weather_astro_forecast"
 p_debug = 1
 
 # METADATA ********************

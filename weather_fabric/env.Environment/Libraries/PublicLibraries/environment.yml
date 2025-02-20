@@ -1,5 +1,6 @@
 dependencies:
   - pip:
+      - msgraph-sdk==1.21.0
       - ydata-profiling==4.12.0
       - semantic-link-labs==0.8.6
       - deep-translator==1.11.4

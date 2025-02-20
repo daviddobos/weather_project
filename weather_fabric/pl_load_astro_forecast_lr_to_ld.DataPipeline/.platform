@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "pl_load_astro_forecast_lr_to_ld"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "fc261b3b-2f1a-894c-407b-ebc7632c2612"
+  }
+}
