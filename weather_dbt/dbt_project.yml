@@ -33,24 +33,24 @@ models:
   +on_schema_change: "sync_all_columns"
   weather_dbt:
     010_bronze:
-      +schema: dbt_bronze
+      +schema: bronze
       +materialized: table
     015_int:
-      +schema: dbt_int
+      +schema: int
       +materialized: table
     020_silver:
-      +schema: dbt_silver
+      +schema: silver
       +materialized: table
     030_gold:
-      +schema: dbt_gold
+      +schema: gold
       +materialized: table
     040_dq:
-      +schema: dbt_dq
+      +schema: dq
       +materialized: table
 
 data_tests:
   +store_failures: true
-  +schema: dbt_dq
+  +schema: dq
   +store_failures_as: table
 
 vars:

@@ -8,14 +8,14 @@ sources:
     tables:
     - name: city
       identifier: city
-    - name: weather_astro
-      identifier: weather_astro
-    - name: weather_forecast_astro
-      identifier: weather_forecast_astro
-    - name: weather_forecast
-      identifier: weather_forecast
-    - name: weather_hourly_measures
-      identifier: weather_hourly_measures
+    - name: ld_weather_astro
+      identifier: ld_weather_astro
+    - name: ld_weather_astro_forecast
+      identifier: ld_weather_astro_forecast
+    - name: ld_weather_forecast
+      identifier: ld_weather_forecast
+    - name: ld_weather_measure
+      identifier: ld_weather_measure
 
   - name: seed
     database: wh_weather

@@ -100,7 +100,8 @@ weather_categories AS (
 
 reorder AS (
     SELECT
-        weather_pk
+        m_valid_dt
+        ,weather_pk
         ,forecast_dt
         ,city_nm
         ,country_cd
@@ -137,7 +138,8 @@ reorder AS (
         ,windchill_c_no
         ,windchill_f_no
         ,windchill_k_no
-        ,p_load_dt
+        ,m_extracted_at_dttm
+        ,m_updated_at_dttm
     FROM weather_categories
 )
 

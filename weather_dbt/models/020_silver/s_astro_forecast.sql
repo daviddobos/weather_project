@@ -28,7 +28,8 @@ gen_sk AS (
 
 reorder AS (
     SELECT
-        astro_forecast_pk
+        m_valid_dt
+        ,astro_forecast_pk
         ,forecast_dt
         ,city_nm
         ,country_cd
@@ -41,7 +42,8 @@ reorder AS (
         ,moonset_t
         ,sunrise_t
         ,sunset_t
-        ,p_load_dt
+        ,m_extracted_at_dttm
+        ,m_updated_at_dttm
     FROM gen_sk
 )
 
