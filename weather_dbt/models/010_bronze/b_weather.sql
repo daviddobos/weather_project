@@ -1,12 +1,13 @@
 WITH ld_weather AS (
     SELECT 
         *
-    FROM {{ source('landing_delta', 'weather_hourly_measures') }}
+    FROM {{ source('landing_delta', 'ld_weather_measure') }}
 ),
 
 b_weather AS (
     SELECT
-        CONVERT(INT, chance_of_rain) AS rain_chance_no
+        CONVERT(DATE, m_valid_dt) AS m_valid_dt
+        ,CONVERT(INT, chance_of_rain) AS rain_chance_no
         ,CONVERT(INT, chance_of_snow) AS snow_chance_no
         ,CONVERT(INT, cloud) AS cloud_coverage_no
         ,CONVERT(FLOAT, feelslike_c) AS temp_feelslike_no
@@ -25,9 +26,10 @@ b_weather AS (
         ,CONVERT(FLOAT, wind_kph) AS wind_kph_no
         ,CONVERT(FLOAT, windchill_c) AS windchill_c_no
         ,CONVERT(VARCHAR(30), city) AS city_nm
-        ,CONVERT(VARCHAR(30), country) AS country_nm
+        ,CONVERT(VARCHAR(30), country_EN) AS country_nm
         ,CONVERT(DATE, forecast_date) AS forecast_dt
-        ,CONVERT(DATETIME2(6), p_load_dt) AS p_load_dt
+        ,CONVERT(DATETIME2(6), m_extracted_at_dttm) AS m_extracted_at_dttm
+        ,CONVERT(DATETIME2(6), m_updated_at_dttm) AS m_updated_at_dttm
     FROM ld_weather
 )
 

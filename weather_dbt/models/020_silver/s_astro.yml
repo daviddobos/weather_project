@@ -1,0 +1,48 @@
+models:
+  - name: s_astro
+    description: The s_astro model provides detailed information about the astronomical conditions for different cities across various countries. It includes data about the moon's illumination, moon phase, moonrise and moonset times, as well as sunrise and sunset times. The data is forecasted for specific dates. The model also includes a unique identifier for each record (astro_pk), and the date and time when the data was loaded into the database (p_load_dt).
+    columns:
+      - name: astro_pk
+        description: This is a unique identifier for each record in the s_astro model. It is generated using a hash function on the forecast date, country code, and city name. This identifier is crucial for tracking individual records and ensuring data integrity.
+        data_type: varchar
+        quote: true
+      - name: forecast_dt
+        description: This is the date and time for which the astronomical data is forecasted. It is in the datetime2 format, which includes the date along with the time up to fractional seconds. This information is important for understanding the specific time context of the data.
+        data_type: datetime2
+        quote: true
+      - name: city_nm
+        description: This is the name of the city for which the astronomical data is forecasted. It is a string value and can be used to filter or group the data based on geographical location.
+        data_type: varchar
+        quote: true
+      - name: country_nm
+        description: This column represents the name of the country for which the astronomical data is provided. It is a string data type and is used to identify the geographical location.
+        data_type: varchar
+        quote: true
+      - name: moon_illumination_no
+        description: This column represents the moon illumination number. It is an integer data type and provides information about the percentage of the moon's surface that is illuminated by the sun's light at a given time.
+        data_type: int
+        quote: true
+      - name: moon_phase_cd
+        description: This column represents the moon phase code. It is a string data type and provides information about the current phase of the moon, such as new moon, first quarter, full moon, or last quarter.
+        data_type: varchar
+        quote: true
+      - name: moonrise_t
+        description: This column represents the time at which the moon rises in the city specified. The time is represented in the 24-hour format. This information can be useful for planning activities that are dependent on moonlight or for understanding the lunar cycle's impact on various factors in the city.
+        data_type: time
+        quote: true
+      - name: moonset_t
+        description: This column indicates the time at which the moon sets in the specified city. The time is represented in the 24-hour format. This data can be used to understand the duration of moonlight in the city and its potential effects on various aspects such as nightlife, tourism, and local wildlife.
+        data_type: time
+        quote: true
+      - name: sunrise_t
+        description: This column represents the time at which the sun rises in the city specified. The time is represented in the 24-hour format. This information can be useful for planning activities that require daylight or for understanding the solar cycle's impact on various factors in the city.
+        data_type: time
+        quote: true
+      - name: sunset_t
+        description: This column represents the time of sunset for a particular city on a specific date. The time is provided in the 24-hour format. This information can be useful for understanding the length of daylight hours in different locations and at different times of the year.
+        data_type: time
+        quote: true
+      - name: p_load_dt
+        description: This column indicates the date and time when the data was loaded into the database. It is in the datetime format. This is important for tracking data updates and ensuring that the most recent and accurate information is being used for analysis.
+        data_type: datetime2
+        quote: true
