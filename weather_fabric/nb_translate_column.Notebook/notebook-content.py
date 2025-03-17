@@ -22,7 +22,7 @@
 # PARAMETERS CELL ********************
 
 p_target_language_cd = 'en'
-p_table_nm = 'weather_measure'
+p_table_nm = 'ld_weather_astro'
 p_column_nm = 'country'
 
 table_path = 'Tables/dbo/' + p_table_nm
@@ -39,7 +39,7 @@ p_debug = 1
 
 from pyspark.sql import SparkSession
 from deep_translator import GoogleTranslator  # Importing GoogleTranslator from deep-translator
-from pyspark.sql.functions import col
+from pyspark.sql.functions import col, udf
 from pyspark.sql.types import StringType
 
 # METADATA ********************
@@ -132,7 +132,7 @@ df = spark.read.format("delta").load(table_path)
 distinct_values_df = df.select(col(p_column_nm)).distinct()
 
 # Eredmény megjelenítése
-distinct_values_df.show()
+display(distinct_values_df)
 
 # METADATA ********************
 
@@ -143,43 +143,88 @@ distinct_values_df.show()
 
 # CELL ********************
 
-# Load the table
-df = spark.read.format("delta").load(table_path)
+# # Load the table
+# df = spark.read.format("delta").load(table_path)
 
 # Define translation logic with mapPartitions
-def translate_partition(rows):
-    texts_to_translate = []
-    row_dicts = []
+# def translate_partition(rows):
+#     texts_to_translate = []
+#     row_dicts = []
     
-    for row in rows:
-        try:
-            row_dict = row.asDict()
-            text = row_dict[p_column_nm]
-            texts_to_translate.append(text)
-            row_dicts.append(row_dict)
-        except Exception as e:
-            print(f"Error processing row: {e}")
-            row_dicts.append(row.asDict())  # Fallback to original row
+#     for row in rows:
+#         try:
+#             row_dict = row.asDict()
+#             text = row_dict[p_column_nm]
+#             texts_to_translate.append(text)
+#             row_dicts.append(row_dict)
+#         except Exception as e:
+#             print(f"Error processing row: {e}")
+#             row_dicts.append(row.asDict())  # Fallback to original row
 
-    # Translate in batch
-    if texts_to_translate:
-        try:
-            translated_texts = GoogleTranslator(source='auto', target=p_target_language_cd).translate_batch(texts_to_translate)
-            for i, translated_text in enumerate(translated_texts):
-                row_dicts[i][f"{p_column_nm}_{p_target_language_cd.upper()}"] = translated_text
-        except Exception as e:
-            print(f"Batch translation error: {e}")
-            for i in range(len(row_dicts)):
-                row_dicts[i][f"{p_column_nm}_{p_target_language_cd.upper()}"] = texts_to_translate[i]  # Fallback to original text
+#     # Translate in batch
+#     if texts_to_translate:
+#         try:
+#             translated_texts = GoogleTranslator(source='auto', target=p_target_language_cd).translate_batch(texts_to_translate)
+#             for i, translated_text in enumerate(translated_texts):
+#                 row_dicts[i][f"{p_column_nm}_{p_target_language_cd.upper()}"] = translated_text
+#         except Exception as e:
+#             print(f"Batch translation error: {e}")
+#             for i in range(len(row_dicts)):
+#                 row_dicts[i][f"{p_column_nm}_{p_target_language_cd.upper()}"] = texts_to_translate[i]  # Fallback to original text
 
-    return iter(row_dicts)
+#     return iter(row_dicts)
 
-# Apply translation to the DataFrame
-translated_rdd = distinct_values_df.rdd.mapPartitions(translate_partition)
-translated_df = spark.createDataFrame(translated_rdd)
+# # Apply translation to the DataFrame
+# translated_rdd = distinct_values_df.rdd.mapPartitions(translate_partition)
+# translated_df = spark.createDataFrame(translated_rdd)
 
+# if v_debug:
+#     translated_df.show(n=1000)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+print(p_target_language_cd)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# 1. Egyedi értékek kigyűjtése a Spark DataFrame-ből
+texts_to_translate = [row[p_column_nm] for row in distinct_values_df.collect()]
+
+# 2. Batch fordítás Deep Translatorral
+try:
+    translated_texts = GoogleTranslator(source='auto', target=p_target_language_cd).translate_batch(texts_to_translate)
+except Exception as e:
+    print(f"Batch translation error: {e}")
+    translated_texts = texts_to_translate  # Fallback eredeti szövegre
+
+# 3. Pandas DataFrame létrehozása a fordításokkal
+import pandas as pd
+translated_pd_df = pd.DataFrame({
+    p_column_nm: texts_to_translate,
+    f"{p_column_nm}_{p_target_language_cd.upper()}": translated_texts
+})
+
+# 4. Visszaalakítás Spark DataFrame-re
+translated_spark_df = spark.createDataFrame(translated_pd_df)
+
+# 3. Debug mód esetén kiírás
 if v_debug:
-    translated_df.show(n=1000)
+    display(translated_spark_df)
+
 
 # METADATA ********************
 
@@ -210,7 +255,7 @@ if v_debug:
 df = df.drop(translated_column)
 
 # Join df with translated_df on the 'country' column
-df = df.join(translated_df, on=p_column_nm, how="left")
+df = df.join(translated_spark_df, on=p_column_nm, how="left")
 
 if v_debug:
 # Show the result to verify

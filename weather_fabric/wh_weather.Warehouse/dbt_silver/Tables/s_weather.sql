@@ -1,5 +1,6 @@
 CREATE TABLE [dbt_silver].[s_weather] (
 
+	[m_valid_dt] date NULL, 
 	[weather_pk] varchar(256) NULL, 
 	[forecast_dt] date NULL, 
 	[city_nm] varchar(30) NULL, 
@@ -37,6 +38,7 @@ CREATE TABLE [dbt_silver].[s_weather] (
 	[windchill_c_no] float NULL, 
 	[windchill_f_no] float NULL, 
 	[windchill_k_no] float NULL, 
-	[p_load_dt] datetime2(6) NULL
+	[m_extracted_at_dttm] datetime2(6) NULL, 
+	[m_updated_at_dttm] datetime2(6) NULL
 );
 

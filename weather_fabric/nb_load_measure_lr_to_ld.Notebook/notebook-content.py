@@ -22,7 +22,7 @@ p_load_days_no = '0'
 p_source_sytem_cd = "weatherapi"
 p_in_table_name = "weather_measure"
 p_root_path = 'Files/landing'
-p_out_table_name = "weather_measure"
+p_out_table_name = "ld_weather_measure"
 p_debug = 1
 
 # METADATA ********************

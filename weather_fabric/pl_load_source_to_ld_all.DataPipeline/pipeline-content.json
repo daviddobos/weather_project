@@ -8,7 +8,20 @@
             "referenceName": "449c6907-c76d-b322-4ed7-bf7f23f97cf9",
             "type": "PipelineReference"
           },
-          "parameters": {},
+          "parameters": {
+            "p_forecast_load_days_no": {
+              "value": "@pipeline().parameters.p_forecast_load_days_no",
+              "type": "Expression"
+            },
+            "p_history_load_days_no": {
+              "value": "@pipeline().parameters.p_history_load_days_no",
+              "type": "Expression"
+            },
+            "p_load_dt": {
+              "value": "@pipeline().parameters.p_load_dt",
+              "type": "Expression"
+            }
+          },
           "waitOnCompletion": true
         },
         "policy": {
@@ -24,7 +37,16 @@
             "referenceName": "08f01fda-0c94-a2f0-4694-18f8019114f3",
             "type": "PipelineReference"
           },
-          "parameters": {},
+          "parameters": {
+            "p_load_dt": {
+              "value": "@pipeline().parameters.p_load_dt",
+              "type": "Expression"
+            },
+            "p_load_days_no": {
+              "value": "@pipeline().parameters.p_history_load_days_no",
+              "type": "Expression"
+            }
+          },
           "waitOnCompletion": true
         },
         "policy": {
@@ -44,7 +66,13 @@
         "type": "TridentNotebook",
         "typeProperties": {
           "notebookId": "526b3a57-4e71-aa52-4787-88781919b008",
-          "workspaceId": "00000000-0000-0000-0000-000000000000"
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "parameters": {
+            "p_load_success_flg": {
+              "value": "@variables('v_load_success_flg')\n",
+              "type": "bool"
+            }
+          }
         },
         "policy": {
           "timeout": "0.12:00:00",
@@ -56,13 +84,54 @@
         "name": "nb_email_send",
         "dependsOn": [
           {
-            "activity": "pl_load_lr_to_ld_all",
+            "activity": "set success_flg",
             "dependencyConditions": [
               "Succeeded"
             ]
           }
         ]
+      },
+      {
+        "type": "SetVariable",
+        "typeProperties": {
+          "variableName": "v_load_success_flg",
+          "value": "@activity('pl_load_lr_to_ld_all').output.v_load_success_flg\n"
+        },
+        "policy": {
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "set success_flg",
+        "dependsOn": [
+          {
+            "activity": "pl_load_lr_to_ld_all",
+            "dependencyConditions": [
+              "Completed"
+            ]
+          }
+        ]
       }
-    ]
+    ],
+    "parameters": {
+      "p_load_dt": {
+        "type": "string"
+      },
+      "p_history_load_days_no": {
+        "type": "int",
+        "defaultValue": 0
+      },
+      "p_forecast_load_days_no": {
+        "type": "int",
+        "defaultValue": 4
+      }
+    },
+    "variables": {
+      "v_load_dt": {
+        "type": "String"
+      },
+      "v_load_success_flg": {
+        "type": "Boolean"
+      }
+    }
   }
 }

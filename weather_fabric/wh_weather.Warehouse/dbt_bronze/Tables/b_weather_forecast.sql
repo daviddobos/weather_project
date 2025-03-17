@@ -1,5 +1,6 @@
 CREATE TABLE [dbt_bronze].[b_weather_forecast] (
 
+	[m_valid_dt] date NULL, 
 	[rain_chance_no] int NULL, 
 	[snow_chance_no] int NULL, 
 	[cloud_coverage_no] int NULL, 
@@ -21,6 +22,7 @@ CREATE TABLE [dbt_bronze].[b_weather_forecast] (
 	[city_nm] varchar(30) NULL, 
 	[country_nm] varchar(30) NULL, 
 	[forecast_dt] date NULL, 
-	[p_load_dt] datetime2(6) NULL
+	[m_extracted_at_dttm] datetime2(6) NULL, 
+	[m_updated_at_dttm] datetime2(6) NULL
 );
 

@@ -12,7 +12,7 @@
               "type": "string"
             },
             "p_table_nm": {
-              "value": "weather_astro_forecast",
+              "value": "ld_weather_astro_forecast",
               "type": "string"
             },
             "p_column_nm": {
@@ -54,11 +54,17 @@
                 "workspaceId": "00000000-0000-0000-0000-000000000000",
                 "parameters": {
                   "p_load_dt": {
-                    "value": "@pipeline().parameters.p_load_dt",
+                    "value": {
+                      "value": "@pipeline().parameters.p_load_dt",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "p_load_days_no": {
-                    "value": "@item()",
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
                     "type": "int"
                   }
                 }

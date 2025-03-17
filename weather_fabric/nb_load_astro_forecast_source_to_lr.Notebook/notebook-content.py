@@ -18,7 +18,7 @@
 # PARAMETERS CELL ********************
 
 # Parameters
-p_load_dt = '20250218'
+p_load_dt = ''
 p_load_days_no = '3'
 p_save_path_root = 'Files/landing'
 p_source_system_cd = 'weatherapi'

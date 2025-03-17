@@ -383,12 +383,42 @@
             ]
           },
           {
-            "name": "p_load_dt",
+            "name": "m_valid_dt",
             "dataType": "dateTime",
-            "sourceColumn": "p_load_dt",
+            "sourceColumn": "m_valid_dt",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "sourceLineageTag": "m_valid_dt",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "m_extracted_at_dttm",
+            "dataType": "dateTime",
+            "sourceColumn": "m_extracted_at_dttm",
             "formatString": "General Date",
             "sourceProviderType": "datetime2",
-            "sourceLineageTag": "p_load_dt",
+            "sourceLineageTag": "m_extracted_at_dttm",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "m_updated_at_dttm",
+            "dataType": "dateTime",
+            "sourceColumn": "m_updated_at_dttm",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "m_updated_at_dttm",
             "summarizeBy": "none",
             "annotations": [
               {
@@ -584,12 +614,42 @@
             ]
           },
           {
-            "name": "p_load_dt",
+            "name": "m_valid_dt",
             "dataType": "dateTime",
-            "sourceColumn": "p_load_dt",
+            "sourceColumn": "m_valid_dt",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "sourceLineageTag": "m_valid_dt",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "m_extracted_at_dttm",
+            "dataType": "dateTime",
+            "sourceColumn": "m_extracted_at_dttm",
             "formatString": "General Date",
             "sourceProviderType": "datetime2",
-            "sourceLineageTag": "p_load_dt",
+            "sourceLineageTag": "m_extracted_at_dttm",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "m_updated_at_dttm",
+            "dataType": "dateTime",
+            "sourceColumn": "m_updated_at_dttm",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "m_updated_at_dttm",
             "summarizeBy": "none",
             "annotations": [
               {
@@ -1031,12 +1091,42 @@
             ]
           },
           {
-            "name": "p_load_dt",
+            "name": "m_valid_dt",
             "dataType": "dateTime",
-            "sourceColumn": "p_load_dt",
+            "sourceColumn": "m_valid_dt",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "sourceLineageTag": "m_valid_dt",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "m_extracted_at_dttm",
+            "dataType": "dateTime",
+            "sourceColumn": "m_extracted_at_dttm",
             "formatString": "General Date",
             "sourceProviderType": "datetime2",
-            "sourceLineageTag": "p_load_dt",
+            "sourceLineageTag": "m_extracted_at_dttm",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "m_updated_at_dttm",
+            "dataType": "dateTime",
+            "sourceColumn": "m_updated_at_dttm",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "m_updated_at_dttm",
             "summarizeBy": "none",
             "annotations": [
               {
@@ -1412,12 +1502,42 @@
             ]
           },
           {
-            "name": "p_load_dt",
+            "name": "m_valid_dt",
             "dataType": "dateTime",
-            "sourceColumn": "p_load_dt",
+            "sourceColumn": "m_valid_dt",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "sourceLineageTag": "m_valid_dt",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "m_extracted_at_dttm",
+            "dataType": "dateTime",
+            "sourceColumn": "m_extracted_at_dttm",
             "formatString": "General Date",
             "sourceProviderType": "datetime2",
-            "sourceLineageTag": "p_load_dt",
+            "sourceLineageTag": "m_extracted_at_dttm",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "m_updated_at_dttm",
+            "dataType": "dateTime",
+            "sourceColumn": "m_updated_at_dttm",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "m_updated_at_dttm",
             "summarizeBy": "none",
             "annotations": [
               {
@@ -2257,12 +2377,11 @@
             ]
           },
           {
-            "name": "p_load_dt",
-            "dataType": "dateTime",
-            "sourceColumn": "p_load_dt",
-            "formatString": "General Date",
-            "sourceProviderType": "datetime2",
-            "sourceLineageTag": "p_load_dt",
+            "name": "country_cd",
+            "dataType": "string",
+            "sourceColumn": "country_cd",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "country_cd",
             "summarizeBy": "none",
             "annotations": [
               {
@@ -2272,11 +2391,42 @@
             ]
           },
           {
-            "name": "country_cd",
-            "dataType": "string",
-            "sourceColumn": "country_cd",
-            "sourceProviderType": "varchar",
-            "sourceLineageTag": "country_cd",
+            "name": "m_valid_dt",
+            "dataType": "dateTime",
+            "sourceColumn": "m_valid_dt",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "sourceLineageTag": "m_valid_dt",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "m_extracted_at_dttm",
+            "dataType": "dateTime",
+            "sourceColumn": "m_extracted_at_dttm",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "m_extracted_at_dttm",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "m_updated_at_dttm",
+            "dataType": "dateTime",
+            "sourceColumn": "m_updated_at_dttm",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "m_updated_at_dttm",
             "summarizeBy": "none",
             "annotations": [
               {
@@ -2472,12 +2622,11 @@
             ]
           },
           {
-            "name": "p_load_dt",
-            "dataType": "dateTime",
-            "sourceColumn": "p_load_dt",
-            "formatString": "General Date",
-            "sourceProviderType": "datetime2",
-            "sourceLineageTag": "p_load_dt",
+            "name": "astro_forecast_pk",
+            "dataType": "string",
+            "sourceColumn": "astro_forecast_pk",
+            "sourceProviderType": "varchar",
+            "sourceLineageTag": "astro_forecast_pk",
             "summarizeBy": "none",
             "annotations": [
               {
@@ -2487,11 +2636,56 @@
             ]
           },
           {
-            "name": "astro_forecast_pk",
+            "name": "m_valid_dt",
+            "dataType": "dateTime",
+            "sourceColumn": "m_valid_dt",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "sourceLineageTag": "m_valid_dt",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "country_cd",
             "dataType": "string",
-            "sourceColumn": "astro_forecast_pk",
+            "sourceColumn": "country_cd",
             "sourceProviderType": "varchar",
-            "sourceLineageTag": "astro_forecast_pk",
+            "sourceLineageTag": "country_cd",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "m_extracted_at_dttm",
+            "dataType": "dateTime",
+            "sourceColumn": "m_extracted_at_dttm",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "m_extracted_at_dttm",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "m_updated_at_dttm",
+            "dataType": "dateTime",
+            "sourceColumn": "m_updated_at_dttm",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "m_updated_at_dttm",
             "summarizeBy": "none",
             "annotations": [
               {
@@ -2985,21 +3179,6 @@
             ]
           },
           {
-            "name": "p_load_dt",
-            "dataType": "dateTime",
-            "sourceColumn": "p_load_dt",
-            "formatString": "General Date",
-            "sourceProviderType": "datetime2",
-            "sourceLineageTag": "p_load_dt",
-            "summarizeBy": "none",
-            "annotations": [
-              {
-                "name": "SummarizationSetBy",
-                "value": "Automatic"
-              }
-            ]
-          },
-          {
             "name": "weather_pk",
             "dataType": "string",
             "sourceColumn": "weather_pk",
@@ -3329,6 +3508,51 @@
             "sourceColumn": "snow_chance_cd",
             "sourceProviderType": "varchar",
             "sourceLineageTag": "snow_chance_cd",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "m_valid_dt",
+            "dataType": "dateTime",
+            "sourceColumn": "m_valid_dt",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "sourceLineageTag": "m_valid_dt",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "m_extracted_at_dttm",
+            "dataType": "dateTime",
+            "sourceColumn": "m_extracted_at_dttm",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "m_extracted_at_dttm",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "m_updated_at_dttm",
+            "dataType": "dateTime",
+            "sourceColumn": "m_updated_at_dttm",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "m_updated_at_dttm",
             "summarizeBy": "none",
             "annotations": [
               {
@@ -3964,12 +4188,42 @@
             ]
           },
           {
-            "name": "p_load_dt",
+            "name": "m_valid_dt",
             "dataType": "dateTime",
-            "sourceColumn": "p_load_dt",
+            "sourceColumn": "m_valid_dt",
+            "formatString": "General Date",
+            "sourceProviderType": "date",
+            "sourceLineageTag": "m_valid_dt",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "m_extracted_at_dttm",
+            "dataType": "dateTime",
+            "sourceColumn": "m_extracted_at_dttm",
             "formatString": "General Date",
             "sourceProviderType": "datetime2",
-            "sourceLineageTag": "p_load_dt",
+            "sourceLineageTag": "m_extracted_at_dttm",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ]
+          },
+          {
+            "name": "m_updated_at_dttm",
+            "dataType": "dateTime",
+            "sourceColumn": "m_updated_at_dttm",
+            "formatString": "General Date",
+            "sourceProviderType": "datetime2",
+            "sourceLineageTag": "m_updated_at_dttm",
             "summarizeBy": "none",
             "annotations": [
               {

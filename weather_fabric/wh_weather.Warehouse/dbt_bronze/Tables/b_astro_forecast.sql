@@ -1,5 +1,6 @@
 CREATE TABLE [dbt_bronze].[b_astro_forecast] (
 
+	[m_valid_dt] date NULL, 
 	[moon_up_flg] bit NULL, 
 	[sun_up_flg] bit NULL, 
 	[moon_illumination_no] int NULL, 
@@ -11,6 +12,7 @@ CREATE TABLE [dbt_bronze].[b_astro_forecast] (
 	[city_nm] varchar(50) NULL, 
 	[country_nm] varchar(50) NULL, 
 	[forecast_dt] datetime2(6) NULL, 
-	[p_load_dt] datetime2(6) NULL
+	[m_extracted_at_dttm] datetime2(6) NULL, 
+	[m_updated_at_dttm] datetime2(6) NULL
 );
 
