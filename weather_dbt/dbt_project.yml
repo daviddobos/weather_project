@@ -59,4 +59,4 @@ vars:
     v_default_hash_length: 32
     v_km_to_mi: 0.621371
     v_cels_to_fahr: 33.8
-    V_cels_to_kel: 273.15
+    v_cels_to_kel: 273.15
