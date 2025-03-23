@@ -1,5 +1,136 @@
 models:
-  - name: s_weather_forecast
-    description: The s_weather_forecast model provides a comprehensive view of weather forecasts. It includes details such as the date and time of the forecast, the city and country for which the forecast is made, and various weather parameters like temperature, humidity, wind speed, and cloud coverage. The model also includes calculated fields like the 'feels like' temperature and chances of rain or snow. Each record in the model is uniquely identified by a weather_pk. The model is designed to be easily understood and used by business users for weather-related analysis and decision making.
+  - name: s_fct_weather_forecast
+    description: The s_fct_weather_forecast model provides a comprehensive view of weather forecasts. It includes details such as the date of the forecast, the city and country for which the forecast is made, and various weather parameters like temperature, humidity, wind speed, and chances of rain or snow. The model also categorizes these parameters into understandable terms like 'Very Low', 'Low', 'Moderate', 'High', and 'Very High' for chances of rain or snow, and 'Clear', 'Partly Cloudy', 'Cloudy', 'Overcast', and 'Completely Overcast' for cloud coverage. It also provides a feel of the temperature with categories like 'Very Cold', 'Cold', 'Cool', 'Warm', 'Hot', and 'Very Hot'. The model is updated regularly to provide the most accurate and up-to-date weather forecasts.
     columns:
-     
+      - name: m_valid_dt
+        description: This column represents the date and time when the weather forecast data was validated. It is in the format of YYYY-MM-DD HH:MM:SS. This information is crucial for understanding the timeliness and relevance of the forecast data.
+        data_type: date
+        data_tests:
+          - name: s_fct_weather_forecast_accepted_range_m_valid_dt
+            test_name: dbt_utils.accepted_range
+            min_value: "CAST(DATEFROMPARTS(YEAR(GETDATE()), 1, 1) AS DATE)"
+            max_value: "CAST(DATEFROMPARTS(YEAR(GETDATE()), 12, 31) AS DATE)"
+      - name: weather_pk
+        description: This column is the unique identifier for each weather forecast record. It is generated using a hash function on the forecast date, country code, and city name. This identifier is used to uniquely identify each weather forecast and is essential for data management and tracking.
+        data_type: varchar
+        data_tests:
+          - name: s_fct_weather_forecast_not_null_weather_pk
+            test_name: not_null
+          - name: s_fct_weather_forecast_unique_weather_pk
+            test_name: unique
+            config:
+            where: "weather_pk IS NOT NULL"
+      - name: forecast_dt
+        description: This column represents the date and time for which the weather forecast is applicable. It is in the format of YYYY-MM-DD HH:MM:SS. This information is important for understanding when the forecasted weather conditions are expected to occur.
+        data_type: date
+      - name: city_nm
+        description: This column represents the name of the city for which the weather forecast is provided. It is a string data type and can be used to filter or group the data based on specific cities.
+        data_type: varchar
+      - name: country_cd
+        description: This column represents the country code associated with the city for which the weather forecast is provided. It is a string data type and can be used to filter or group the data based on specific countries.
+        data_type: varchar
+      - name: country_nm
+        description: This column represents the name of the country associated with the city for which the weather forecast is provided. It is a string data type and can be used to filter or group the data based on specific countries.
+        data_type: varchar
+      - name: cloud_coverage_no
+        description: This column represents the percentage of the sky covered by clouds. It is a numerical value ranging from 0 to 100, where 0 indicates a clear sky and 100 indicates a completely overcast sky.
+        data_type: int
+      - name: cloud_coverage_cd
+        description: This column categorizes the cloud coverage into different levels based on the percentage of the sky covered by clouds. The categories include 'Clear' (0-20%), 'Partly Cloudy' (21-40%), 'Cloudy' (41-60%), 'Overcast' (61-80%), and 'Completely Overcast' (81-100%).
+        data_type: varchar
+      - name: gust_kph_no
+        description: This column represents the speed of the wind gusts in kilometers per hour. Wind gusts are brief increases in the speed of the wind, typically lasting just a few seconds.
+        data_type: decimal
+      - name: gust_miph_no
+        description: This column represents the speed of the gusts of wind in miles per hour. It is derived from the 'gust_kph_no' column by converting kilometers per hour to miles per hour. This information is crucial for understanding the intensity of wind gusts in a particular region, which can impact various business operations such as logistics, construction, and outdoor events.
+        data_type: numeric
+      - name: heatindex_c_no
+        description: This column represents the heat index in degrees Celsius. The heat index is a measure that combines air temperature and relative humidity to determine an apparent temperature — how hot it actually feels. This information is important for businesses in sectors like tourism, event planning, and agriculture, where weather conditions significantly impact operations.
+        data_type: decimal
+      - name: heatindex_f_no
+        description: This column represents the heat index in degrees Fahrenheit. It is derived from the 'heatindex_c_no' column by converting degrees Celsius to Fahrenheit. This information is crucial for businesses operating in regions using Fahrenheit as the standard unit of temperature. It helps in understanding the perceived temperature, which can influence customer behavior and business operations.
+        data_type: numeric
+      - name: heatindex_k_no
+        description: This column represents the heat index value in Kelvin. The heat index is a measure of how hot it feels when relative humidity is factored in with the actual air temperature. This value is particularly useful for understanding the perceived temperature in different weather conditions.
+        data_type: numeric
+      - name: humidity_no
+        description: This column represents the humidity level as a numerical value. Humidity is the concentration of water vapor present in the air. This value is important for understanding the moisture content in the air, which can affect various weather conditions and human comfort.
+        data_type: int
+      - name: humidity_cd
+        description: This column categorizes the humidity level into different categories such as 'Very Low', 'Low', 'Moderate', 'High', and 'Very High'. This categorization provides a more intuitive understanding of the humidity conditions.
+        data_type: varchar
+      - name: is_day_flg
+        description: This column indicates whether the forecast is for daytime or nighttime. A value of '1' means it's a daytime forecast, while '0' indicates a nighttime forecast.
+        data_type: bit
+      - name: precip_mm_no
+        description: This column represents the amount of precipitation forecasted, measured in millimeters. This includes any form of water, liquid or solid, that falls from the atmosphere and reaches the ground.
+        data_type: decimal
+      - name: pressure_mb_no
+        description: This column represents the atmospheric pressure forecasted, measured in millibars. Atmospheric pressure is an indicator of weather changes. When the pressure drops, it usually signals that a storm is coming.
+        data_type: decimal
+      - name: temp_c_no
+        description: This column represents the temperature in Celsius. It is a numerical value that indicates the current temperature of the location in Celsius degrees. This is a key metric for understanding the current weather conditions.
+        data_type: decimal
+      - name: temp_f_no
+        description: This column represents the temperature in Fahrenheit. It is a numerical value that indicates the current temperature of the location in Fahrenheit degrees. This is particularly useful for users who are more familiar with the Fahrenheit scale.
+        data_type: numeric
+      - name: temp_k_no
+        description: This column represents the temperature in Kelvin. It is a numerical value that indicates the current temperature of the location in Kelvin. This is often used in scientific contexts and provides another perspective on the current temperature.
+        data_type: numeric
+      - name: temp_feelslike_no
+        description: This column represents the temperature that it actually feels like outside, taking into account factors such as wind and humidity. The value is in degrees Celsius.
+        data_type: decimal
+      - name: temp_feels_like_cd
+        description: This column categorizes the 'feels like' temperature into various categories such as 'Very Cold', 'Cold', 'Cool', 'Warm', 'Hot', and 'Very Hot'. This provides a more intuitive understanding of the temperature conditions.
+        data_type: varchar
+      - name: date_dtt
+        description: This column represents the date and time of the weather forecast. It is in the format of YYYY-MM-DD HH:MM:SS, which allows for precise tracking of weather conditions.
+        data_type: datetime2
+      - name: time_epoch
+        description: This column represents the time of the weather forecast in epoch format. Epoch time, also known as Unix time, is the number of seconds that have elapsed since 00:00:00 Coordinated Universal Time (UTC), Thursday, 1 January 1970, not counting leap seconds. It is a system for describing instants in time, defined as the number of seconds that have elapsed since the Unix epoch. This format is useful for storing or comparing dates and times in a database or in a program.
+        data_type: int
+      - name: rain_chance_no
+        description: This column represents the numerical probability of rain occurring, expressed as a percentage. It is calculated based on various weather factors and gives an indication of the likelihood of rain. A higher number indicates a higher chance of rain. This information can be useful for planning outdoor activities or events.
+        data_type: int
+      - name: rain_chance_cd
+        description: This column categorizes the chance of rain into different levels such as 'Very Low', 'Low', 'Moderate', 'High', and 'Very High'. This is based on the 'rain_chance_no' column. This categorical representation can be easier to understand and interpret for some users, and can be useful for making decisions based on the likelihood of rain.
+        data_type: varchar
+      - name: snow_chance_no
+        description: This column represents the numerical probability of snowfall in a given area. The value ranges from 0 to 100, where 0 indicates no chance of snowfall and 100 indicates a very high chance of snowfall.
+        data_type: int
+      - name: snow_chance_cd
+        description: This column categorizes the chance of snowfall into different levels based on the 'snow_chance_no' value. The categories are 'Very Low', 'Low', 'Moderate', 'High', 'Very High', and 'Unknown'.
+        data_type: varchar
+      - name: uv_no
+        description: This column represents the Ultraviolet (UV) Index for a given area. The UV Index is a measure of the intensity of the sun's ultraviolet radiation. Higher values indicate stronger UV radiation, which can be harmful to the skin and eyes.
+        data_type: decimal
+      - name: vis_km_no
+        description: This column represents the visibility in kilometers. It is a numerical value that indicates how far one can see in clear weather conditions. Higher values indicate better visibility.
+        data_type: decimal
+      - name: vis_mi_no
+        description: This column represents the visibility in miles. It is a numerical value that indicates how far one can see in clear weather conditions. Higher values indicate better visibility. This is the same as 'vis_km_no' but converted to miles for ease of understanding for users familiar with the imperial system.
+        data_type: numeric
+      - name: wind_dir_cd
+        description: This column represents the wind direction. It is a categorical value that indicates the direction from which the wind is coming. The values are represented as abbreviations of the cardinal directions (e.g., 'N' for North, 'S' for South, 'E' for East, 'W' for West, 'NE' for Northeast, etc.).
+        data_type: varchar
+      - name: wind_kph_no
+        description: This column represents the speed of the wind in kilometers per hour. It is a numerical value that provides information about the intensity of the wind at a specific location and time.
+        data_type: decimal
+      - name: wind_miph_no
+        description: This column represents the speed of the wind in miles per hour. It is a numerical value that provides information about the intensity of the wind at a specific location and time, converted from kilometers per hour to miles per hour for ease of understanding for users familiar with the imperial system.
+        data_type: numeric
+      - name: windchill_c_no
+        description: This column represents the wind chill factor in degrees Celsius. It is a numerical value that indicates how much colder the wind makes a human feel compared to the actual air temperature. This is a crucial factor to consider when assessing the weather conditions, especially in cold climates.
+        data_type: decimal
+      - name: windchill_f_no
+        description: This column represents the wind chill factor in Fahrenheit. The wind chill factor is a measure of how cold it feels when considering the rate of heat loss from the human body resulting from the combined effect of low temperature and wind. As wind speed increases, it can carry heat away from your body much more quickly, causing skin temperature to decrease and making the surroundings feel colder.
+        data_type: numeric
+      - name: windchill_k_no
+        description: This column represents the wind chill factor in Kelvin. The wind chill factor is a measure of how cold it feels when considering the rate of heat loss from the human body resulting from the combined effect of low temperature and wind. As wind speed increases, it can carry heat away from your body much more quickly, causing skin temperature to decrease and making the surroundings feel colder.
+        data_type: numeric
+      - name: m_extracted_at_dttm
+        description: This column represents the date and time at which the weather forecast data was extracted from the source system. This timestamp is useful for tracking data lineage and understanding when the data was last updated in the source system.
+        data_type: datetime2
+      - name: m_updated_at_dttm
+        description: This column represents the date and time when the weather forecast data was last updated. It is important for business users to understand the recency of the data they are working with, as weather conditions can change rapidly and impact business operations.
+        data_type: datetime2

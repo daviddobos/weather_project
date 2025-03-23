@@ -4,6 +4,11 @@ models:
       - name: m_valid_dt
         description: This column represents the date when the data in the row was validated. It is important for tracking data quality and ensuring that the forecast information is up-to-date.
         data_type: date
+        data_tests:
+          - name: s_fct_astro_forecast_accepted_range_m_valid_dt
+            test_name: dbt_utils.accepted_range
+            min_value: "CAST(DATEFROMPARTS(YEAR(GETDATE()), 1, 1) AS DATE)"
+            max_value: "CAST(DATEFROMPARTS(YEAR(GETDATE()), 12, 31) AS DATE)"
       - name: astro_forecast_pk
         description: This is the primary key for the astrological forecast data. It is a unique identifier generated using a combination of the forecast date, country code, and city name. This key is used to uniquely identify each row of data and is essential for data management and integrity.
         data_type: varchar
