@@ -1,7 +1,7 @@
-WITH b_weather_forecast AS (
+WITH b_weather AS (
     SELECT 
         *
-    FROM {{ref('b_weather_forecast') }}
+    FROM {{ref('b_weather') }}
 ),
 
 country_codes AS (
@@ -12,11 +12,11 @@ country_codes AS (
 
 join_country_cd AS (
     SELECT
-        b_weather_forecast.*
+        b_weather.*
         ,country_codes.country_cd AS country_cd
-    FROM b_weather_forecast
+    FROM b_weather
     JOIN country_codes
-    ON b_weather_forecast.country_nm = country_codes.country_nm
+    ON b_weather.country_nm = country_codes.country_nm
 ),
 
 gen_sk AS (
@@ -29,15 +29,15 @@ gen_sk AS (
 unit_conversion AS (
     SELECT
         *
-        ,gust_kph_no * {{ var('km_to_mi') }} AS gust_miph_no
-        ,temp_c_no * {{ var('cels_to_fahr') }} AS temp_f_no
-        ,temp_c_no * {{ var('cels_to_kel') }} AS temp_k_no
-        ,heatindex_c_no * {{ var('cels_to_fahr') }} AS heatindex_f_no
-        ,heatindex_c_no * {{ var('cels_to_kel') }} AS heatindex_k_no
-        ,vis_km_no * {{ var('km_to_mi') }} AS vis_mi_no
-        ,wind_kph_no * {{ var('km_to_mi') }} AS wind_miph_no
-        ,windchill_c_no * {{ var('cels_to_fahr') }} AS windchill_f_no
-        ,windchill_c_no * {{ var('cels_to_kel') }} AS windchill_k_no
+        ,gust_kph_no * {{ var('v_km_to_mi') }} AS gust_miph_no
+        ,temp_c_no * {{ var('v_cels_to_fahr') }} AS temp_f_no
+        ,temp_c_no * {{ var('v_cels_to_kel') }} AS temp_k_no
+        ,heatindex_c_no * {{ var('v_cels_to_fahr') }} AS heatindex_f_no
+        ,heatindex_c_no * {{ var('v_cels_to_kel') }} AS heatindex_k_no
+        ,vis_km_no * {{ var('v_km_to_mi') }} AS vis_mi_no
+        ,wind_kph_no * {{ var('v_km_to_mi') }} AS wind_miph_no
+        ,windchill_c_no * {{ var('v_cels_to_fahr') }} AS windchill_f_no
+        ,windchill_c_no * {{ var('v_cels_to_kel') }} AS windchill_k_no
     FROM gen_sk
 ),
 

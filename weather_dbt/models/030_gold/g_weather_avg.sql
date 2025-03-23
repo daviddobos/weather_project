@@ -16,7 +16,7 @@ WITH base_weather AS (
         ,heatindex_c_no
         ,wind_kph_no
         ,windchill_c_no
-    FROM {{ ref('s_weather') }}
+    FROM {{ ref('s_fct_weather') }}
 ),
 
 base_astro AS (
@@ -32,7 +32,7 @@ base_astro AS (
         ,moonset_t
         ,sunrise_t
         ,sunset_t
-    FROM {{ ref('s_astro') }}
+    FROM {{ ref('s_fct_astro') }}
 ),
 
 join_astro AS (

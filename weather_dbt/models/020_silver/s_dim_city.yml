@@ -1,35 +1,37 @@
 models:
-  - name: s_city
+  - name: s_dim_city
     description: The s_city model provides detailed information about cities. It includes the city's unique identifier (city_pk), country code (country_cd), county name (county_nm), city name (city_nm), KSH code (ksh_cd), city type code (city_type_cd), district code (district_cd), district name (district_nm), district seat name (district_seat_nm), area number (area_no), population number (population_no), and the number of apartments (apartments_no). This model is useful for understanding the demographic and geographic characteristics of different cities.
     columns:
       - name: city_pk
         description: This is the primary key for the city. It is a unique identifier generated using a hash function. This identifier is used to uniquely identify each city in the database.
         data_type: varchar
-        quote: true
+        data_tests:
+          - name: s_dim_city_not_null_city_pk
+            test_name: not_null
+          - name: s_dim_city_unique_city_pk
+            test_name: unique
       - name: country_cd
         description: This is the country code associated with the city. It is used to identify the country in which the city is located.
         data_type: varchar
-        quote: true
+        data_tests:
+          - name: s_dim_city_accepted_values_country_cd
+            test_name: accepted_values
+            values: ['HU']
       - name: county_nm
         description: This is the name of the county in which the city is located. It provides additional geographical context for the city.
         data_type: varchar
-        quote: true
       - name: city_nm
         description: This column represents the name of the city. It is a unique identifier for each city within a specific country and county.
         data_type: varchar
-        quote: true
       - name: ksh_cd
         description: This column represents the KSH code of the city. The KSH code is a unique identifier used by the Hungarian Central Statistical Office (KSH) to identify different geographical areas within Hungary.
         data_type: int
-        quote: true
       - name: city_type_cd
         description: This column represents the type of the city. The city type code is a classification that indicates whether a city is a metropolis, a large city, a small city, or a town.
         data_type: varchar
-        quote: true
       - name: district_cd
         description: This column represents the unique code assigned to each district. This code is used for identification and reference purposes in various business operations and analyses.
         data_type: varchar
-        quote: true
       - name: district_nm
         description: This column contains the name of the district. This information is crucial for understanding the geographical context of the data and can be used in various business scenarios such as market segmentation, sales analysis, and strategic planning.
         data_type: varchar
