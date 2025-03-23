@@ -9,7 +9,7 @@ b_astro_forecast AS (
         CONVERT(DATE, m_valid_dt) AS m_valid_dt
         ,CONVERT(BIT, is_moon_up) AS moon_up_flg
         ,CONVERT(BIT, is_sun_up) AS sun_up_flg
-        ,CONVERT(INT, moon_illumination) AS moon_illumination_no
+        ,CONVERT(INT, moon_illumination) AS moon_illumination_pct
         ,CONVERT(VARCHAR(20), moon_phase) AS moon_phase_cd
         ,TRY_CONVERT(TIME(0), moonrise) AS moonrise_t
         ,TRY_CONVERT(TIME(0), moonset) AS moonset_t

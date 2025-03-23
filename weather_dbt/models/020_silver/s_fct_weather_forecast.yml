@@ -34,7 +34,7 @@ models:
       - name: country_nm
         description: This column represents the name of the country associated with the city for which the weather forecast is provided. It is a string data type and can be used to filter or group the data based on specific countries.
         data_type: varchar
-      - name: cloud_coverage_no
+      - name: cloud_coverage_pct
         description: This column represents the percentage of the sky covered by clouds. It is a numerical value ranging from 0 to 100, where 0 indicates a clear sky and 100 indicates a completely overcast sky.
         data_type: int
       - name: cloud_coverage_cd
@@ -55,7 +55,7 @@ models:
       - name: heatindex_k_no
         description: This column represents the heat index value in Kelvin. The heat index is a measure of how hot it feels when relative humidity is factored in with the actual air temperature. This value is particularly useful for understanding the perceived temperature in different weather conditions.
         data_type: numeric
-      - name: humidity_no
+      - name: humidity_pct
         description: This column represents the humidity level as a numerical value. Humidity is the concentration of water vapor present in the air. This value is important for understanding the moisture content in the air, which can affect various weather conditions and human comfort.
         data_type: int
       - name: humidity_cd
@@ -91,17 +91,17 @@ models:
       - name: time_epoch
         description: This column represents the time of the weather forecast in epoch format. Epoch time, also known as Unix time, is the number of seconds that have elapsed since 00:00:00 Coordinated Universal Time (UTC), Thursday, 1 January 1970, not counting leap seconds. It is a system for describing instants in time, defined as the number of seconds that have elapsed since the Unix epoch. This format is useful for storing or comparing dates and times in a database or in a program.
         data_type: int
-      - name: rain_chance_no
+      - name: rain_chance_pct
         description: This column represents the numerical probability of rain occurring, expressed as a percentage. It is calculated based on various weather factors and gives an indication of the likelihood of rain. A higher number indicates a higher chance of rain. This information can be useful for planning outdoor activities or events.
         data_type: int
       - name: rain_chance_cd
-        description: This column categorizes the chance of rain into different levels such as 'Very Low', 'Low', 'Moderate', 'High', and 'Very High'. This is based on the 'rain_chance_no' column. This categorical representation can be easier to understand and interpret for some users, and can be useful for making decisions based on the likelihood of rain.
+        description: This column categorizes the chance of rain into different levels such as 'Very Low', 'Low', 'Moderate', 'High', and 'Very High'. This is based on the 'rain_chance_pct' column. This categorical representation can be easier to understand and interpret for some users, and can be useful for making decisions based on the likelihood of rain.
         data_type: varchar
-      - name: snow_chance_no
+      - name: snow_chance_pct
         description: This column represents the numerical probability of snowfall in a given area. The value ranges from 0 to 100, where 0 indicates no chance of snowfall and 100 indicates a very high chance of snowfall.
         data_type: int
       - name: snow_chance_cd
-        description: This column categorizes the chance of snowfall into different levels based on the 'snow_chance_no' value. The categories are 'Very Low', 'Low', 'Moderate', 'High', 'Very High', and 'Unknown'.
+        description: This column categorizes the chance of snowfall into different levels based on the 'snow_chance_pct' value. The categories are 'Very Low', 'Low', 'Moderate', 'High', 'Very High', and 'Unknown'.
         data_type: varchar
       - name: uv_no
         description: This column represents the Ultraviolet (UV) Index for a given area. The UV Index is a measure of the intensity of the sun's ultraviolet radiation. Higher values indicate stronger UV radiation, which can be harmful to the skin and eyes.

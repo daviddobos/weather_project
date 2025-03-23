@@ -7,7 +7,7 @@ WITH ld_astro AS (
 b_astro AS (
     SELECT
         CONVERT(DATE, m_valid_dt) AS m_valid_dt
-        ,CONVERT(INT, moon_illumination) AS moon_illumination_no
+        ,CONVERT(INT, moon_illumination) AS moon_illumination_pct
         ,CONVERT(VARCHAR(20), moon_phase) AS moon_phase_cd
         ,CONVERT(TIME(0), moonrise) AS moonrise_t
         ,CONVERT(TIME(0), moonset) AS moonset_t

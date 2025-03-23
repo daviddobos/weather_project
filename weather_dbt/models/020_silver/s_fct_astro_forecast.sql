@@ -36,7 +36,7 @@ reorder AS (
         ,country_nm
         ,moon_up_flg
         ,sun_up_flg
-        ,moon_illumination_no
+        ,moon_illumination_pct
         ,moon_phase_cd
         ,moonrise_t
         ,moonset_t

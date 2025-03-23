@@ -46,31 +46,31 @@ weather_categories AS (
         *
         -- Rain Chance Category
         ,CASE
-            WHEN rain_chance_no BETWEEN 0 AND 20 THEN 'Very Low'
-            WHEN rain_chance_no BETWEEN 21 AND 40 THEN 'Low'
-            WHEN rain_chance_no BETWEEN 41 AND 60 THEN 'Moderate'
-            WHEN rain_chance_no BETWEEN 61 AND 80 THEN 'High'
-            WHEN rain_chance_no BETWEEN 81 AND 100 THEN 'Very High'
+            WHEN rain_chance_pct BETWEEN 0 AND 20 THEN 'Very Low'
+            WHEN rain_chance_pct BETWEEN 21 AND 40 THEN 'Low'
+            WHEN rain_chance_pct BETWEEN 41 AND 60 THEN 'Moderate'
+            WHEN rain_chance_pct BETWEEN 61 AND 80 THEN 'High'
+            WHEN rain_chance_pct BETWEEN 81 AND 100 THEN 'Very High'
             ELSE 'Unknown'
         END AS rain_chance_cd
 
         -- Snow Chance Category
         ,CASE
-            WHEN snow_chance_no BETWEEN 0 AND 20 THEN 'Very Low'
-            WHEN snow_chance_no BETWEEN 21 AND 40 THEN 'Low'
-            WHEN snow_chance_no BETWEEN 41 AND 60 THEN 'Moderate'
-            WHEN snow_chance_no BETWEEN 61 AND 80 THEN 'High'
-            WHEN snow_chance_no BETWEEN 81 AND 100 THEN 'Very High'
+            WHEN snow_chance_pct BETWEEN 0 AND 20 THEN 'Very Low'
+            WHEN snow_chance_pct BETWEEN 21 AND 40 THEN 'Low'
+            WHEN snow_chance_pct BETWEEN 41 AND 60 THEN 'Moderate'
+            WHEN snow_chance_pct BETWEEN 61 AND 80 THEN 'High'
+            WHEN snow_chance_pct BETWEEN 81 AND 100 THEN 'Very High'
             ELSE 'Unknown'
         END AS snow_chance_cd
 
         -- Cloud Coverage Category
         ,CASE
-            WHEN cloud_coverage_no BETWEEN 0 AND 20 THEN 'Clear'
-            WHEN cloud_coverage_no BETWEEN 21 AND 40 THEN 'Partly Cloudy'
-            WHEN cloud_coverage_no BETWEEN 41 AND 60 THEN 'Cloudy'
-            WHEN cloud_coverage_no BETWEEN 61 AND 80 THEN 'Overcast'
-            WHEN cloud_coverage_no BETWEEN 81 AND 100 THEN 'Completely Overcast'
+            WHEN cloud_coverage_pct BETWEEN 0 AND 20 THEN 'Clear'
+            WHEN cloud_coverage_pct BETWEEN 21 AND 40 THEN 'Partly Cloudy'
+            WHEN cloud_coverage_pct BETWEEN 41 AND 60 THEN 'Cloudy'
+            WHEN cloud_coverage_pct BETWEEN 61 AND 80 THEN 'Overcast'
+            WHEN cloud_coverage_pct BETWEEN 81 AND 100 THEN 'Completely Overcast'
             ELSE 'Unknown'
         END AS cloud_coverage_cd
 
@@ -83,15 +83,15 @@ weather_categories AS (
             WHEN temp_feelslike_no BETWEEN 31 AND 40 THEN 'Hot'
             WHEN temp_feelslike_no > 40 THEN 'Very Hot'
             ELSE 'Unknown'
-        END AS temp_feels_like_cd
+        END AS temp_feelslike_cd
 
         -- Humidity Category
         ,CASE
-            WHEN humidity_no BETWEEN 0 AND 20 THEN 'Very Low'
-            WHEN humidity_no BETWEEN 21 AND 40 THEN 'Low'
-            WHEN humidity_no BETWEEN 41 AND 60 THEN 'Moderate'
-            WHEN humidity_no BETWEEN 61 AND 80 THEN 'High'
-            WHEN humidity_no BETWEEN 81 AND 100 THEN 'Very High'
+            WHEN humidity_pct BETWEEN 0 AND 20 THEN 'Very Low'
+            WHEN humidity_pct BETWEEN 21 AND 40 THEN 'Low'
+            WHEN humidity_pct BETWEEN 41 AND 60 THEN 'Moderate'
+            WHEN humidity_pct BETWEEN 61 AND 80 THEN 'High'
+            WHEN humidity_pct BETWEEN 81 AND 100 THEN 'Very High'
             ELSE 'Unknown'
         END AS humidity_cd
 
@@ -106,14 +106,14 @@ reorder AS (
         ,city_nm
         ,country_cd
         ,country_nm
-        ,cloud_coverage_no
+        ,cloud_coverage_pct
         ,cloud_coverage_cd
         ,gust_kph_no
         ,gust_miph_no
         ,heatindex_c_no
         ,heatindex_f_no
         ,heatindex_k_no
-        ,humidity_no
+        ,humidity_pct
         ,humidity_cd
         ,is_day_flg
         ,precip_mm_no
@@ -122,12 +122,12 @@ reorder AS (
         ,temp_f_no
         ,temp_k_no
         ,temp_feelslike_no
-        ,temp_feels_like_cd
+        ,temp_feelslike_cd
         ,date_dtt
         ,time_epoch
-        ,rain_chance_no
+        ,rain_chance_pct
         ,rain_chance_cd
-        ,snow_chance_no
+        ,snow_chance_pct
         ,snow_chance_cd
         ,uv_no
         ,vis_km_no

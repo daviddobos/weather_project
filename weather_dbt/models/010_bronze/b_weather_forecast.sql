@@ -7,12 +7,12 @@ WITH ld_weather_forecast AS (
 b_weather_forecast AS (
     SELECT
         CONVERT(DATE, m_valid_dt) AS m_valid_dt
-        ,CONVERT(INT, chance_of_rain) AS rain_chance_no
-        ,CONVERT(INT, chance_of_snow) AS snow_chance_no
-        ,CONVERT(INT, cloud) AS cloud_coverage_no
+        ,CONVERT(INT, chance_of_rain) AS rain_chance_pct
+        ,CONVERT(INT, chance_of_snow) AS snow_chance_pct
+        ,CONVERT(INT, cloud) AS cloud_coverage_pct
         ,CONVERT(DECIMAL({{ var('v_decimal_precision') }}, {{ var('v_decimal_scale') }}), feelslike_c) AS temp_feelslike_no
         ,CONVERT(DECIMAL({{ var('v_decimal_precision') }}, {{ var('v_decimal_scale') }}), gust_kph) AS gust_kph_no
-        ,CONVERT(INT, humidity) AS humidity_no
+        ,CONVERT(INT, humidity) AS humidity_pct
         ,CONVERT(DECIMAL({{ var('v_decimal_precision') }}, {{ var('v_decimal_scale') }}), heatindex_c) AS heatindex_c_no
         ,CONVERT(BIT, is_day) AS is_day_flg
         ,CONVERT(DECIMAL({{ var('v_decimal_precision') }}, {{ var('v_decimal_scale') }}), precip_mm) AS precip_mm_no

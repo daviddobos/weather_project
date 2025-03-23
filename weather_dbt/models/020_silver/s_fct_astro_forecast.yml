@@ -39,7 +39,7 @@ models:
       - name: sun_up_flg
         description: "This column indicates whether the sun is up or not. It is a flag that can take two values: '1' if the sun is up and '0' if the sun is not up. This information can be useful for understanding the sun's visibility in a particular location at a specific time."
         data_type: bit
-      - name: moon_illumination_no
+      - name: moon_illumination_pct
         description: This column represents the moon's illumination level. It is a numerical value that ranges from 0 to 100, where 0 means no illumination (new moon) and 100 means full illumination (full moon). This information can be useful for understanding the moon's phase and its brightness in a particular location at a specific time.
         data_type: int
       - name: moon_phase_cd

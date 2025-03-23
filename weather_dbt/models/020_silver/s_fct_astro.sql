@@ -34,7 +34,7 @@ reorder AS (
         ,city_nm
         ,country_cd
         ,country_nm
-        ,moon_illumination_no
+        ,moon_illumination_pct
         ,moon_phase_cd
         ,moonrise_t
         ,moonset_t

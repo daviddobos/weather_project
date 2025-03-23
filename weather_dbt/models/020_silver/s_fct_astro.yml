@@ -34,7 +34,7 @@ models:
       - name: country_nm
         description: This column represents the name of the country where the city is located. It is a string type field and can be used to filter or group the data based on specific countries. This field provides a more human-readable form of the country information compared to the country code.
         data_type: varchar
-      - name: moon_illumination_no
+      - name: moon_illumination_pct
         description: This column represents the percentage of the moon's surface that is illuminated by the sun's light at a given time. It is a numerical value ranging from 0 to 100, where 0 indicates a new moon (completely dark) and 100 indicates a full moon (completely illuminated).
         data_type: int
       - name: moon_phase_cd

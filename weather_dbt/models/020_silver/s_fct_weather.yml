@@ -30,11 +30,11 @@ models:
       - name: country_nm
         description: This column represents the name of the country associated with the city for which the weather data is recorded. It is a string data type and can be used to filter or group the data based on specific countries.
         data_type: varchar
-      - name: cloud_coverage_no
+      - name: cloud_coverage_pct
         description: This column represents the percentage of cloud coverage in the sky. It is an integer value ranging from 0 to 100, where 0 indicates a clear sky and 100 indicates a completely overcast sky.
         data_type: int
       - name: cloud_coverage_cd
-        description: This column provides a descriptive category for the cloud coverage. It is based on the 'cloud_coverage_no' column and categorizes the cloud coverage into 'Clear', 'Partly Cloudy', 'Cloudy', 'Overcast', and 'Completely Overcast'.
+        description: This column provides a descriptive category for the cloud coverage. It is based on the 'cloud_coverage_pct' column and categorizes the cloud coverage into 'Clear', 'Partly Cloudy', 'Cloudy', 'Overcast', and 'Completely Overcast'.
         data_type: varchar
       - name: gust_kph_no
         description: This column represents the speed of wind gusts in kilometers per hour. Wind gusts are brief increases in the speed of the wind, and this column provides a measure of how strong these gusts are.
@@ -51,12 +51,9 @@ models:
       - name: heatindex_k_no
         description: This column represents the heat index value in Kelvin. The heat index is a measure of how hot it feels when relative humidity is factored in with the actual air temperature. This value is particularly useful for understanding the perceived temperature in different weather conditions.
         data_type: numeric
-      - name: humidity_no
+      - name: humidity_pct
         description: This column represents the humidity level as a percentage. Humidity is the concentration of water vapor present in the air. This value can help us understand the moisture content in the air for a particular day and location.
         data_type: int
-        data_tests:
-          - name: asd
-            test_name: invalid_humidity
       - name: humidity_cd
         description: This column categorizes the humidity level into different categories such as 'Very Low', 'Low', 'Moderate', 'High', and 'Very High'. This categorization is based on the humidity percentage and provides a more user-friendly way to understand the humidity conditions.
         data_type: varchar
@@ -90,17 +87,17 @@ models:
       - name: time_epoch
         description: This column represents the time at which the weather data was recorded, in the form of an epoch timestamp. An epoch timestamp is a way to track time as a running total of seconds. This count starts at the Unix Epoch on January 1st, 1970. Therefore, the timestamp is a representation of the number of seconds between a particular date and the Unix Epoch. It's a concise way to represent time and is widely used in data systems.
         data_type: int
-      - name: rain_chance_no
+      - name: rain_chance_pct
         description: This column represents the probability of rainfall for a particular day and location, expressed as a percentage. The value ranges from 0 to 100, where 0 indicates no chance of rain and 100 indicates a certainty of rain. This data can be used to understand the likelihood of precipitation and plan activities accordingly.
         data_type: int
       - name: rain_chance_cd
-        description: This column categorizes the chance of rain into different levels for easier understanding. The categories are 'Very Low', 'Low', 'Moderate', 'High', 'Very High', and 'Unknown'. These categories are derived from the 'rain_chance_no' column. This categorical representation can be used for quick and easy interpretation of the likelihood of rain.
+        description: This column categorizes the chance of rain into different levels for easier understanding. The categories are 'Very Low', 'Low', 'Moderate', 'High', 'Very High', and 'Unknown'. These categories are derived from the 'rain_chance_pct' column. This categorical representation can be used for quick and easy interpretation of the likelihood of rain.
         data_type: varchar
-      - name: snow_chance_no
+      - name: snow_chance_pct
         description: This column represents the numerical probability of snowfall in a particular location on a given day. The values range from 0 to 100, where 0 indicates no chance of snowfall and 100 indicates a very high chance of snowfall.
         data_type: int
       - name: snow_chance_cd
-        description: This column categorizes the chance of snowfall into different levels based on the 'snow_chance_no' column. The categories include 'Very Low', 'Low', 'Moderate', 'High', 'Very High', and 'Unknown'. This provides a more user-friendly way to understand the likelihood of snowfall.
+        description: This column categorizes the chance of snowfall into different levels based on the 'snow_chance_pct' column. The categories include 'Very Low', 'Low', 'Moderate', 'High', 'Very High', and 'Unknown'. This provides a more user-friendly way to understand the likelihood of snowfall.
         data_type: varchar
       - name: uv_no
         description: This column represents the Ultraviolet (UV) Index for a particular location on a given day. The UV Index is a measure of the intensity of the sun's ultraviolet radiation. Higher values indicate stronger UV radiation, which can be harmful to the skin and eyes if proper protection is not used.
