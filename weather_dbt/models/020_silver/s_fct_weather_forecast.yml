@@ -18,8 +18,6 @@ models:
             test_name: not_null
           - name: s_fct_weather_forecast_unique_weather_pk
             test_name: unique
-            config:
-            where: "weather_pk IS NOT NULL"
       - name: forecast_dt
         description: This column represents the date and time for which the weather forecast is applicable. It is in the format of YYYY-MM-DD HH:MM:SS. This information is important for understanding when the forecasted weather conditions are expected to occur.
         data_type: date
@@ -29,6 +27,10 @@ models:
       - name: country_cd
         description: This column represents the country code associated with the city for which the weather forecast is provided. It is a string data type and can be used to filter or group the data based on specific countries.
         data_type: varchar
+        data_tests:
+          - name: s_fct_weather_forecast_accepted_values_country_cd
+            test_name: accepted_values
+            values: ['HU']
       - name: country_nm
         description: This column represents the name of the country associated with the city for which the weather forecast is provided. It is a string data type and can be used to filter or group the data based on specific countries.
         data_type: varchar

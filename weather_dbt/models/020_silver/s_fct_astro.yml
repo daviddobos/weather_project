@@ -1,48 +1,59 @@
 models:
-  - name: s_astro
-    description: The s_astro model provides detailed information about the astronomical conditions for different cities across various countries. It includes data about the moon's illumination, moon phase, moonrise and moonset times, as well as sunrise and sunset times. The data is forecasted for specific dates. The model also includes a unique identifier for each record (astro_pk), and the date and time when the data was loaded into the database (p_load_dt).
+  - name: s_fct_astro
+    description: The s_fct_astro model provides detailed information about astronomical events such as moon phases, moon illumination, moonrise and moonset times, as well as sunrise and sunset times for different cities across various countries. The model also includes metadata such as the date the data was validated and the date it was extracted or updated. The data is sourced from the wh_weather database, specifically the b_astro table in the dbt_bronze schema and the country_codes table in the dbt_int schema. The model generates a unique key, astro_pk, for each record using the forecast date, country code, and city name.
     columns:
+      - name: m_valid_dt
+        description: This column represents the date when the data was validated. It is important for understanding the timeline of the data and ensuring its accuracy.
+        data_type: date
+        data_tests:
+          - name: s_fct_astro_accepted_range_m_valid_dt
+            test_name: dbt_utils.accepted_range
+            min_value: "CAST(DATEFROMPARTS(YEAR(GETDATE()), 1, 1) AS DATE)"
+            max_value: "CAST(DATEFROMPARTS(YEAR(GETDATE()), 12, 31) AS DATE)"
       - name: astro_pk
-        description: This is a unique identifier for each record in the s_astro model. It is generated using a hash function on the forecast date, country code, and city name. This identifier is crucial for tracking individual records and ensuring data integrity.
+        description: This column is the primary key for the astrological data. It is a unique identifier generated using a hash function. This is used to uniquely identify each row of data.
         data_type: varchar
-        quote: true
+        data_tests:
+          - name: s_fct_astro_not_null_astro_pk
+            test_name: not_null
+          - name: s_fct_astro_unique_astro_pk
+            test_name: unique
       - name: forecast_dt
-        description: This is the date and time for which the astronomical data is forecasted. It is in the datetime2 format, which includes the date along with the time up to fractional seconds. This information is important for understanding the specific time context of the data.
+        description: This column represents the date of the forecast. It is used to understand when the forecasted astrological event is expected to occur.
         data_type: datetime2
-        quote: true
       - name: city_nm
-        description: This is the name of the city for which the astronomical data is forecasted. It is a string value and can be used to filter or group the data based on geographical location.
+        description: This column represents the name of the city for which the astronomical data is recorded. It is a string type field and can be used to filter or group the data based on specific cities.
         data_type: varchar
-        quote: true
+      - name: country_cd
+        description: This column represents the code of the country where the city is located. It is a string type field and can be used to filter or group the data based on specific countries. This code is standardized and can be used for joining with other datasets that use the same country coding system.
+        data_type: varchar
+        data_tests:
+          - name: s_fct_astro_accepted_values_country_cd
+            test_name: accepted_values
+            values: ['HU']
       - name: country_nm
-        description: This column represents the name of the country for which the astronomical data is provided. It is a string data type and is used to identify the geographical location.
+        description: This column represents the name of the country where the city is located. It is a string type field and can be used to filter or group the data based on specific countries. This field provides a more human-readable form of the country information compared to the country code.
         data_type: varchar
-        quote: true
       - name: moon_illumination_no
-        description: This column represents the moon illumination number. It is an integer data type and provides information about the percentage of the moon's surface that is illuminated by the sun's light at a given time.
+        description: This column represents the percentage of the moon's surface that is illuminated by the sun's light at a given time. It is a numerical value ranging from 0 to 100, where 0 indicates a new moon (completely dark) and 100 indicates a full moon (completely illuminated).
         data_type: int
-        quote: true
       - name: moon_phase_cd
-        description: This column represents the moon phase code. It is a string data type and provides information about the current phase of the moon, such as new moon, first quarter, full moon, or last quarter.
+        description: This column contains a code that represents the current phase of the moon. The moon goes through several phases in a month, from new moon to full moon and back again. This code helps to identify which phase the moon is in at a given time.
         data_type: varchar
-        quote: true
       - name: moonrise_t
-        description: This column represents the time at which the moon rises in the city specified. The time is represented in the 24-hour format. This information can be useful for planning activities that are dependent on moonlight or for understanding the lunar cycle's impact on various factors in the city.
+        description: This column indicates the time at which the moon rises above the horizon. The time is represented in the 24-hour format. Please note that the moonrise time can vary significantly depending on the geographical location and the phase of the moon.
         data_type: time
-        quote: true
       - name: moonset_t
-        description: This column indicates the time at which the moon sets in the specified city. The time is represented in the 24-hour format. This data can be used to understand the duration of moonlight in the city and its potential effects on various aspects such as nightlife, tourism, and local wildlife.
+        description: This column represents the time at which the moon sets. It is expressed in local time of the city and country specified in the 'city_nm' and 'country_cd' columns respectively. This information can be useful for planning activities that are dependent on moonlight or for understanding the patterns of natural light in a particular location.
         data_type: time
-        quote: true
       - name: sunrise_t
-        description: This column represents the time at which the sun rises in the city specified. The time is represented in the 24-hour format. This information can be useful for planning activities that require daylight or for understanding the solar cycle's impact on various factors in the city.
+        description: This column indicates the time of sunrise. It is expressed in local time of the city and country specified in the 'city_nm' and 'country_cd' columns respectively. This information can be useful for planning activities that require daylight or for understanding the patterns of natural light in a particular location.
         data_type: time
-        quote: true
       - name: sunset_t
-        description: This column represents the time of sunset for a particular city on a specific date. The time is provided in the 24-hour format. This information can be useful for understanding the length of daylight hours in different locations and at different times of the year.
+        description: This column represents the time of sunset. It is expressed in local time of the city and country specified in the 'city_nm' and 'country_cd' columns respectively. This information can be useful for planning activities that require daylight or for understanding the patterns of natural light in a particular location.
         data_type: time
-        quote: true
-      - name: p_load_dt
-        description: This column indicates the date and time when the data was loaded into the database. It is in the datetime format. This is important for tracking data updates and ensuring that the most recent and accurate information is being used for analysis.
+      - name: m_extracted_at_dttm
+        description: This column represents the date and time when the data was extracted from the source system. It is useful for tracking when the data was last refreshed and can help in identifying any potential delays or issues in the data extraction process.
         data_type: datetime2
-        quote: true
+      - name: m_updated_at_dttm
+        description: This column indicates the date and time when the data was last updated in the database. It provides a timestamp for the most recent changes or updates made to the data, which can be useful for tracking data changes over time and ensuring data accuracy.
