@@ -1,0 +1,137 @@
+table s_dim_city_unique_city_pk__dbt_tmp_vw
+	lineageTag: 3287e2a4-1b3d-48da-b3d9-2430ebc48206
+	sourceLineageTag: [dbt_dq_test].[s_dim_city_unique_city_pk__dbt_tmp_vw]
+
+	column city_pk
+		dataType: string
+		sourceProviderType: varchar(256)
+		lineageTag: 3eabe20d-ed35-48fe-806d-1f053cef186b
+		sourceLineageTag: city_pk
+		summarizeBy: none
+		sourceColumn: city_pk
+
+		annotation SummarizationSetBy = Automatic
+
+	column country_cd
+		dataType: string
+		sourceProviderType: varchar(16)
+		lineageTag: a12900b8-c8c2-4a97-9152-f8783496f920
+		sourceLineageTag: country_cd
+		summarizeBy: none
+		sourceColumn: country_cd
+
+		annotation SummarizationSetBy = Automatic
+
+	column county_nm
+		dataType: string
+		sourceProviderType: varchar(23)
+		lineageTag: 5598bb5f-ff19-4179-bae2-9f7f2dfda1b3
+		sourceLineageTag: county_nm
+		summarizeBy: none
+		sourceColumn: county_nm
+
+		annotation SummarizationSetBy = Automatic
+
+	column city_nm
+		dataType: string
+		sourceProviderType: varchar(23)
+		lineageTag: b053982b-2a2b-491b-987c-1138e0c6a244
+		sourceLineageTag: city_nm
+		summarizeBy: none
+		sourceColumn: city_nm
+
+		annotation SummarizationSetBy = Automatic
+
+	column ksh_cd
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 8a8764b6-ec73-4949-a149-798276f7685f
+		sourceLineageTag: ksh_cd
+		summarizeBy: sum
+		sourceColumn: ksh_cd
+
+		annotation SummarizationSetBy = Automatic
+
+	column city_type_cd
+		dataType: string
+		sourceProviderType: varchar(35)
+		lineageTag: 976d8149-c4d0-40f4-95af-29cb65278ca3
+		sourceLineageTag: city_type_cd
+		summarizeBy: none
+		sourceColumn: city_type_cd
+
+		annotation SummarizationSetBy = Automatic
+
+	column district_cd
+		dataType: string
+		sourceProviderType: varchar(16)
+		lineageTag: da09bc01-999c-410b-8960-cba7d343279d
+		sourceLineageTag: district_cd
+		summarizeBy: none
+		sourceColumn: district_cd
+
+		annotation SummarizationSetBy = Automatic
+
+	column district_nm
+		dataType: string
+		sourceProviderType: varchar(21)
+		lineageTag: 80d7c2c5-aa78-4dd8-987c-92d5162ce98a
+		sourceLineageTag: district_nm
+		summarizeBy: none
+		sourceColumn: district_nm
+
+		annotation SummarizationSetBy = Automatic
+
+	column district_seat_nm
+		dataType: string
+		sourceProviderType: varchar(20)
+		lineageTag: dde4c163-a767-4247-9249-ca859e0b6348
+		sourceLineageTag: district_seat_nm
+		summarizeBy: none
+		sourceColumn: district_seat_nm
+
+		annotation SummarizationSetBy = Automatic
+
+	column area_no
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: b04fa3af-a282-415b-ae1c-a981c3793d4f
+		sourceLineageTag: area_no
+		summarizeBy: sum
+		sourceColumn: area_no
+
+		annotation SummarizationSetBy = Automatic
+
+	column population_no
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 41304016-8c16-498d-bfd2-025dc1d523a5
+		sourceLineageTag: population_no
+		summarizeBy: sum
+		sourceColumn: population_no
+
+		annotation SummarizationSetBy = Automatic
+
+	column apartments_no
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 1854ab1a-5298-4489-956c-4a843ccceaac
+		sourceLineageTag: apartments_no
+		summarizeBy: sum
+		sourceColumn: apartments_no
+
+		annotation SummarizationSetBy = Automatic
+
+	partition s_dim_city_unique_city_pk__dbt_tmp_vw = entity
+		mode: directLake
+		source
+			entityName: s_dim_city_unique_city_pk__dbt_tmp_vw
+			schemaName: dbt_dq_test
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

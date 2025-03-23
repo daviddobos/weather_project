@@ -1,0 +1,34 @@
+table s_fct_weather_accepted_values_country_cd__dbt_tmp_vw
+	lineageTag: 747ab485-afd5-470c-a492-141c46cae479
+	sourceLineageTag: [dbt_dq_test].[s_fct_weather_accepted_values_country_cd__dbt_tmp_vw]
+
+	column value_field
+		dataType: string
+		sourceProviderType: varchar(2)
+		lineageTag: 88fe10e1-b4c7-4899-90f1-326a164111b6
+		sourceLineageTag: value_field
+		summarizeBy: none
+		sourceColumn: value_field
+
+		annotation SummarizationSetBy = Automatic
+
+	column n_records
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 0acc5bf3-5773-429b-ab0d-fcbc8771ce20
+		sourceLineageTag: n_records
+		summarizeBy: sum
+		sourceColumn: n_records
+
+		annotation SummarizationSetBy = Automatic
+
+	partition s_fct_weather_accepted_values_country_cd__dbt_tmp_vw = entity
+		mode: directLake
+		source
+			entityName: s_fct_weather_accepted_values_country_cd__dbt_tmp_vw
+			schemaName: dbt_dq_test
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+
