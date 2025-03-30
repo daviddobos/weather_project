@@ -1,6 +1,9 @@
 {
-  "config": "{\"version\":\"5.59\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU10\",\"version\":\"5.62\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"useEnhancedTooltips\":true,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}]}}",
+  "config": "{\"version\":\"5.59\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU10\",\"version\":\"5.62\",\"type\":2}},\"activeSectionIndex\":1,\"modelExtensions\":[{\"name\":\"extension\",\"entities\":[{\"name\":\"dq_standard_tests_summary\",\"extends\":\"dq_standard_tests_summary\",\"measures\":[{\"name\":\"Total failed for standard\",\"dataType\":3,\"expression\":\"SUM(dq_standard_tests_summary[failed_test_cnt])\",\"errorMessage\":null,\"hidden\":false,\"formulaOverride\":null,\"formatInformation\":{\"formatString\":\"G\",\"format\":\"General\",\"thousandSeparator\":false,\"currencyFormat\":null,\"dateTimeCustomFormat\":null}},{\"name\":\"Total tests for standard\",\"dataType\":3,\"expression\":\"SUM(dq_standard_tests_summary[test_cnt])\",\"errorMessage\":null,\"hidden\":false,\"formulaOverride\":null,\"formatInformation\":{\"formatString\":\"G\",\"format\":\"General\",\"thousandSeparator\":false,\"currencyFormat\":null,\"dateTimeCustomFormat\":null}},{\"name\":\"Target for standard\",\"dataType\":3,\"expression\":\"ROUND(SUM(dq_standard_tests_summary[test_cnt]) * 0.2, 0)\",\"errorMessage\":null,\"hidden\":false,\"formulaOverride\":null,\"formatInformation\":{\"formatString\":\"G\",\"format\":\"General\",\"thousandSeparator\":false,\"currencyFormat\":null,\"dateTimeCustomFormat\":null}}]}]}],\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":0,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"useEnhancedTooltips\":true,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}]}}",
   "layoutOptimization": 0,
+  "publicCustomVisuals": [
+    "Tachometer1474636471549"
+  ],
   "resourcePackages": [
     {
       "resourcePackage": {
@@ -15,17 +18,123 @@
         "name": "SharedResources",
         "type": 2
       }
+    },
+    {
+      "resourcePackage": {
+        "items": [
+          {
+            "name": "Frame_123705970720470115.png",
+            "path": "Frame_123705970720470115.png",
+            "type": 100
+          }
+        ],
+        "name": "RegisteredResources",
+        "type": 1
+      }
     }
   ],
   "sections": [
     {
-      "config": "{}",
+      "config": "{\"objects\":{\"background\":[{\"properties\":{\"image\":{\"image\":{\"name\":{\"expr\":{\"Literal\":{\"Value\":\"'Frame 1.png'\"}}},\"url\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"Frame_123705970720470115.png\"}}},\"scaling\":{\"expr\":{\"Literal\":{\"Value\":\"'Fit'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"0D\"}}}}}]}}",
       "displayName": "Page 1",
       "displayOption": 1,
       "filters": "[]",
       "height": 720.00,
       "name": "ca6eaa409ab64ec2ec04",
       "visualContainers": [],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "Page 2",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 850.00,
+      "name": "ea7f61b4a2e02a87db1b",
+      "ordinal": 1,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"0abdbc505ab68dcc7e9b\",\"layouts\":[{\"id\":0,\"position\":{\"x\":183.33996762465833,\"y\":140.03131385505398,\"z\":0,\"width\":245.41570469442453,\"height\":219.43051243266194,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"gauge\",\"projections\":{\"Y\":[{\"queryRef\":\"dq_standard_tests_summary.Total failed for standard\"}],\"MaxValue\":[{\"queryRef\":\"dq_standard_tests_summary.Total tests for standard\"}],\"TargetValue\":[{\"queryRef\":\"dq_standard_tests_summary.Target for standard\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"dq_standard_tests_summary\",\"Schema\":\"extension\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Total failed for standard\"},\"Name\":\"dq_standard_tests_summary.Total failed for standard\",\"NativeReferenceName\":\"Total failed for standard\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Total tests for standard\"},\"Name\":\"dq_standard_tests_summary.Total tests for standard\",\"NativeReferenceName\":\"Total tests for standard\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Target for standard\"},\"Name\":\"dq_standard_tests_summary.Target for standard\",\"NativeReferenceName\":\"Target for standard\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Total failed for standard\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{}}}",
+          "filters": "[]",
+          "height": 219.43,
+          "width": 245.42,
+          "x": 183.34,
+          "y": 140.03,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"3b47db7055b546c80b51\",\"layouts\":[{\"id\":0,\"position\":{\"x\":687.1639731443887,\"y\":633.7499668285434,\"z\":8,\"width\":226.64862139426265,\"height\":199.2198073401799,\"tabOrder\":8}}],\"singleVisual\":{\"visualType\":\"gauge\",\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 199.22,
+          "width": 226.65,
+          "x": 687.16,
+          "y": 633.75,
+          "z": 8.00
+        },
+        {
+          "config": "{\"name\":\"47713b00c9950805e902\",\"layouts\":[{\"id\":0,\"position\":{\"x\":974.3393572698566,\"y\":631.0461126784624,\"z\":9,\"width\":233.86673035586338,\"height\":202.1070509248202,\"tabOrder\":9}}],\"singleVisual\":{\"visualType\":\"gauge\",\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 202.11,
+          "width": 233.87,
+          "x": 974.34,
+          "y": 631.05,
+          "z": 9.00
+        },
+        {
+          "config": "{\"name\":\"4e4ef423505802e21cc0\",\"layouts\":[{\"id\":0,\"position\":{\"x\":47.63951914656476,\"y\":371.0108006262771,\"z\":1,\"width\":225.20499960194252,\"height\":199.2198073401799,\"tabOrder\":1}}],\"singleVisual\":{\"visualType\":\"gauge\",\"projections\":{\"TargetValue\":[{\"queryRef\":\"dq_standard_tests_summary.Target for standard\"}],\"Y\":[{\"queryRef\":\"dq_standard_tests_summary.Total failed for standard\"}],\"MaxValue\":[{\"queryRef\":\"dq_standard_tests_summary.Total tests for standard\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"dq_standard_tests_summary\",\"Schema\":\"extension\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Target for standard\"},\"Name\":\"dq_standard_tests_summary.Target for standard\",\"NativeReferenceName\":\"Target for standard\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Total failed for standard\"},\"Name\":\"dq_standard_tests_summary.Total failed for standard\",\"NativeReferenceName\":\"Total failed for standard\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Total tests for standard\"},\"Name\":\"dq_standard_tests_summary.Total tests for standard\",\"NativeReferenceName\":\"Total tests for standard\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Total failed for standard\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{}}}",
+          "filters": "[{\"name\":\"950d6d49d98755e84861\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"dq_standard_tests_summary\"}},\"Property\":\"test_type_cd\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"dq_standard_tests_summary\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"test_type_cd\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'not_null'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{}}]",
+          "height": 199.22,
+          "width": 225.20,
+          "x": 47.64,
+          "y": 371.01,
+          "z": 1.00
+        },
+        {
+          "config": "{\"name\":\"5117b865b32021017230\",\"layouts\":[{\"id\":0,\"position\":{\"x\":688.6075949367088,\"y\":381.11615317251807,\"z\":6,\"width\":225.20499960194252,\"height\":199.2198073401799,\"tabOrder\":6}}],\"singleVisual\":{\"visualType\":\"gauge\",\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 199.22,
+          "width": 225.20,
+          "x": 688.61,
+          "y": 381.12,
+          "z": 6.00
+        },
+        {
+          "config": "{\"name\":\"9c96e5c6c7a4e8764c37\",\"layouts\":[{\"id\":0,\"position\":{\"x\":974.3393572698566,\"y\":379.8559208147573,\"z\":7,\"width\":233.86673035586338,\"height\":200.66342913250006,\"tabOrder\":7}}],\"singleVisual\":{\"visualType\":\"gauge\",\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 200.66,
+          "width": 233.87,
+          "x": 974.34,
+          "y": 379.86,
+          "z": 7.00
+        },
+        {
+          "config": "{\"name\":\"ce5fb44759476cbc0d37\",\"layouts\":[{\"id\":0,\"position\":{\"x\":822.7590690762414,\"y\":148.8764340435342,\"z\":5,\"width\":245.41570469442453,\"height\":219.43051243266194,\"tabOrder\":5}}],\"singleVisual\":{\"visualType\":\"gauge\",\"projections\":{\"Y\":[{\"queryRef\":\"dq_standard_tests_summary.Total failed for standard\"}],\"MaxValue\":[{\"queryRef\":\"dq_standard_tests_summary.Total tests for standard\"}],\"TargetValue\":[{\"queryRef\":\"dq_standard_tests_summary.Target for standard\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"dq_standard_tests_summary\",\"Schema\":\"extension\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Total failed for standard\"},\"Name\":\"dq_standard_tests_summary.Total failed for standard\",\"NativeReferenceName\":\"Total failed for standard\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Total tests for standard\"},\"Name\":\"dq_standard_tests_summary.Total tests for standard\",\"NativeReferenceName\":\"Total tests for standard\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Target for standard\"},\"Name\":\"dq_standard_tests_summary.Target for standard\",\"NativeReferenceName\":\"Target for standard\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Total failed for standard\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{}}}",
+          "filters": "[]",
+          "height": 219.43,
+          "width": 245.42,
+          "x": 822.76,
+          "y": 148.88,
+          "z": 5.00
+        },
+        {
+          "config": "{\"name\":\"df59f56c6c36435c9033\",\"layouts\":[{\"id\":0,\"position\":{\"x\":46.195897354244615,\"y\":622.2009924899821,\"z\":3,\"width\":226.64862139426265,\"height\":199.2198073401799,\"tabOrder\":3}}],\"singleVisual\":{\"visualType\":\"gauge\",\"projections\":{\"TargetValue\":[{\"queryRef\":\"dq_standard_tests_summary.Target for standard\"}],\"MaxValue\":[{\"queryRef\":\"dq_standard_tests_summary.Total tests for standard\"}],\"Y\":[{\"queryRef\":\"dq_standard_tests_summary.Total failed for standard\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"dq_standard_tests_summary\",\"Schema\":\"extension\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Target for standard\"},\"Name\":\"dq_standard_tests_summary.Target for standard\",\"NativeReferenceName\":\"Target for standard\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Total tests for standard\"},\"Name\":\"dq_standard_tests_summary.Total tests for standard\",\"NativeReferenceName\":\"Total tests for standard\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Total failed for standard\"},\"Name\":\"dq_standard_tests_summary.Total failed for standard\",\"NativeReferenceName\":\"Total failed for standard\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Total failed for standard\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[{\"name\":\"dee02736b3520e8eb317\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"dq_standard_tests_summary\"}},\"Property\":\"test_type_cd\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"dq_standard_tests_summary\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"test_type_cd\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'relationships'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{}}]",
+          "height": 199.22,
+          "width": 226.65,
+          "x": 46.20,
+          "y": 622.20,
+          "z": 3.00
+        },
+        {
+          "config": "{\"name\":\"f0f71e9d14d8b055a005\",\"layouts\":[{\"id\":0,\"position\":{\"x\":334.92025581827346,\"y\":371.0108006262771,\"z\":2,\"width\":233.86673035586338,\"height\":200.66342913250006,\"tabOrder\":2}}],\"singleVisual\":{\"visualType\":\"gauge\",\"projections\":{\"TargetValue\":[{\"queryRef\":\"dq_standard_tests_summary.Target for standard\"}],\"Y\":[{\"queryRef\":\"dq_standard_tests_summary.Total failed for standard\"}],\"MaxValue\":[{\"queryRef\":\"dq_standard_tests_summary.Total tests for standard\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"dq_standard_tests_summary\",\"Schema\":\"extension\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Target for standard\"},\"Name\":\"dq_standard_tests_summary.Target for standard\",\"NativeReferenceName\":\"Target for standard\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Total failed for standard\"},\"Name\":\"dq_standard_tests_summary.Total failed for standard\",\"NativeReferenceName\":\"Total failed for standard\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Total tests for standard\"},\"Name\":\"dq_standard_tests_summary.Total tests for standard\",\"NativeReferenceName\":\"Total tests for standard\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Total failed for standard\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[{\"name\":\"cc0b6205c311078a84d0\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"dq_standard_tests_summary\"}},\"Property\":\"test_type_cd\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"dq_standard_tests_summary\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"test_type_cd\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'unique'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{}}]",
+          "height": 200.66,
+          "width": 233.87,
+          "x": 334.92,
+          "y": 371.01,
+          "z": 2.00
+        }
+      ],
       "width": 1280.00
     }
   ]
