@@ -1,0 +1,85 @@
+table dq_business_tests
+	lineageTag: aae99bf0-d9dd-4048-8cc7-c7e181ed6ddd
+	sourceLineageTag: [dbt_dq].[dq_business_tests]
+
+	column m_valid_dt
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: b001c35e-59c3-462f-85f4-3dc895e5ffb0
+		sourceLineageTag: m_valid_dt
+		summarizeBy: none
+		sourceColumn: m_valid_dt
+
+		annotation SummarizationSetBy = Automatic
+
+	column country_cd
+		dataType: string
+		sourceProviderType: varchar(16)
+		lineageTag: 64a0c4f9-c05f-4eba-b5a8-f03d37627472
+		sourceLineageTag: country_cd
+		summarizeBy: none
+		sourceColumn: country_cd
+
+		annotation SummarizationSetBy = Automatic
+
+	column table_nm
+		dataType: string
+		sourceProviderType: varchar(22)
+		lineageTag: af497ddd-5d4a-4354-9665-270dfa057fe4
+		sourceLineageTag: table_nm
+		summarizeBy: none
+		sourceColumn: table_nm
+
+		annotation SummarizationSetBy = Automatic
+
+	column test_type_cd
+		dataType: string
+		sourceProviderType: varchar(15)
+		lineageTag: 05e87f05-419f-4eef-9bd4-807e0e860587
+		sourceLineageTag: test_type_cd
+		summarizeBy: none
+		sourceColumn: test_type_cd
+
+		annotation SummarizationSetBy = Automatic
+
+	column tested_field_nm
+		dataType: string
+		sourceProviderType: varchar(17)
+		lineageTag: 974a763d-eb6e-44f0-b58a-1d1265c8e913
+		sourceLineageTag: tested_field_nm
+		summarizeBy: none
+		sourceColumn: tested_field_nm
+
+		annotation SummarizationSetBy = Automatic
+
+	column description
+		dataType: string
+		sourceProviderType: varchar(83)
+		lineageTag: ddb86e37-8af6-4700-a697-1c2dfbd0e76d
+		sourceLineageTag: description
+		summarizeBy: none
+		sourceColumn: description
+
+		annotation SummarizationSetBy = Automatic
+
+	column failed_record_cnt
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: d82b7924-a827-48cf-a286-06f75aab3466
+		sourceLineageTag: failed_record_cnt
+		summarizeBy: sum
+		sourceColumn: failed_record_cnt
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dq_business_tests = entity
+		mode: directLake
+		source
+			entityName: dq_business_tests
+			schemaName: dbt_dq
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

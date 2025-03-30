@@ -18,7 +18,7 @@
 # PARAMETERS CELL ********************
 
 # Parameters
-p_load_dt = '20250125'
+p_load_dt = '20250322'
 p_load_days_no = '0'
 p_save_path_root = 'Files/landing'
 p_source_system_cd = 'weatherapi'
@@ -258,11 +258,27 @@ final_astro_df = all_astro_dfs[0]
 for df in all_astro_dfs[1:]:
     final_astro_df = final_astro_df.union(df)
 
+final_deduplicated_astro_df = final_astro_df.dropDuplicates()
+
 if v_debug:
-    final_astro_df.show()
+    final_deduplicated_astro_df.show()
 
-save_data(final_astro_df)
+save_data(final_deduplicated_astro_df)
 
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# final_astro_df.groupBy(df.columns) \
+#   .count() \
+#   .filter("count > 1") \
+#   .show()
 
 # METADATA ********************
 

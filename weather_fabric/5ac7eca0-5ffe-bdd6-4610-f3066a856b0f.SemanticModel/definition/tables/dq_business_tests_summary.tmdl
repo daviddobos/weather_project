@@ -1,0 +1,78 @@
+table dq_business_tests_summary
+	lineageTag: 3fa8dda3-be26-465e-a442-151e91eeff97
+	sourceLineageTag: [dbt_dq].[dq_business_tests_summary]
+
+	column m_valid_dt
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 11d937d9-62a2-4a6f-8fc0-842fb426ac7d
+		sourceLineageTag: m_valid_dt
+		summarizeBy: none
+		sourceColumn: m_valid_dt
+
+		annotation SummarizationSetBy = Automatic
+
+	column test_type_cd
+		dataType: string
+		sourceProviderType: varchar(13)
+		lineageTag: 9de4f1c0-4376-4a04-80c2-e0d374c35061
+		sourceLineageTag: test_type_cd
+		summarizeBy: none
+		sourceColumn: test_type_cd
+
+		annotation SummarizationSetBy = Automatic
+
+	column test_cnt
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 25b87678-342e-4747-95bf-4b961beb0610
+		sourceLineageTag: test_cnt
+		summarizeBy: sum
+		sourceColumn: test_cnt
+
+		annotation SummarizationSetBy = Automatic
+
+	column failed_test_cnt
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 7d62fa89-ef58-4569-88ef-e1f5c61e6846
+		sourceLineageTag: failed_test_cnt
+		summarizeBy: sum
+		sourceColumn: failed_test_cnt
+
+		annotation SummarizationSetBy = Automatic
+
+	column passed_test_cnt
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 04254887-0b69-4bb8-b970-ce20a6038e82
+		sourceLineageTag: passed_test_cnt
+		summarizeBy: sum
+		sourceColumn: passed_test_cnt
+
+		annotation SummarizationSetBy = Automatic
+
+	column failed_records_cnt
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 8dbb27b2-c3c6-4453-89f2-8023cfa70ba5
+		sourceLineageTag: failed_records_cnt
+		summarizeBy: sum
+		sourceColumn: failed_records_cnt
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dq_business_tests_summary = entity
+		mode: directLake
+		source
+			entityName: dq_business_tests_summary
+			schemaName: dbt_dq
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

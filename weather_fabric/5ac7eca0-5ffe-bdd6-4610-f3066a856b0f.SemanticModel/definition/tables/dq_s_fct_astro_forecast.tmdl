@@ -1,0 +1,214 @@
+table dq_s_fct_astro_forecast
+	lineageTag: bda348a6-d96a-4d79-a13f-c49b67ce95b2
+	sourceLineageTag: [dbt_dq].[dq_s_fct_astro_forecast]
+
+	column tested_field_nm
+		dataType: string
+		sourceProviderType: varchar(17)
+		lineageTag: 0cd86151-b68f-40d7-978f-4d1da51d776d
+		sourceLineageTag: tested_field_nm
+		summarizeBy: none
+		sourceColumn: tested_field_nm
+
+		annotation SummarizationSetBy = Automatic
+
+	column test_type_cd
+		dataType: string
+		sourceProviderType: varchar(15)
+		lineageTag: 6b9dd22d-c196-4e6d-8c8d-3ce60c8388ca
+		sourceLineageTag: test_type_cd
+		summarizeBy: none
+		sourceColumn: test_type_cd
+
+		annotation SummarizationSetBy = Automatic
+
+	column m_valid_dt
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 8c516fa5-e4c8-438c-bc28-e5c5fff46286
+		sourceLineageTag: m_valid_dt
+		summarizeBy: none
+		sourceColumn: m_valid_dt
+
+		annotation SummarizationSetBy = Automatic
+
+	column astro_forecast_pk
+		dataType: string
+		sourceProviderType: varchar(256)
+		lineageTag: b83748e5-989b-40f6-980b-bf94e787251d
+		sourceLineageTag: astro_forecast_pk
+		summarizeBy: none
+		sourceColumn: astro_forecast_pk
+
+		annotation SummarizationSetBy = Automatic
+
+	column forecast_dt
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 35a1136b-eb7c-405b-933d-33e18dd369db
+		sourceLineageTag: forecast_dt
+		summarizeBy: none
+		sourceColumn: forecast_dt
+
+		annotation SummarizationSetBy = Automatic
+
+	column city_nm
+		dataType: string
+		sourceProviderType: varchar(50)
+		lineageTag: 0292d482-9b08-431e-a07b-e6314269f2e0
+		sourceLineageTag: city_nm
+		summarizeBy: none
+		sourceColumn: city_nm
+
+		annotation SummarizationSetBy = Automatic
+
+	column country_cd
+		dataType: string
+		sourceProviderType: varchar(2)
+		lineageTag: ebe6beea-bf3c-4c55-a3a2-a46946aaae87
+		sourceLineageTag: country_cd
+		summarizeBy: none
+		sourceColumn: country_cd
+
+		annotation SummarizationSetBy = Automatic
+
+	column country_nm
+		dataType: string
+		sourceProviderType: varchar(50)
+		lineageTag: d6c25b49-a9b7-4456-94a7-5a00e49934b4
+		sourceLineageTag: country_nm
+		summarizeBy: none
+		sourceColumn: country_nm
+
+		annotation SummarizationSetBy = Automatic
+
+	column county_nm
+		dataType: string
+		sourceProviderType: varchar(23)
+		lineageTag: db494c7b-8769-4b80-911d-2f469118ec8f
+		sourceLineageTag: county_nm
+		summarizeBy: none
+		sourceColumn: county_nm
+
+		annotation SummarizationSetBy = Automatic
+
+	column moon_up_flg
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: b1ffd601-b7fc-4595-8939-172f6746c1be
+		sourceLineageTag: moon_up_flg
+		summarizeBy: none
+		sourceColumn: moon_up_flg
+
+		annotation SummarizationSetBy = Automatic
+
+	column sun_up_flg
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: e88e2a30-1ea0-4f90-8cb4-38c5b93e98fe
+		sourceLineageTag: sun_up_flg
+		summarizeBy: none
+		sourceColumn: sun_up_flg
+
+		annotation SummarizationSetBy = Automatic
+
+	column moon_illumination_pct
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: e82fb27b-0a5a-4a79-8211-12ec0bfbb121
+		sourceLineageTag: moon_illumination_pct
+		summarizeBy: sum
+		sourceColumn: moon_illumination_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column moon_phase_cd
+		dataType: string
+		sourceProviderType: varchar(20)
+		lineageTag: 198b71a4-eeb7-4775-aea4-cbe7002d6bd4
+		sourceLineageTag: moon_phase_cd
+		summarizeBy: none
+		sourceColumn: moon_phase_cd
+
+		annotation SummarizationSetBy = Automatic
+
+	column moonrise_t
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: time
+		lineageTag: e2f18e33-83cc-4a35-8f76-bb638e0b3255
+		sourceLineageTag: moonrise_t
+		summarizeBy: none
+		sourceColumn: moonrise_t
+
+		annotation SummarizationSetBy = Automatic
+
+	column moonset_t
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: time
+		lineageTag: 9de887e5-2a03-4bf9-a161-cd16c925e669
+		sourceLineageTag: moonset_t
+		summarizeBy: none
+		sourceColumn: moonset_t
+
+		annotation SummarizationSetBy = Automatic
+
+	column sunrise_t
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: time
+		lineageTag: ff8f1edc-4f46-4e0a-b04e-b82e6c502cb1
+		sourceLineageTag: sunrise_t
+		summarizeBy: none
+		sourceColumn: sunrise_t
+
+		annotation SummarizationSetBy = Automatic
+
+	column sunset_t
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: time
+		lineageTag: dbc24009-5b29-434f-8cb8-7277c4f04ceb
+		sourceLineageTag: sunset_t
+		summarizeBy: none
+		sourceColumn: sunset_t
+
+		annotation SummarizationSetBy = Automatic
+
+	column m_extracted_at_dttm
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 15ccd51c-ed4f-4d43-84c0-a9d7e1d01655
+		sourceLineageTag: m_extracted_at_dttm
+		summarizeBy: none
+		sourceColumn: m_extracted_at_dttm
+
+		annotation SummarizationSetBy = Automatic
+
+	column m_updated_at_dttm
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: bdcf1b39-0190-4b1d-b316-ca77012f8def
+		sourceLineageTag: m_updated_at_dttm
+		summarizeBy: none
+		sourceColumn: m_updated_at_dttm
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dq_s_fct_astro_forecast = entity
+		mode: directLake
+		source
+			entityName: dq_s_fct_astro_forecast
+			schemaName: dbt_dq
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

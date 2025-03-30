@@ -128,6 +128,17 @@ df = spark.read.format("delta").load(table_path)
 
 # CELL ********************
 
+display(df)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
 # Egyedi értékek kigyűjtése a megadott oszlopból
 distinct_values_df = df.select(col(p_column_nm)).distinct()
 
@@ -259,7 +270,7 @@ df = df.join(translated_spark_df, on=p_column_nm, how="left")
 
 if v_debug:
 # Show the result to verify
-    df.show()
+    display(df)
 
 # METADATA ********************
 
@@ -270,13 +281,13 @@ if v_debug:
 
 # CELL ********************
 
-df.write \
-    .format("delta") \
-    .option("mergeSchema", "true") \
-    .partitionBy('m_valid_dt') \
-    .option("partitionOverwriteMode", "dynamic") \
-    .mode("overwrite") \
-    .saveAsTable(p_table_nm)
+# df.write \
+#     .format("delta") \
+#     .option("mergeSchema", "true") \
+#     .partitionBy('m_valid_dt') \
+#     .option("partitionOverwriteMode", "dynamic") \
+#     .mode("overwrite") \
+#     .saveAsTable(p_table_nm)
 
 # METADATA ********************
 

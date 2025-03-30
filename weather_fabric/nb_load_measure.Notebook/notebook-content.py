@@ -262,16 +262,26 @@ location_batches = [locations[i:i + batch_size] for i in range(0, len(locations)
 for batch in location_batches:
     send_bulk_request(batch)
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
 # Combine and save dataframes
 final_measure_df = all_measure_dfs[0]
 for df in all_measure_dfs[1:]:
     final_measure_df = final_measure_df.union(df)
 
+final_deduplicated_measure_df = final_measure_df.dropDuplicates()
+
 if v_debug:
-    final_measure_df.show()
+    final_deduplicated_measure_df.show()
 
-save_data(final_measure_df)
-
+save_data(final_deduplicated_measure_df)
 
 # METADATA ********************
 
