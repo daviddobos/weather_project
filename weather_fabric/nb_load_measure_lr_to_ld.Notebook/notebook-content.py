@@ -17,7 +17,7 @@
 
 # PARAMETERS CELL ********************
 
-p_load_dt = '20240808'
+p_load_dt = '20250322'
 p_load_days_no = '0'
 p_source_sytem_cd = "weatherapi"
 p_in_table_name = "weather_measure"
@@ -73,18 +73,6 @@ else:
     v_debug = p_debug
 
 print('v_debug: ', v_debug)
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
-# Create a SparkSession
-spark = SparkSession.builder.appName("MergeParquetToDelta").getOrCreate()
 
 # METADATA ********************
 

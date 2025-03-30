@@ -1,7 +1,7 @@
 CREATE TABLE [dbt_bronze].[b_astro] (
 
 	[m_valid_dt] date NULL, 
-	[moon_illumination_no] int NULL, 
+	[moon_illumination_pct] int NULL, 
 	[moon_phase_cd] varchar(20) NULL, 
 	[moonrise_t] time(0) NULL, 
 	[moonset_t] time(0) NULL, 

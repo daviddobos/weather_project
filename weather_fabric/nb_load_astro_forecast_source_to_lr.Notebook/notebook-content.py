@@ -290,10 +290,12 @@ final_astro_forecast_df = all_astro_forecast_dfs[0]
 for df in all_astro_forecast_dfs[1:]:
     final_astro_forecast_df = final_astro_forecast_df.union(df)
 
-if v_debug:
-    final_astro_forecast_df.show()
+final_deduplicated_astro_forecast_df = final_astro_forecast_df.dropDuplicates()
 
-save_data(final_astro_forecast_df)
+if v_debug:
+    final_deduplicated_astro_forecast_df.show()
+
+save_data(final_deduplicated_astro_forecast_df)
 
 # METADATA ********************
 

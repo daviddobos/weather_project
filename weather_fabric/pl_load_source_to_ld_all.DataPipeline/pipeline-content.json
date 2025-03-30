@@ -69,7 +69,10 @@
           "workspaceId": "00000000-0000-0000-0000-000000000000",
           "parameters": {
             "p_load_success_flg": {
-              "value": "@variables('v_load_success_flg')\n",
+              "value": {
+                "value": "@variables('v_load_success_flg')\n",
+                "type": "Expression"
+              },
               "type": "bool"
             }
           }
@@ -95,7 +98,10 @@
         "type": "SetVariable",
         "typeProperties": {
           "variableName": "v_load_success_flg",
-          "value": "@activity('pl_load_lr_to_ld_all').output.v_load_success_flg\n"
+          "value": {
+            "value": "@if(equals(activity('pl_load_lr_to_ld_all').Status, 'Succeeded'), 1, 0)",
+            "type": "Expression"
+          }
         },
         "policy": {
           "secureInput": false,
@@ -106,7 +112,8 @@
           {
             "activity": "pl_load_lr_to_ld_all",
             "dependencyConditions": [
-              "Completed"
+              "Completed",
+              "Skipped"
             ]
           }
         ]
@@ -130,7 +137,7 @@
         "type": "String"
       },
       "v_load_success_flg": {
-        "type": "Boolean"
+        "type": "Integer"
       }
     }
   }

@@ -283,14 +283,14 @@ def send_bulk_request(locations_batch):
                     forecast_df = forecast_df.select(*selected_columns)
                     all_forecast_dfs.append(forecast_df)
 
-                    # Astro data
-                    astro_df = spark.read.json(spark.sparkContext.parallelize([astro_data]))
+                    # # Astro data
+                    # astro_df = spark.read.json(spark.sparkContext.parallelize([astro_data]))
 
-                    # Add city, country, forecast_date, and p_load_dt columns to astro data
-                    astro_df = astro_df.withColumn("city", lit(location["name"]))
-                    astro_df = astro_df.withColumn("country", lit(location["country"]))
-                    astro_df = astro_df.withColumn("forecast_date", lit(forecast_date))
-                    astro_df = astro_df.withColumn("p_load_dt", lit(p_load_dt))
+                    # # Add city, country, forecast_date, and p_load_dt columns to astro data
+                    # astro_df = astro_df.withColumn("city", lit(location["name"]))
+                    # astro_df = astro_df.withColumn("country", lit(location["country"]))
+                    # astro_df = astro_df.withColumn("forecast_date", lit(forecast_date))
+                    # astro_df = astro_df.withColumn("p_load_dt", lit(p_load_dt))
 
                     # # Air quality data
                     # air_df = spark.read.json(spark.sparkContext.parallelize([astro_data]))
@@ -338,10 +338,12 @@ final_forecast_df = all_forecast_dfs[0]
 for df in all_forecast_dfs[1:]:
     final_forecast_df = final_forecast_df.union(df)
 
-if v_debug:
-    final_forecast_df.show()
+final_deduplicated_forecast_df = final_forecast_df.dropDuplicates()
 
-save_data(final_forecast_df)
+if v_debug:
+    final_deduplicated_forecast_df.show()
+
+save_data(final_deduplicated_forecast_df)
 
 # METADATA ********************
 
