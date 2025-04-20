@@ -30,7 +30,7 @@
     "parameters": {
       "p_load_days_no": {
         "type": "int",
-        "defaultValue": 0
+        "defaultValue": 4
       }
     }
   }

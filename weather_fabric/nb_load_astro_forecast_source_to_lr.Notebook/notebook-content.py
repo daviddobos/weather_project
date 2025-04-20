@@ -18,8 +18,8 @@
 # PARAMETERS CELL ********************
 
 # Parameters
-p_load_dt = ''
-p_load_days_no = '3'
+p_load_dt = None
+p_load_days_no = '4'
 p_save_path_root = 'Files/landing'
 p_source_system_cd = 'weatherapi'
 p_table_name = 'weather_astro_forecast'
@@ -54,6 +54,7 @@ from pyspark.sql.functions import date_format
 import msal
 from azure.identity import ClientSecretCredential
 from azure.keyvault.secrets import SecretClient
+from deep_translator import GoogleTranslator  # Importing GoogleTranslator from deep-translator
 
 # METADATA ********************
 
@@ -286,16 +287,81 @@ for batch in location_batches:
 # CELL ********************
 
 # Combine and save dataframes
-final_astro_forecast_df = all_astro_forecast_dfs[0]
+combined_astro_forecast_df = all_astro_forecast_dfs[0]
 for df in all_astro_forecast_dfs[1:]:
-    final_astro_forecast_df = final_astro_forecast_df.union(df)
+    combined_astro_forecast_df = combined_astro_forecast_df.union(df)
 
-final_deduplicated_astro_forecast_df = final_astro_forecast_df.dropDuplicates()
+deduplicated_combined_astro_forecast_df = combined_astro_forecast_df.dropDuplicates()
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# Get distinct values of the country column
+distinct_values_df = deduplicated_combined_astro_forecast_df.select(col('country')).distinct()
 
 if v_debug:
-    final_deduplicated_astro_forecast_df.show()
+    display(distinct_values_df)
 
-save_data(final_deduplicated_astro_forecast_df)
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+texts_to_translate = [row['country'] for row in distinct_values_df.collect()]
+
+# Batch translate with Deep Translator
+try:
+    translated_texts = GoogleTranslator(source='auto', target='en').translate_batch(texts_to_translate)
+except Exception as e:
+    print(f"Batch translation error: {e}")
+    translated_texts = texts_to_translate  # Fallback to the original text
+# Pandas DataFrame with the translations
+import pandas as pd
+translated_pd_df = pd.DataFrame({
+    'country': texts_to_translate,
+    'country_EN': translated_texts
+})
+
+translated_spark_df = spark.createDataFrame(translated_pd_df)
+
+if v_debug:
+    display(translated_spark_df)
+
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+translated_final_df = deduplicated_combined_astro_forecast_df.join(translated_spark_df, on='country', how="left")
+
+if v_debug:
+    translated_final_df.show()
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+save_data(translated_final_df)
 
 # METADATA ********************
 

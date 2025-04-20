@@ -117,6 +117,23 @@
             ]
           }
         ]
+      },
+      {
+        "type": "Fail",
+        "typeProperties": {
+          "message": "Something went wrong",
+          "errorCode": "500"
+        },
+        "name": "Fail",
+        "dependsOn": [
+          {
+            "activity": "pl_load_lr_to_ld_all",
+            "dependencyConditions": [
+              "Failed",
+              "Skipped"
+            ]
+          }
+        ]
       }
     ],
     "parameters": {

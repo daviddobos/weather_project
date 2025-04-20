@@ -46,58 +46,6 @@
         },
         "name": "For each data load for each day",
         "dependsOn": []
-      },
-      {
-        "type": "Wait",
-        "typeProperties": {
-          "waitTimeInSeconds": 5
-        },
-        "name": "Wait 5s",
-        "dependsOn": [
-          {
-            "activity": "For each data load for each day",
-            "dependencyConditions": [
-              "Succeeded"
-            ]
-          }
-        ]
-      },
-      {
-        "type": "TridentNotebook",
-        "typeProperties": {
-          "notebookId": "d1003514-5b64-4b1d-8147-18fe0a274d44",
-          "workspaceId": "00000000-0000-0000-0000-000000000000",
-          "parameters": {
-            "p_target_language_cd": {
-              "value": "en",
-              "type": "string"
-            },
-            "p_table_nm": {
-              "value": "ld_weather_forecast",
-              "type": "string"
-            },
-            "p_column_nm": {
-              "value": "country",
-              "type": "string"
-            }
-          }
-        },
-        "policy": {
-          "timeout": "0.12:00:00",
-          "retry": 0,
-          "retryIntervalInSeconds": 30,
-          "secureInput": false,
-          "secureOutput": false
-        },
-        "name": "Translate country names",
-        "dependsOn": [
-          {
-            "activity": "Wait 5s",
-            "dependencyConditions": [
-              "Succeeded"
-            ]
-          }
-        ]
       }
     ],
     "parameters": {

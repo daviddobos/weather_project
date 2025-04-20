@@ -57,7 +57,10 @@
             "type": "PipelineReference"
           },
           "parameters": {
-            "p_load_dt": "@pipeline().parameters.p_load_dt\n",
+            "p_load_dt": {
+              "value": "@pipeline().parameters.p_load_dt\n",
+              "type": "Expression"
+            },
             "p_load_days_no": {
               "value": "@pipeline().parameters.p_history_load_days_no\n",
               "type": "Expression"
@@ -138,7 +141,7 @@
     "parameters": {
       "p_forecast_load_days_no": {
         "type": "int",
-        "defaultValue": 0
+        "defaultValue": 4
       },
       "p_history_load_days_no": {
         "type": "int",

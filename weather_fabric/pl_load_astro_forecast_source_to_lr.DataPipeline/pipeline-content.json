@@ -8,7 +8,10 @@
           "workspaceId": "00000000-0000-0000-0000-000000000000",
           "parameters": {
             "p_load_days_no": {
-              "value": "@pipeline().parameters.p_load_days_no",
+              "value": {
+                "value": "@pipeline().parameters.p_load_days_no",
+                "type": "Expression"
+              },
               "type": "int"
             }
           }
@@ -27,7 +30,7 @@
     "parameters": {
       "p_load_days_no": {
         "type": "int",
-        "defaultValue": 0
+        "defaultValue": 4
       }
     }
   }
