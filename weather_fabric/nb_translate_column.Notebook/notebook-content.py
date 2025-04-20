@@ -281,13 +281,13 @@ if v_debug:
 
 # CELL ********************
 
-# df.write \
-#     .format("delta") \
-#     .option("mergeSchema", "true") \
-#     .partitionBy('m_valid_dt') \
-#     .option("partitionOverwriteMode", "dynamic") \
-#     .mode("overwrite") \
-#     .saveAsTable(p_table_nm)
+df.write \
+    .format("delta") \
+    .option("mergeSchema", "true") \
+    .partitionBy('m_valid_dt') \
+    .option("partitionOverwriteMode", "dynamic") \
+    .mode("overwrite") \
+    .saveAsTable(p_table_nm)
 
 # METADATA ********************
 

@@ -1,4 +1,4 @@
--- Auto Generated (Do not modify) FB7E97E4D1108B09FD67D5C3EEE4C7C047F818421709C3EBC31E6EA3B942FD61
+-- Auto Generated (Do not modify) DBE61001AF1874CE72B39CCC79DA43201B984A60903E4CC9516B04B746C00161
 create view "dbt_dq_test"."s_fct_astro_rel_s_dim_city_city_fk__dbt_tmp_vw" as 
     with validation as (
 

@@ -2,7 +2,7 @@ CREATE TABLE [dbt_silver].[s_fct_astro_forecast] (
 
 	[m_valid_dt] date NULL, 
 	[astro_forecast_pk] varchar(256) NULL, 
-	[forecast_dt] datetime2(6) NULL, 
+	[forecast_dt] date NULL, 
 	[city_nm] varchar(50) NULL, 
 	[city_fk] varchar(256) NULL, 
 	[country_cd] varchar(2) NOT NULL, 
@@ -19,4 +19,3 @@ CREATE TABLE [dbt_silver].[s_fct_astro_forecast] (
 	[m_extracted_at_dttm] datetime2(6) NULL, 
 	[m_updated_at_dttm] datetime2(6) NULL
 );
-

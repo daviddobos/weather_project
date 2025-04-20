@@ -15,4 +15,3 @@ CREATE TABLE [dbt_gold].[g_astro] (
 	[m_extracted_at_dttm] datetime2(6) NULL, 
 	[m_updated_at_dttm] datetime2(6) NULL
 );
-

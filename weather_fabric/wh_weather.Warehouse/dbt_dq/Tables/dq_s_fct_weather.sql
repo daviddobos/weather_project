@@ -6,6 +6,7 @@ CREATE TABLE [dbt_dq].[dq_s_fct_weather] (
 	[weather_pk] varchar(256) NULL, 
 	[forecast_dt] date NULL, 
 	[city_nm] varchar(30) NULL, 
+	[city_fk] varchar(256) NULL, 
 	[country_cd] varchar(2) NOT NULL, 
 	[country_nm] varchar(30) NULL, 
 	[county_nm] varchar(23) NULL, 
@@ -44,4 +45,3 @@ CREATE TABLE [dbt_dq].[dq_s_fct_weather] (
 	[m_extracted_at_dttm] datetime2(6) NULL, 
 	[m_updated_at_dttm] datetime2(6) NULL
 );
-

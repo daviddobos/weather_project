@@ -4,14 +4,22 @@ table dq_business_tests
 
 	column m_valid_dt
 		dataType: dateTime
-		formatString: General Date
+		formatString: Short Date
 		sourceProviderType: date
 		lineageTag: b001c35e-59c3-462f-85f4-3dc895e5ffb0
 		sourceLineageTag: m_valid_dt
 		summarizeBy: none
 		sourceColumn: m_valid_dt
 
+		changedProperty = DataType
+
+		changedProperty = FormatString
+
 		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isCustom":true}
 
 	column country_cd
 		dataType: string
@@ -73,6 +81,8 @@ table dq_business_tests
 		sourceColumn: failed_record_cnt
 
 		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
 
 	partition dq_business_tests = entity
 		mode: directLake

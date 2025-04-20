@@ -12,11 +12,10 @@ CREATE TABLE [dbt_dq_test].[s_fct_astro_forecast_accepted_values_country_cd] (
 	[sun_up_flg] bit NULL, 
 	[moon_illumination_pct] int NULL, 
 	[moon_phase_cd] varchar(20) NULL, 
-	[moonrise_t] time(0) NULL, 
-	[moonset_t] time(0) NULL, 
-	[sunrise_t] time(0) NULL, 
-	[sunset_t] time(0) NULL, 
+	[moonrise_t] varchar(10) NULL, 
+	[moonset_t] varchar(10) NULL, 
+	[sunrise_t] varchar(10) NULL, 
+	[sunset_t] varchar(10) NULL, 
 	[m_extracted_at_dttm] datetime2(6) NULL, 
 	[m_updated_at_dttm] datetime2(6) NULL
 );
-

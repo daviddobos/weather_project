@@ -8,4 +8,3 @@ CREATE TABLE [dbt_dq].[dq_business_tests] (
 	[description] varchar(83) NOT NULL, 
 	[failed_record_cnt] int NULL
 );
-

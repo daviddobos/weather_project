@@ -24,14 +24,22 @@ table dq_s_fct_astro
 
 	column m_valid_dt
 		dataType: dateTime
-		formatString: General Date
+		formatString: Short Date
 		sourceProviderType: date
 		lineageTag: 5d80778f-80fd-4d68-a5e0-95ea39674a96
 		sourceLineageTag: m_valid_dt
 		summarizeBy: none
 		sourceColumn: m_valid_dt
 
+		changedProperty = DataType
+
+		changedProperty = FormatString
+
 		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isCustom":true}
 
 	column astro_pk
 		dataType: string
@@ -116,9 +124,8 @@ table dq_s_fct_astro
 		annotation SummarizationSetBy = Automatic
 
 	column moonrise_t
-		dataType: dateTime
-		formatString: General Date
-		sourceProviderType: time
+		dataType: string
+		sourceProviderType: varchar(10)
 		lineageTag: 32b65e9c-a593-4250-9fb0-51aff9a892bd
 		sourceLineageTag: moonrise_t
 		summarizeBy: none
@@ -127,9 +134,8 @@ table dq_s_fct_astro
 		annotation SummarizationSetBy = Automatic
 
 	column moonset_t
-		dataType: dateTime
-		formatString: General Date
-		sourceProviderType: time
+		dataType: string
+		sourceProviderType: varchar(10)
 		lineageTag: 3bc84916-b497-4445-bea6-4df713fa8c76
 		sourceLineageTag: moonset_t
 		summarizeBy: none
@@ -138,9 +144,8 @@ table dq_s_fct_astro
 		annotation SummarizationSetBy = Automatic
 
 	column sunrise_t
-		dataType: dateTime
-		formatString: General Date
-		sourceProviderType: time
+		dataType: string
+		sourceProviderType: varchar(10)
 		lineageTag: 4d641d3c-6d5a-483c-823f-dd0351a6a313
 		sourceLineageTag: sunrise_t
 		summarizeBy: none
@@ -149,9 +154,8 @@ table dq_s_fct_astro
 		annotation SummarizationSetBy = Automatic
 
 	column sunset_t
-		dataType: dateTime
-		formatString: General Date
-		sourceProviderType: time
+		dataType: string
+		sourceProviderType: varchar(10)
 		lineageTag: 7ac27aa2-18ee-4fcf-bbb3-1b88db246070
 		sourceLineageTag: sunset_t
 		summarizeBy: none
@@ -178,6 +182,16 @@ table dq_s_fct_astro
 		sourceLineageTag: m_updated_at_dttm
 		summarizeBy: none
 		sourceColumn: m_updated_at_dttm
+
+		annotation SummarizationSetBy = Automatic
+
+	column city_fk
+		dataType: string
+		sourceProviderType: varchar(256)
+		lineageTag: 5882dcba-829d-474e-b2c2-5d8338dd4654
+		sourceLineageTag: city_fk
+		summarizeBy: none
+		sourceColumn: city_fk
 
 		annotation SummarizationSetBy = Automatic
 

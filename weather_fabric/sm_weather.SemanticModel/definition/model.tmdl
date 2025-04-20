@@ -1,0 +1,26 @@
+model Model
+	culture: en-US
+	collation: Latin1_General_100_BIN2_UTF8
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBIDesktopVersion = 2.143.7637.1 (Main)+6a4a6f181a58393a521ebb616c85e986dd01ef3a
+
+annotation PBI_QueryOrder = ["DatabaseQuery"]
+
+ref table g_dim_city
+ref table g_dim_city_nm
+ref table g_fct_astro_forecast
+ref table g_fct_astro
+ref table g_fct_weather
+ref table g_dim_m_valid_dt
+ref table g_dim_country_cd
+ref table g_fct_weather_avg
+
+ref cultureInfo en-US
+

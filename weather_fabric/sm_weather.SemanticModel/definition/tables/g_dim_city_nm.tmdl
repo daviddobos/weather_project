@@ -1,0 +1,23 @@
+table g_dim_city_nm
+	lineageTag: 9f8510c4-bf8b-4e10-84eb-b950086b02cf
+	sourceLineageTag: [dbt_gold].[g_dim_city_nm]
+
+	column city_nm
+		dataType: string
+		sourceProviderType: varchar(23)
+		lineageTag: 5723557c-e03f-4e25-b582-ea791ddab52c
+		sourceLineageTag: city_nm
+		summarizeBy: none
+		sourceColumn: city_nm
+
+		annotation SummarizationSetBy = Automatic
+
+	partition g_dim_city_nm = entity
+		mode: directLake
+		source
+			entityName: g_dim_city_nm
+			schemaName: dbt_gold
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

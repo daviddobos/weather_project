@@ -24,14 +24,22 @@ table dq_s_fct_weather
 
 	column m_valid_dt
 		dataType: dateTime
-		formatString: General Date
+		formatString: Short Date
 		sourceProviderType: date
 		lineageTag: 72f3b59e-12a2-4d70-846e-02ef28498053
 		sourceLineageTag: m_valid_dt
 		summarizeBy: none
 		sourceColumn: m_valid_dt
 
+		changedProperty = DataType
+
+		changedProperty = FormatString
+
 		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isCustom":true}
 
 	column weather_pk
 		dataType: string
@@ -45,7 +53,7 @@ table dq_s_fct_weather
 
 	column forecast_dt
 		dataType: dateTime
-		formatString: General Date
+		formatString: Long Date
 		sourceProviderType: date
 		lineageTag: 68cfdf6e-02db-4f0f-b1c8-ba959e725ad0
 		sourceLineageTag: forecast_dt
@@ -488,6 +496,16 @@ table dq_s_fct_weather
 		sourceLineageTag: m_updated_at_dttm
 		summarizeBy: none
 		sourceColumn: m_updated_at_dttm
+
+		annotation SummarizationSetBy = Automatic
+
+	column city_fk
+		dataType: string
+		sourceProviderType: varchar(256)
+		lineageTag: e255fe65-c363-4948-a8da-f1499ff336c8
+		sourceLineageTag: city_fk
+		summarizeBy: none
+		sourceColumn: city_fk
 
 		annotation SummarizationSetBy = Automatic
 

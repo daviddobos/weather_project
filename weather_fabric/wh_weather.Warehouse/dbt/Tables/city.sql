@@ -12,4 +12,3 @@ CREATE TABLE [dbt].[city] (
 	[apartments_no] int NULL, 
 	[country_cd] varchar(16) NULL
 );
-

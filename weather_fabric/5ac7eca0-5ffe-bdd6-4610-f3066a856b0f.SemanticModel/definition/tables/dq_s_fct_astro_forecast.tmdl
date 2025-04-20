@@ -24,14 +24,22 @@ table dq_s_fct_astro_forecast
 
 	column m_valid_dt
 		dataType: dateTime
-		formatString: General Date
+		formatString: Short Date
 		sourceProviderType: date
 		lineageTag: 8c516fa5-e4c8-438c-bc28-e5c5fff46286
 		sourceLineageTag: m_valid_dt
 		summarizeBy: none
 		sourceColumn: m_valid_dt
 
+		changedProperty = DataType
+
+		changedProperty = FormatString
+
 		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isCustom":true}
 
 	column astro_forecast_pk
 		dataType: string
@@ -45,14 +53,22 @@ table dq_s_fct_astro_forecast
 
 	column forecast_dt
 		dataType: dateTime
-		formatString: General Date
+		formatString: Short Date
 		sourceProviderType: datetime2
 		lineageTag: 35a1136b-eb7c-405b-933d-33e18dd369db
 		sourceLineageTag: forecast_dt
 		summarizeBy: none
 		sourceColumn: forecast_dt
 
+		changedProperty = DataType
+
+		changedProperty = FormatString
+
 		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isCustom":true}
 
 	column city_nm
 		dataType: string
@@ -138,9 +154,8 @@ table dq_s_fct_astro_forecast
 		annotation SummarizationSetBy = Automatic
 
 	column moonrise_t
-		dataType: dateTime
-		formatString: General Date
-		sourceProviderType: time
+		dataType: string
+		sourceProviderType: varchar(10)
 		lineageTag: e2f18e33-83cc-4a35-8f76-bb638e0b3255
 		sourceLineageTag: moonrise_t
 		summarizeBy: none
@@ -149,9 +164,8 @@ table dq_s_fct_astro_forecast
 		annotation SummarizationSetBy = Automatic
 
 	column moonset_t
-		dataType: dateTime
-		formatString: General Date
-		sourceProviderType: time
+		dataType: string
+		sourceProviderType: varchar(10)
 		lineageTag: 9de887e5-2a03-4bf9-a161-cd16c925e669
 		sourceLineageTag: moonset_t
 		summarizeBy: none
@@ -160,9 +174,8 @@ table dq_s_fct_astro_forecast
 		annotation SummarizationSetBy = Automatic
 
 	column sunrise_t
-		dataType: dateTime
-		formatString: General Date
-		sourceProviderType: time
+		dataType: string
+		sourceProviderType: varchar(10)
 		lineageTag: ff8f1edc-4f46-4e0a-b04e-b82e6c502cb1
 		sourceLineageTag: sunrise_t
 		summarizeBy: none
@@ -171,9 +184,8 @@ table dq_s_fct_astro_forecast
 		annotation SummarizationSetBy = Automatic
 
 	column sunset_t
-		dataType: dateTime
-		formatString: General Date
-		sourceProviderType: time
+		dataType: string
+		sourceProviderType: varchar(10)
 		lineageTag: dbc24009-5b29-434f-8cb8-7277c4f04ceb
 		sourceLineageTag: sunset_t
 		summarizeBy: none
@@ -200,6 +212,16 @@ table dq_s_fct_astro_forecast
 		sourceLineageTag: m_updated_at_dttm
 		summarizeBy: none
 		sourceColumn: m_updated_at_dttm
+
+		annotation SummarizationSetBy = Automatic
+
+	column city_fk
+		dataType: string
+		sourceProviderType: varchar(256)
+		lineageTag: 4cef2209-74fe-4d81-94b2-76612cea1fce
+		sourceLineageTag: city_fk
+		summarizeBy: none
+		sourceColumn: city_fk
 
 		annotation SummarizationSetBy = Automatic
 

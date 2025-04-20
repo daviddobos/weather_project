@@ -43,4 +43,3 @@ CREATE TABLE [dbt_dq_test].[s_fct_weather_forecast_accepted_range_m_valid_dt] (
 	[m_extracted_at_dttm] datetime2(6) NULL, 
 	[m_updated_at_dttm] datetime2(6) NULL
 );
-

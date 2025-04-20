@@ -1,0 +1,64 @@
+relationship 8a6d3df3-de80-78a4-c00a-f55ebec970ff
+	fromColumn: dq_business_tests.m_valid_dt
+	toColumn: g_dim_m_valid_dt.m_valid_dt
+
+relationship 1da87bdd-7d76-3952-edb9-42fe03242ab6
+	fromColumn: dq_business_tests_summary.m_valid_dt
+	toColumn: g_dim_m_valid_dt.m_valid_dt
+
+relationship 296bdc7e-41c5-61f7-e53f-ad186f764536
+	fromColumn: dq_s_fct_astro.m_valid_dt
+	toColumn: g_dim_m_valid_dt.m_valid_dt
+
+relationship 669247f7-a563-b332-4783-9004bec216d0
+	fromColumn: dq_s_fct_astro_forecast.m_valid_dt
+	toColumn: g_dim_m_valid_dt.m_valid_dt
+
+relationship 3899e7b4-2abe-beb3-6689-5392515e013d
+	fromColumn: dq_s_fct_weather.m_valid_dt
+	toColumn: g_dim_m_valid_dt.m_valid_dt
+
+relationship 96cf4afe-6e1b-d25e-b66b-279dbaeaa381
+	fromColumn: dq_s_fct_weather_forecast.m_valid_dt
+	toColumn: g_dim_m_valid_dt.m_valid_dt
+
+relationship ef0eda09-b83b-d465-3df8-f0ca2c7a2cae
+	fromColumn: dq_standard_tests.m_valid_dt
+	toColumn: g_dim_m_valid_dt.m_valid_dt
+
+relationship 99574588-ef29-a2ed-2b9f-600dc2efd466
+	fromColumn: dq_standard_tests_summary.m_valid_dt
+	toColumn: g_dim_m_valid_dt.m_valid_dt
+
+relationship b772c43c-e634-9f06-fa92-ce184f224a22
+	fromColumn: dq_business_tests.country_cd
+	toColumn: g_dim_country_cd.country_cd
+
+relationship 8896c6ea-fe47-e32f-4c43-5a59fd969e11
+	fromColumn: dq_standard_tests.country_cd
+	toColumn: g_dim_country_cd.country_cd
+
+relationship 5c7b2952-fd5e-6626-268d-d944477b8d75
+	fromColumn: dq_s_fct_weather.country_cd
+	toColumn: g_dim_country_cd.country_cd
+
+relationship b8efb831-b5e4-7c13-1d50-fe1e8d523284
+	fromColumn: dq_s_fct_weather_forecast.country_cd
+	toColumn: g_dim_country_cd.country_cd
+
+relationship c7586981-0588-13af-8591-ece1bfec70d6
+	fromColumn: dq_s_fct_astro.country_cd
+	toColumn: g_dim_country_cd.country_cd
+
+relationship e788fb7a-22ad-ae81-edbc-659b69352118
+	fromColumn: dq_s_fct_astro_forecast.country_cd
+	toColumn: g_dim_country_cd.country_cd
+
+relationship 8f0d2367-0b82-7c4c-0d45-8552c8ca83d5
+	fromColumn: dq_business_tests.table_nm
+	toColumn: dq_dim_table_nm.table_nm
+
+relationship 76044d76-9804-5165-ff99-8f24b095c68a
+	fromColumn: dq_standard_tests.table_nm
+	toColumn: dq_dim_table_nm.table_nm
+

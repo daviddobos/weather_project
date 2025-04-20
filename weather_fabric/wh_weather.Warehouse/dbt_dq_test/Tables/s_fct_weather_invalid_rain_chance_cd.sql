@@ -43,4 +43,3 @@ CREATE TABLE [dbt_dq_test].[s_fct_weather_invalid_rain_chance_cd] (
 	[m_extracted_at_dttm] datetime2(6) NULL, 
 	[m_updated_at_dttm] datetime2(6) NULL
 );
-

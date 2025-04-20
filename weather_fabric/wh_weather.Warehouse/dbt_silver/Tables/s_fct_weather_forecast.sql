@@ -5,6 +5,7 @@ CREATE TABLE [dbt_silver].[s_fct_weather_forecast] (
 	[forecast_dt] date NULL, 
 	[city_nm] varchar(30) NULL, 
 	[city_fk] varchar(256) NULL, 
+	[astro_fk] varchar(256) NULL, 
 	[country_cd] varchar(2) NOT NULL, 
 	[country_nm] varchar(30) NULL, 
 	[county_nm] varchar(23) NULL, 
@@ -43,4 +44,3 @@ CREATE TABLE [dbt_silver].[s_fct_weather_forecast] (
 	[m_extracted_at_dttm] datetime2(6) NULL, 
 	[m_updated_at_dttm] datetime2(6) NULL
 );
-

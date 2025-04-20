@@ -7,4 +7,3 @@ CREATE TABLE [dbt_dq].[dq_standard_tests_summary] (
 	[passed_test_cnt] int NULL, 
 	[failed_records_cnt] int NULL
 );
-

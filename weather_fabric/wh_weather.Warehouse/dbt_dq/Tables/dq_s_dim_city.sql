@@ -15,4 +15,3 @@ CREATE TABLE [dbt_dq].[dq_s_dim_city] (
 	[population_no] int NULL, 
 	[apartments_no] int NULL
 );
-

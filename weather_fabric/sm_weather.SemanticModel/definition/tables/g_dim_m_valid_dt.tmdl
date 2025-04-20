@@ -1,0 +1,24 @@
+table g_dim_m_valid_dt
+	lineageTag: 786a296f-7301-4ee0-834c-68b7057350c6
+	sourceLineageTag: [dbt_gold].[g_dim_m_valid_dt]
+
+	column m_valid_dt
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 94808f3c-d760-4f95-ad3a-ff2f3afc1bdb
+		sourceLineageTag: m_valid_dt
+		summarizeBy: none
+		sourceColumn: m_valid_dt
+
+		annotation SummarizationSetBy = Automatic
+
+	partition g_dim_m_valid_dt = entity
+		mode: directLake
+		source
+			entityName: g_dim_m_valid_dt
+			schemaName: dbt_gold
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

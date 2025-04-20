@@ -13,4 +13,3 @@ CREATE TABLE [dbt_dq_test].[s_dim_city_accepted_values_country_cd] (
 	[population_no] int NULL, 
 	[apartments_no] int NULL
 );
-

@@ -4,4 +4,3 @@ CREATE TABLE [dbt_bronze].[b_city] (
 	[county_nm] varchar(50) NULL, 
 	[city_nm] varchar(50) NULL
 );
-

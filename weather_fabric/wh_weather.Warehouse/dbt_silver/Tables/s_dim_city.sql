@@ -13,4 +13,3 @@ CREATE TABLE [dbt_silver].[s_dim_city] (
 	[population_no] int NULL, 
 	[apartments_no] int NULL
 );
-

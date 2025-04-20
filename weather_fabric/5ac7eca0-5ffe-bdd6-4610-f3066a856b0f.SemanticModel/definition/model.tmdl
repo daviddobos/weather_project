@@ -9,9 +9,11 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 
-annotation PBIDesktopVersion = 2.142.7627.6 (Main)+12378a3b51a63d36fded4ef866d1d94d4d0715e0
+annotation PBIDesktopVersion = 2.142.7630.1 (Main)+a54ea922f68eddcbfc3ce93bd6c4b691ff471d19
 
 annotation PBI_QueryOrder = ["DatabaseQuery"]
+
+annotation PBI_ProTooling = ["WebModelingEdit"]
 
 ref table dq_standard_tests
 ref table dq_business_tests
@@ -22,6 +24,9 @@ ref table dq_s_fct_astro
 ref table dq_s_fct_astro_forecast
 ref table dq_s_fct_weather
 ref table dq_s_fct_weather_forecast
+ref table g_dim_m_valid_dt
+ref table g_dim_country_cd
+ref table dq_dim_table_nm
 
 ref cultureInfo en-US
 
