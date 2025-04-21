@@ -1,0 +1,108 @@
+version: 2
+
+sources:
+  - name: landing_delta
+    database: lh_weather
+    schema: dbo
+#    loaded_at_field: m_updated_at_dttm
+    tables:
+    - name: city
+      identifier: city
+    - name: ld_date
+      identifier: ld_date
+    - name: ld_weather_astro
+      identifier: ld_weather_astro
+    - name: ld_weather_astro_forecast
+      identifier: ld_weather_astro_forecast
+    - name: ld_weather_forecast
+      identifier: ld_weather_forecast
+    - name: ld_weather_measure
+      identifier: ld_weather_measure
+
+  - name: seed
+    database: wh_weather
+    schema: dbt
+    tables:
+    - name: city
+      identifier: city
+    - name: country
+      identifier: country
+
+  - name: int
+    database: wh_weather
+    schema: dbt_int
+
+  - name: dbt_dq_test
+    database: wh_weather
+    schema: dbt_dq_test
+    tables: 
+    - name: s_fct_weather_forecast_invalid_cloud_coverage_cd
+      identifier: s_fct_weather_forecast_invalid_cloud_coverage_cd
+    - name: s_dim_city_accepted_values_country_cd
+      identifier: s_dim_city_accepted_values_country_cd
+    - name: s_dim_city_not_null_city_pk
+      identifier: s_dim_city_not_null_city_pk
+    - name: s_dim_city_unique_city_pk
+      identifier: s_dim_city_unique_city_pk
+    - name: s_fct_astro_accepted_range_m_valid_dt
+      identifier: s_fct_astro_accepted_range_m_valid_dt
+    - name: s_fct_astro_accepted_values_country_cd
+      identifier: s_fct_astro_accepted_values_country_cd
+    - name: s_fct_astro_forecast_accepted_range_m_valid_dt
+      identifier: s_fct_astro_forecast_accepted_range_m_valid_dt
+    - name: s_fct_astro_forecast_accepted_values_country_cd
+      identifier: s_fct_astro_forecast_accepted_values_country_cd
+    - name: s_fct_astro_forecast_not_null_astro_forecast_pk
+      identifier: s_fct_astro_forecast_not_null_astro_forecast_pk
+    - name: s_fct_astro_forecast_unique_astro_forecast_pk
+      identifier: s_fct_astro_forecast_unique_astro_forecast_pk
+    - name: s_fct_astro_not_null_astro_pk
+      identifier: s_fct_astro_not_null_astro_pk
+    - name: s_fct_astro_unique_astro_pk
+      identifier: s_fct_astro_unique_astro_pk
+    - name: s_fct_weather_accepted_range_m_valid_dt
+      identifier: s_fct_weather_accepted_range_m_valid_dt
+    - name: s_fct_weather_accepted_range_temp_c_no
+      identifier: s_fct_weather_accepted_range_temp_c_no
+    - name: s_fct_weather_accepted_values_country_cd
+      identifier: s_fct_weather_accepted_values_country_cd
+    - name: s_fct_weather_forecast_accepted_range_m_valid_dt
+      identifier: s_fct_weather_forecast_accepted_range_m_valid_dt
+    - name: s_fct_weather_forecast_accepted_range_temp_c_no
+      identifier: s_fct_weather_forecast_accepted_range_temp_c_no
+    - name: s_fct_weather_forecast_accepted_values_country_cd
+      identifier: s_fct_weather_forecast_accepted_values_country_cd
+    - name: s_fct_weather_forecast_invalid_humidity_cd
+      identifier: s_fct_weather_forecast_invalid_humidity_cd
+    - name: s_fct_weather_forecast_invalid_rain_chance_cd
+      identifier: s_fct_weather_forecast_invalid_rain_chance_cd
+    - name: s_fct_weather_forecast_invalid_snow_chance_cd
+      identifier: s_fct_weather_forecast_invalid_snow_chance_cd
+    - name: s_fct_weather_forecast_invalid_temp_feelslike_cd
+      identifier: s_fct_weather_forecast_invalid_temp_feelslike_cd
+    - name: s_fct_weather_forecast_not_null_weather_pk
+      identifier: s_fct_weather_forecast_not_null_weather_pk
+    - name: s_fct_weather_forecast_unique_weather_pk
+      identifier: s_fct_weather_forecast_unique_weather_pk
+    - name: s_fct_weather_invalid_cloud_coverage_cd
+      identifier: s_fct_weather_invalid_cloud_coverage_cd
+    - name: s_fct_weather_invalid_humidity_cd
+      identifier: s_fct_weather_invalid_humidity_cd
+    - name: s_fct_weather_invalid_rain_chance_cd
+      identifier: s_fct_weather_invalid_rain_chance_cd
+    - name: s_fct_weather_invalid_snow_chance_cd
+      identifier: s_fct_weather_invalid_snow_chance_cd
+    - name: s_fct_weather_invalid_temp_feelslike_cd
+      identifier: s_fct_weather_invalid_temp_feelslike_cd
+    - name: s_fct_weather_not_null_weather_pk
+      identifier: s_fct_weather_not_null_weather_pk
+    - name: s_fct_weather_unique_weather_pk
+      identifier: s_fct_weather_unique_weather_pk
+    - name: s_fct_astro_forecast_rel_s_dim_city_city_fk
+      identifier: s_fct_astro_forecast_rel_s_dim_city_city_fk
+    - name: s_fct_astro_rel_s_dim_city_city_fk
+      identifier: s_fct_astro_rel_s_dim_city_city_fk
+    - name: s_fct_weather_forecast_rel_s_dim_city_city_fk
+      identifier: s_fct_weather_forecast_rel_s_dim_city_city_fk
+    - name: s_fct_weather_rel_s_dim_city_city_fk
+      identifier: s_fct_weather_rel_s_dim_city_city_fk

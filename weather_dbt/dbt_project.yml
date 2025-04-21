@@ -60,3 +60,5 @@ vars:
     v_km_to_mi: 0.621371
     v_cels_to_fahr: 33.8
     v_cels_to_kel: 273.15
+    v_max_temperature: 50
+    v_min_temperature: -20

@@ -11,13 +11,13 @@ b_astro_forecast AS (
         ,CONVERT(BIT, is_sun_up) AS sun_up_flg
         ,CONVERT(INT, moon_illumination) AS moon_illumination_pct
         ,CONVERT(VARCHAR(20), moon_phase) AS moon_phase_cd
-        ,TRY_CONVERT(TIME(0), moonrise) AS moonrise_t
-        ,TRY_CONVERT(TIME(0), moonset) AS moonset_t
-        ,TRY_CONVERT(TIME(0), sunrise) AS sunrise_t
-        ,TRY_CONVERT(TIME(0), sunset) AS sunset_t
+        ,CONVERT(VARCHAR(11), moonrise) AS moonrise_t
+        ,CONVERT(VARCHAR(10), moonset) AS moonset_t
+        ,CONVERT(VARCHAR(10), sunrise) AS sunrise_t
+        ,CONVERT(VARCHAR(10), sunset) AS sunset_t
         ,CONVERT(VARCHAR(50), city) AS city_nm
         ,CONVERT(VARCHAR(50), country_EN) AS country_nm
-        ,CONVERT(DATETIME2(6), forecast_date) AS forecast_dt
+        ,CONVERT(DATE, forecast_date) AS forecast_dt
         ,CONVERT(DATETIME2(6), m_extracted_at_dttm) AS m_extracted_at_dttm
         ,CONVERT(DATETIME2(6), m_updated_at_dttm) AS m_updated_at_dttm
     FROM ld_astro_forecast

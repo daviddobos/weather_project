@@ -24,6 +24,14 @@ models:
       - name: city_nm
         description: This column represents the name of the city for which the weather forecast is provided. It is a string data type and can be used to filter or group the data based on specific cities.
         data_type: varchar
+      - name: city_fk
+        description: A foreign key representing the unique identifier of a city in the `s_dim_city` dimension table. It is used to join forecast data with city-related metadata like county name.
+        data_type: varchar
+        data_tests:
+          - relationships:
+              name: s_fct_weather_forecast_rel_s_dim_city_city_fk
+              to: ref('s_dim_city')
+              field: city_pk 
       - name: country_cd
         description: This column represents the country code associated with the city for which the weather forecast is provided. It is a string data type and can be used to filter or group the data based on specific countries.
         data_type: varchar
@@ -73,6 +81,11 @@ models:
       - name: temp_c_no
         description: This column represents the temperature in Celsius. It is a numerical value that indicates the current temperature of the location in Celsius degrees. This is a key metric for understanding the current weather conditions.
         data_type: decimal
+        data_tests:
+          - name: s_fct_weather_forecast_accepted_range_temp_c_no
+            test_name: dbt_utils.accepted_range
+            min_value: "{{ var('v_min_temperature') }}"
+            max_value: "{{ var('v_max_temperature') }}"
       - name: temp_f_no
         description: This column represents the temperature in Fahrenheit. It is a numerical value that indicates the current temperature of the location in Fahrenheit degrees. This is particularly useful for users who are more familiar with the Fahrenheit scale.
         data_type: numeric

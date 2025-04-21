@@ -1,0 +1,13 @@
+country_code,country,continent,eu_member_flag,currency,iso_alpha_3
+HU,Hungary,Europe,1,HUF,HUN
+RO,Romania,Europe,1,RON,ROU
+RU,Russia,Europe/Asia,0,RUB,RUS
+AT,Austria,Europe,1,EUR,AUT
+SK,Slovakia,Europe,1,EUR,SVK
+UA,Ukraine,Europe,0,UAH,UKR
+RS,Serbia,Europe,0,RSD,SRB
+HR,Croatia,Europe,1,EUR,HRV
+SI,Slovenia,Europe,1,EUR,SVN
+BG,Bulgaria,Europe,1,BGN,BGR
+MD,Moldova,Europe,0,MDL,MDA
+CN,China,Asia,0,CNY,CHN

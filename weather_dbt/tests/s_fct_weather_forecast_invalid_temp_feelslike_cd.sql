@@ -12,7 +12,7 @@ WITH invalid_temp_feelslike_cd AS (
         OR 
         ( temp_feelslike_no BETWEEN 31 AND 40 AND temp_feelslike_cd NOT IN ('Hot'))
         OR 
-        ( temp_feelslike_no > 41 temp_feelslike_cd AND temp_feels_like_cd NOT IN ('Very Hot'))
+        ( temp_feelslike_no > 41 AND temp_feelslike_cd NOT IN ('Very Hot'))
 )
 
 SELECT *

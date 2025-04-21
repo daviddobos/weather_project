@@ -23,6 +23,14 @@ models:
       - name: city_nm
         description: This column represents the name of the city for which the astronomical forecast is provided. It is a string value and can be used to filter the data for specific cities.
         data_type: varchar
+      - name: city_fk
+        description: A foreign key representing the unique identifier of a city in the `s_dim_city` dimension table. It is used to join forecast data with city-related metadata like county name.
+        data_type: varchar
+        data_tests:
+          - relationships:
+              name: s_fct_astro_forecast_rel_s_dim_city_city_fk
+              to: ref('s_dim_city')
+              field: city_pk 
       - name: country_cd
         description: This column represents the country code associated with the city for which the forecast is provided. It is a string value and can be used to group or filter the data by country.
         data_type: varchar

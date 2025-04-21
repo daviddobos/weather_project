@@ -4,26 +4,42 @@ WITH b_weather AS (
     FROM {{ref('b_weather') }}
 ),
 
-country_codes AS (
+s_dim_country AS (
     SELECT
         *
-    FROM {{ source('int', 'country_codes') }}
+    FROM {{ ref('s_dim_country') }}
+),
+
+s_dim_city AS (
+    SELECT
+        *
+    FROM {{ ref('s_dim_city') }}
 ),
 
 join_country_cd AS (
     SELECT
         b_weather.*
-        ,country_codes.country_cd AS country_cd
+        ,s_dim_country.country_cd AS country_cd
     FROM b_weather
-    JOIN country_codes
-    ON b_weather.country_nm = country_codes.country_nm
+    JOIN s_dim_country
+    ON b_weather.country_nm = s_dim_country.country_nm
 ),
 
 gen_sk AS (
     SELECT
         *
-        ,{{ gen_sk(['forecast_dt','country_cd', 'city_nm']) }} AS weather_pk
+        ,{{ gen_sk(['m_valid_dt', 'forecast_dt', 'country_cd', 'city_nm', 'time_epoch']) }} AS weather_pk
+        ,{{ gen_sk(['country_cd', 'city_nm']) }} AS city_fk
     FROM join_country_cd
+),
+
+join_county_nm AS (
+    SELECT
+        gen_sk.*
+        ,s_dim_city.county_nm
+    FROM gen_sk
+    JOIN s_dim_city
+    ON gen_sk.city_fk = s_dim_city.city_pk
 ),
 
 unit_conversion AS (
@@ -38,7 +54,7 @@ unit_conversion AS (
         ,wind_kph_no * {{ var('v_km_to_mi') }} AS wind_miph_no
         ,windchill_c_no * {{ var('v_cels_to_fahr') }} AS windchill_f_no
         ,windchill_c_no * {{ var('v_cels_to_kel') }} AS windchill_k_no
-    FROM gen_sk
+    FROM join_county_nm
 ),
 
 weather_categories AS (
@@ -104,8 +120,10 @@ reorder AS (
         ,weather_pk
         ,forecast_dt
         ,city_nm
+        ,city_fk
         ,country_cd
         ,country_nm
+        ,county_nm
         ,cloud_coverage_pct
         ,cloud_coverage_cd
         ,gust_kph_no
