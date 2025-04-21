@@ -1,0 +1,3 @@
+[submodule "weather_dbt/target"]
+	path = weather_dbt/target
+	url = https://github.com/daviddobos/weather_project_docs
