@@ -45,15 +45,12 @@ join_county_nm AS (
 unit_conversion AS (
     SELECT
         *
-        ,gust_kph_no * {{ var('v_km_to_mi') }} AS gust_miph_no
-        ,temp_c_no * {{ var('v_cels_to_fahr') }} AS temp_f_no
-        ,temp_c_no * {{ var('v_cels_to_kel') }} AS temp_k_no
-        ,heatindex_c_no * {{ var('v_cels_to_fahr') }} AS heatindex_f_no
-        ,heatindex_c_no * {{ var('v_cels_to_kel') }} AS heatindex_k_no
+        ,{{ add_unit_conversions_to_kph('gust_kph_no') }}
+        ,{{ add_unit_conversions_to_cels('temp_c_no') }}
+        ,{{ add_unit_conversions_to_cels('heatindex_c_no') }}
         ,vis_km_no * {{ var('v_km_to_mi') }} AS vis_mi_no
-        ,wind_kph_no * {{ var('v_km_to_mi') }} AS wind_miph_no
-        ,windchill_c_no * {{ var('v_cels_to_fahr') }} AS windchill_f_no
-        ,windchill_c_no * {{ var('v_cels_to_kel') }} AS windchill_k_no
+        ,{{ add_unit_conversions_to_kph('wind_kph_no') }}
+        ,{{ add_unit_conversions_to_cels('windchill_c_no') }}
     FROM join_county_nm
 ),
 
@@ -89,18 +86,36 @@ weather_categories AS (
             WHEN cloud_coverage_pct BETWEEN 81 AND 100 THEN 'Completely Overcast'
             ELSE 'Unknown'
         END AS cloud_coverage_cd
-
-        -- Feels Like Temperature Category
+        -- Temperature Category - Cels
         ,CASE
-            WHEN temp_feelslike_no <= 0 THEN 'Very Cold'
-            WHEN temp_feelslike_no BETWEEN 1 AND 10 THEN 'Cold'
-            WHEN temp_feelslike_no BETWEEN 11 AND 20 THEN 'Cool'
-            WHEN temp_feelslike_no BETWEEN 21 AND 30 THEN 'Warm'
-            WHEN temp_feelslike_no BETWEEN 31 AND 40 THEN 'Hot'
-            WHEN temp_feelslike_no > 40 THEN 'Very Hot'
+            WHEN temp_c_no <= 0 THEN 'Very Cold'
+            WHEN temp_c_no BETWEEN 1 AND 10 THEN 'Cold'
+            WHEN temp_c_no BETWEEN 11 AND 20 THEN 'Cool'
+            WHEN temp_c_no BETWEEN 21 AND 30 THEN 'Warm'
+            WHEN temp_c_no BETWEEN 31 AND 40 THEN 'Hot'
+            WHEN temp_c_no > 40 THEN 'Very Hot'
             ELSE 'Unknown'
-        END AS temp_feelslike_cd
-
+        END AS temp_c_cd
+        -- Temperature Category - Kelvin
+        ,CASE
+            WHEN temp_k_no <= 273.15 THEN 'Very Cold'              -- 0°C
+            WHEN temp_k_no BETWEEN 274 AND 283 THEN 'Cold'          -- 1-10°C
+            WHEN temp_k_no BETWEEN 284 AND 293 THEN 'Cool'          -- 11-20°C
+            WHEN temp_k_no BETWEEN 294 AND 303 THEN 'Warm'          -- 21-30°C
+            WHEN temp_k_no BETWEEN 304 AND 313 THEN 'Hot'           -- 31-40°C
+            WHEN temp_k_no > 313 THEN 'Very Hot'                    -- >40°C
+            ELSE 'Unknown'
+        END AS temp_k_cd
+        -- Temperature Category - Fahr
+        ,CASE
+            WHEN temp_f_no <= 32 THEN 'Very Cold'                  -- 0°C = 32°F
+            WHEN temp_f_no BETWEEN 33 AND 50 THEN 'Cold'            -- 1-10°C ≈ 33-50°F
+            WHEN temp_f_no BETWEEN 51 AND 68 THEN 'Cool'            -- 11-20°C ≈ 51-68°F
+            WHEN temp_f_no BETWEEN 69 AND 86 THEN 'Warm'            -- 21-30°C ≈ 69-86°F
+            WHEN temp_f_no BETWEEN 87 AND 104 THEN 'Hot'            -- 31-40°C ≈ 87-104°F
+            WHEN temp_f_no > 104 THEN 'Very Hot'                    -- >40°C ≈ >104°F
+            ELSE 'Unknown'
+        END AS temp_f_cd
         -- Humidity Category
         ,CASE
             WHEN humidity_pct BETWEEN 0 AND 20 THEN 'Very Low'
@@ -110,7 +125,38 @@ weather_categories AS (
             WHEN humidity_pct BETWEEN 81 AND 100 THEN 'Very High'
             ELSE 'Unknown'
         END AS humidity_cd
-
+        -- Wind Category - kph
+        ,CASE
+            WHEN wind_kph_no BETWEEN 0 AND 10 THEN 'Calm'
+            WHEN wind_kph_no BETWEEN 11 AND 20 THEN 'Light Breeze'
+            WHEN wind_kph_no BETWEEN 21 AND 40 THEN 'Moderate Breeze'
+            WHEN wind_kph_no BETWEEN 41 AND 60 THEN 'Strong Breeze'
+            WHEN wind_kph_no BETWEEN 61 AND 80 THEN 'Gale'
+            WHEN wind_kph_no BETWEEN 81 AND 100 THEN 'Strong Gale'
+            WHEN wind_kph_no > 100 THEN 'Storm'
+            ELSE 'Unknown'
+        END AS wind_kph_cd
+         -- Wind Category - miph
+        ,CASE
+            WHEN wind_miph_no BETWEEN 0 AND 6 THEN 'Calm'
+            WHEN wind_miph_no BETWEEN 7 AND 12 THEN 'Light Breeze'
+            WHEN wind_miph_no BETWEEN 13 AND 25 THEN 'Moderate Breeze'
+            WHEN wind_miph_no BETWEEN 26 AND 37 THEN 'Strong Breeze'
+            WHEN wind_miph_no BETWEEN 38 AND 50 THEN 'Gale'
+            WHEN wind_miph_no BETWEEN 51 AND 62 THEN 'Strong Gale'
+            WHEN wind_miph_no > 62 THEN 'Storm'
+            ELSE 'Unknown'
+        END AS wind_miph_cd
+        -- Precip Category - mm
+        ,CASE
+            WHEN precip_mm_no = 0 THEN 'No Rain'
+            WHEN precip_mm_no BETWEEN 0.1 AND 2 THEN 'Light Rain'
+            WHEN precip_mm_no BETWEEN 2.1 AND 10 THEN 'Moderate Rain'
+            WHEN precip_mm_no BETWEEN 10.1 AND 30 THEN 'Heavy Rain'
+            WHEN precip_mm_no BETWEEN 30.1 AND 60 THEN 'Very Heavy Rain'
+            WHEN precip_mm_no > 60 THEN 'Extreme Rain'
+            ELSE 'Unknown'
+        END AS precip_mm_cd
     FROM unit_conversion
 ),
 
@@ -135,12 +181,15 @@ reorder AS (
         ,humidity_cd
         ,is_day_flg
         ,precip_mm_no
+        ,precip_mm_cd
         ,pressure_mb_no
         ,temp_c_no
+        ,temp_c_cd
         ,temp_f_no
+        ,temp_f_cd
         ,temp_k_no
+        ,temp_k_cd
         ,temp_feelslike_no
-        ,temp_feelslike_cd
         ,date_dtt
         ,time_epoch
         ,rain_chance_pct
@@ -152,7 +201,9 @@ reorder AS (
         ,vis_mi_no
         ,wind_dir_cd
         ,wind_kph_no
+        ,wind_kph_cd
         ,wind_miph_no
+        ,wind_miph_cd
         ,windchill_c_no
         ,windchill_f_no
         ,windchill_k_no
