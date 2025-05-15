@@ -50,6 +50,14 @@ rolling_averages AS (
         ,county_nm
         ,country_cd
         ,m_valid_dt
+        ,temp_c_avg AS temperature_c_avg_1d
+        ,cloud_coverage_avg AS cloud_coverage_avg_1d
+        ,precipitation_mm_avg AS precipitation_mm_avg_1d
+        ,humidity_avg AS humidity_avg_1d
+        ,gust_kph_avg AS gust_kph_avg_1d
+        ,heatindex_c_no_avg AS heatindex_c_no_avg_1d
+        ,wind_kph_no_avg AS wind_kph_no_avg_1d
+        ,windchill_c_no_avg AS windchill_c_no_avg_1d
         -- Rolling averages (3 days)
         ,AVG(temp_c_avg) OVER (
             PARTITION BY city_nm, city_fk, county_nm, country_cd
@@ -180,29 +188,57 @@ unit_conversion AS (
         ,city_fk
         ,county_nm
         ,country_cd
+        ,temperature_c_avg_1d
+        ,{{ add_unit_conversions_to_cels('temperature_c_avg_1d') }}
+        ,temperature_c_avg_3d
         ,{{ add_unit_conversions_to_cels('temperature_c_avg_3d') }}
+        ,temperature_c_avg_1w
         ,{{ add_unit_conversions_to_cels('temperature_c_avg_1w') }}
+        ,temperature_c_avg_2w
         ,{{ add_unit_conversions_to_cels('temperature_c_avg_2w') }}
+        ,cloud_coverage_avg_1d
         ,cloud_coverage_avg_3d
         ,cloud_coverage_avg_1w
         ,cloud_coverage_avg_2w
+        ,precipitation_mm_avg_1d
         ,precipitation_mm_avg_3d
         ,precipitation_mm_avg_1w
         ,precipitation_mm_avg_2w
+        ,humidity_avg_1d
         ,humidity_avg_3d
         ,humidity_avg_1w
         ,humidity_avg_2w
-        ,{{ add_unit_conversions_to_km('gust_kph_avg_3d') }}
-        ,{{ add_unit_conversions_to_km('gust_kph_avg_1w') }}
-        ,{{ add_unit_conversions_to_km('gust_kph_avg_2w') }}
+        ,gust_kph_avg_1d
+        ,{{ add_unit_conversions_to_kph('gust_kph_avg_1d') }}
+        ,gust_kph_avg_3d
+        ,{{ add_unit_conversions_to_kph('gust_kph_avg_3d') }}
+        ,gust_kph_avg_1w
+        ,{{ add_unit_conversions_to_kph('gust_kph_avg_1w') }}
+        ,gust_kph_avg_2w
+        ,{{ add_unit_conversions_to_kph('gust_kph_avg_2w') }}
+        ,heatindex_c_no_avg_1d
+        ,{{ add_unit_conversions_to_cels('heatindex_c_no_avg_1d') }}
+        ,heatindex_c_no_avg_3d
         ,{{ add_unit_conversions_to_cels('heatindex_c_no_avg_3d') }}
+        ,heatindex_c_no_avg_1w
         ,{{ add_unit_conversions_to_cels('heatindex_c_no_avg_1w') }}
+        ,heatindex_c_no_avg_2w
         ,{{ add_unit_conversions_to_cels('heatindex_c_no_avg_2w') }}
-        ,{{ add_unit_conversions_to_km('wind_kph_no_avg_3d') }}
-        ,{{ add_unit_conversions_to_km('wind_kph_no_avg_1w') }}
-        ,{{ add_unit_conversions_to_km('wind_kph_no_avg_2w') }}
+        ,wind_kph_no_avg_1d
+        ,{{ add_unit_conversions_to_kph('wind_kph_no_avg_1d') }}
+        ,wind_kph_no_avg_3d
+        ,{{ add_unit_conversions_to_kph('wind_kph_no_avg_3d') }}
+        ,wind_kph_no_avg_1w
+        ,{{ add_unit_conversions_to_kph('wind_kph_no_avg_1w') }}
+        ,wind_kph_no_avg_2w
+        ,{{ add_unit_conversions_to_kph('wind_kph_no_avg_2w') }}
+        ,windchill_c_no_avg_1d
+        ,{{ add_unit_conversions_to_cels('windchill_c_no_avg_1d') }}
+        ,windchill_c_no_avg_3d
         ,{{ add_unit_conversions_to_cels('windchill_c_no_avg_3d') }}
+        ,windchill_c_no_avg_1w
         ,{{ add_unit_conversions_to_cels('windchill_c_no_avg_1w') }}
+        ,windchill_c_no_avg_2w
         ,{{ add_unit_conversions_to_cels('windchill_c_no_avg_2w') }}
     FROM rolling_averages
 )
