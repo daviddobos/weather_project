@@ -1,0 +1,161 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "ExecutePipeline",
+        "typeProperties": {
+          "pipeline": {
+            "referenceName": "449c6907-c76d-b322-4ed7-bf7f23f97cf9",
+            "type": "PipelineReference"
+          },
+          "parameters": {
+            "p_forecast_load_days_no": {
+              "value": "@pipeline().parameters.p_forecast_load_days_no",
+              "type": "Expression"
+            },
+            "p_history_load_days_no": {
+              "value": "@pipeline().parameters.p_history_load_days_no",
+              "type": "Expression"
+            },
+            "p_load_dt": {
+              "value": "@pipeline().parameters.p_load_dt",
+              "type": "Expression"
+            }
+          },
+          "waitOnCompletion": true
+        },
+        "policy": {
+          "secureInput": false
+        },
+        "name": "pl_load_source_to_lr_all",
+        "dependsOn": []
+      },
+      {
+        "type": "ExecutePipeline",
+        "typeProperties": {
+          "pipeline": {
+            "referenceName": "08f01fda-0c94-a2f0-4694-18f8019114f3",
+            "type": "PipelineReference"
+          },
+          "parameters": {
+            "p_load_dt": {
+              "value": "@pipeline().parameters.p_load_dt",
+              "type": "Expression"
+            },
+            "p_load_days_no": {
+              "value": "@pipeline().parameters.p_history_load_days_no",
+              "type": "Expression"
+            }
+          },
+          "waitOnCompletion": true
+        },
+        "policy": {
+          "secureInput": false
+        },
+        "name": "pl_load_lr_to_ld_all",
+        "dependsOn": [
+          {
+            "activity": "pl_load_source_to_lr_all",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "526b3a57-4e71-aa52-4787-88781919b008",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "parameters": {
+            "p_load_success_flg": {
+              "value": {
+                "value": "@variables('v_load_success_flg')\n",
+                "type": "Expression"
+              },
+              "type": "bool"
+            }
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "nb_email_send",
+        "dependsOn": [
+          {
+            "activity": "set success_flg",
+            "dependencyConditions": [
+              "Completed"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "SetVariable",
+        "typeProperties": {
+          "variableName": "v_load_success_flg",
+          "value": {
+            "value": "@if(equals(activity('pl_load_lr_to_ld_all').Status, 'Succeeded'), 1, 0)",
+            "type": "Expression"
+          }
+        },
+        "policy": {
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "set success_flg",
+        "dependsOn": [
+          {
+            "activity": "pl_load_lr_to_ld_all",
+            "dependencyConditions": [
+              "Completed",
+              "Skipped"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Fail",
+        "typeProperties": {
+          "message": "Something went wrong",
+          "errorCode": "500"
+        },
+        "name": "Fail",
+        "dependsOn": [
+          {
+            "activity": "pl_load_lr_to_ld_all",
+            "dependencyConditions": [
+              "Failed",
+              "Skipped"
+            ]
+          }
+        ]
+      }
+    ],
+    "parameters": {
+      "p_load_dt": {
+        "type": "string"
+      },
+      "p_history_load_days_no": {
+        "type": "int",
+        "defaultValue": 0
+      },
+      "p_forecast_load_days_no": {
+        "type": "int",
+        "defaultValue": 4
+      }
+    },
+    "variables": {
+      "v_load_dt": {
+        "type": "String"
+      },
+      "v_load_success_flg": {
+        "type": "Integer"
+      }
+    }
+  }
+}

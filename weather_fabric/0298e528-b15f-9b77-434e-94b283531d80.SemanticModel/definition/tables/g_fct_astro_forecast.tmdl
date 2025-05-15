@@ -1,0 +1,254 @@
+table g_fct_astro_forecast
+	lineageTag: c9096542-bbaf-4f11-8d2d-138603a27cd5
+	sourceLineageTag: [dbt_gold].[g_fct_astro_forecast]
+
+	column m_valid_dt
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 77c8a3ff-3621-4a85-9c8e-d6eb8021fd66
+		sourceLineageTag: m_valid_dt
+		summarizeBy: none
+		sourceColumn: m_valid_dt
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column astro_forecast_pk
+		dataType: string
+		sourceProviderType: varchar(256)
+		lineageTag: 42b46abc-9221-4dc1-9137-a30e08751423
+		sourceLineageTag: astro_forecast_pk
+		summarizeBy: none
+		sourceColumn: astro_forecast_pk
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column forecast_dt
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 574bbc6c-2b9d-4070-a952-a6e3bea4c0d0
+		sourceLineageTag: forecast_dt
+		summarizeBy: none
+		sourceColumn: forecast_dt
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column city_nm
+		dataType: string
+		sourceProviderType: varchar(50)
+		lineageTag: eb5ebd84-da86-4956-8b04-605057505f1f
+		sourceLineageTag: city_nm
+		dataCategory: City
+		summarizeBy: none
+		sourceColumn: city_nm
+
+		changedProperty = IsHidden
+
+		changedProperty = DataCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column city_fk
+		dataType: string
+		sourceProviderType: varchar(256)
+		lineageTag: f4093573-9499-456d-a1a9-b008fa54c0c8
+		sourceLineageTag: city_fk
+		summarizeBy: none
+		sourceColumn: city_fk
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column country_cd
+		dataType: string
+		sourceProviderType: varchar(2)
+		lineageTag: 46556adc-d78c-4340-ac9a-d13accca35fe
+		sourceLineageTag: country_cd
+		dataCategory: Country
+		summarizeBy: none
+		sourceColumn: country_cd
+
+		changedProperty = IsHidden
+
+		changedProperty = DataCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column country_nm
+		dataType: string
+		sourceProviderType: varchar(50)
+		lineageTag: eeae1cd9-b344-447e-8f56-c49570cc9e31
+		sourceLineageTag: country_nm
+		dataCategory: Country
+		summarizeBy: none
+		sourceColumn: country_nm
+
+		changedProperty = IsHidden
+
+		changedProperty = DataCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column county_nm
+		dataType: string
+		sourceProviderType: varchar(23)
+		lineageTag: e6cb98d9-66de-43fb-bde4-04b7c153e5a7
+		sourceLineageTag: county_nm
+		dataCategory: StateOrProvince
+		summarizeBy: none
+		sourceColumn: county_nm
+
+		changedProperty = IsHidden
+
+		changedProperty = DataCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column moon_up_flg
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: 8e280af8-5227-4a1b-8521-ad7cdc4c8329
+		sourceLineageTag: moon_up_flg
+		summarizeBy: none
+		sourceColumn: moon_up_flg
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column sun_up_flg
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: 68886453-3080-40bf-a711-47997c87d050
+		sourceLineageTag: sun_up_flg
+		summarizeBy: none
+		sourceColumn: sun_up_flg
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column moon_illumination_pct
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 372fcb7c-2dbd-4451-9634-3a2c4b228918
+		sourceLineageTag: moon_illumination_pct
+		summarizeBy: sum
+		sourceColumn: moon_illumination_pct
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column moon_phase_cd
+		dataType: string
+		sourceProviderType: varchar(20)
+		lineageTag: 2f76f18c-c432-49a6-99c1-05405af0967b
+		sourceLineageTag: moon_phase_cd
+		summarizeBy: none
+		sourceColumn: moon_phase_cd
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column moonrise_t
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: time
+		lineageTag: a0c47c91-088a-4072-a877-a327f2093cfe
+		sourceLineageTag: moonrise_t
+		summarizeBy: none
+		sourceColumn: moonrise_t
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column moonset_t
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: time
+		lineageTag: 4b3bc682-4e4f-4a41-b424-a2419affad9e
+		sourceLineageTag: moonset_t
+		summarizeBy: none
+		sourceColumn: moonset_t
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column sunrise_t
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: time
+		lineageTag: d1dfaf5a-fc66-4f29-baab-4698d0baf511
+		sourceLineageTag: sunrise_t
+		summarizeBy: none
+		sourceColumn: sunrise_t
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column sunset_t
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: time
+		lineageTag: 057a6129-7b8e-4c25-868a-7b84bb3bb3ba
+		sourceLineageTag: sunset_t
+		summarizeBy: none
+		sourceColumn: sunset_t
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column m_extracted_at_dttm
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 6b725159-dc9f-449d-92fd-c137038c92e4
+		sourceLineageTag: m_extracted_at_dttm
+		summarizeBy: none
+		sourceColumn: m_extracted_at_dttm
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column m_updated_at_dttm
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 39eea925-3bee-422a-9d2b-9e231912656f
+		sourceLineageTag: m_updated_at_dttm
+		summarizeBy: none
+		sourceColumn: m_updated_at_dttm
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition g_fct_astro_forecast = entity
+		mode: directLake
+		source
+			entityName: g_fct_astro_forecast
+			schemaName: dbt_gold
+			expressionSource: DatabaseQuery
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+

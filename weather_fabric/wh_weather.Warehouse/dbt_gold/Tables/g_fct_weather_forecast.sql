@@ -1,4 +1,4 @@
-CREATE TABLE [dbt_gold].[g_fct_weather] (
+CREATE TABLE [dbt_gold].[g_fct_weather_forecast] (
 
 	[m_valid_dt] date NULL, 
 	[weather_pk] varchar(256) NULL, 

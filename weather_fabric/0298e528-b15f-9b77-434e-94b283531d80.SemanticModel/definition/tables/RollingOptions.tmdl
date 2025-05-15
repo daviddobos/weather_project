@@ -1,0 +1,25 @@
+table RollingOptions
+	lineageTag: 23fe208d-c613-4de1-9e3a-4331a06e63c1
+
+	column Rolling
+		lineageTag: 03d2e912-9c5c-47a8-8baa-6d1d5ae2be36
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Rolling]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition RollingOptions = calculated
+		mode: import
+		source =
+				DATATABLE(
+				    "Rolling", STRING,
+				    {
+				        {"3 day"},
+				        {"1 week"},
+				        {"2 weeks"}
+				    }
+				)
+
+	annotation PBI_Id = 5858e02d95a54206aadb68ad17338bab
+

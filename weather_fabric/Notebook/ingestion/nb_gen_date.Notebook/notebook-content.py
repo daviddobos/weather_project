@@ -20,27 +20,11 @@
 # META   }
 # META }
 
-# CELL ********************
+# PARAMETERS CELL ********************
 
-df = spark.sql("SELECT * FROM lh_weather.dbo.ld_weather_forecast_bckp")
-display(df)
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
-df_filtered = df.filter(~(
-    (df.m_valid_dt == '2025-03-26') & (df.forecast_date == '2025-03-27') & (df.country_EN == 'Hungary') & (df.city == 'Békéscsaba')  & (df.time_epoch == '1743051600') & (df.cloud == 0)
-)).filter(~(
-    (df.m_valid_dt == '2025-03-30') & (df.forecast_date == '2025-03-31') & (df.country_EN == 'Hungary') & (df.city == 'Békéscsaba')  & (df.time_epoch == '1743393600') & (df.is_day == 0)
-)).filter(~(
-    (df.m_valid_dt == '2025-03-27') & (df.forecast_date == '2025-03-28') & (df.country_EN == 'Hungary') & (df.city == 'Békéscsaba')  & (df.time_epoch == '1743138000') & (df.cloud == 0)
-))
+p_start_dt = '2025-01-01'
+p_end_dt = '2025-12-31'
+p_table_nm = "ld_date"
 
 # METADATA ********************
 
@@ -51,7 +35,9 @@ df_filtered = df.filter(~(
 
 # CELL ********************
 
-print(df.count())
+from datetime import datetime, timedelta
+import pandas as pd
+from pyspark.sql import SparkSession
 
 # METADATA ********************
 
@@ -62,7 +48,9 @@ print(df.count())
 
 # CELL ********************
 
-print(df_filtered.count())
+# Convert to date
+v_start_dt = datetime.strptime(p_start_dt, "%Y-%m-%d").date()
+v_end_dt = datetime.strptime(p_end_dt, "%Y-%m-%d").date()
 
 # METADATA ********************
 
@@ -73,13 +61,8 @@ print(df_filtered.count())
 
 # CELL ********************
 
-# Write the Delta table
-df_filtered.write.format("delta")\
-                .option("mergeSchema", "true")\
-                .partitionBy("m_valid_dt")\
-                .option("partitionOverwriteMode", "dynamic")\
-                .mode("overwrite")\
-                .saveAsTable('ld_weather_forecast')
+# 2. Generate date list
+date_list = [v_start_dt + timedelta(days=x) for x in range((v_end_dt - v_start_dt).days + 1)]
 
 # METADATA ********************
 
@@ -90,9 +73,35 @@ df_filtered.write.format("delta")\
 
 # CELL ********************
 
-df = spark.read.parquet("Files/landing/weatherapi/weather_ws_dev/weather_astro_forecast/20250420/weather_astro_forecast_20250420_20250421T042215.parquet")
-# df now is a Spark DataFrame containing parquet data from "Files/landing/weatherapi/weather_ws_dev/weather_astro_forecast/20250420/weather_astro_forecast_20250420_20250421T042215.parquet".
-display(df)
+# 3. Create pandas df
+df = pd.DataFrame({"date": pd.to_datetime(date_list)})
+df["date_timestamp"] = df["date"]
+df["year_num"] = df["date"].dt.year
+df["year_txt"] = df["year_num"].astype(str)
+df["quarter_num"] = df["date"].dt.quarter
+df["quarter_txt"] = "Q" + df["quarter_num"].astype(str)
+df["month_num"] = df["date"].dt.month
+df["month_txt"] = df["date"].dt.strftime("%B")
+df["day_num"] = df["date"].dt.day
+df["day_txt"] = df["date"].dt.strftime("%A")
+df["year_quarter_txt"] = df["year_txt"] + "_Q" + df["quarter_num"].astype(str)
+df["year_month_txt"] = df["date"].dt.strftime("%Y_%m")
+
+# Convert pandas df
+spark = SparkSession.builder.getOrCreate()
+spark_df = spark.createDataFrame(df)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# Save as table
+spark_df.write.mode("overwrite").format("delta").saveAsTable(p_table_nm)
 
 # METADATA ********************
 

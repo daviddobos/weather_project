@@ -1,0 +1,205 @@
+table g_fct_astro_avg
+	lineageTag: f093c642-ae9d-4ca0-8f0e-63af57f7b8a1
+	sourceLineageTag: [dbt_gold].[g_fct_astro_avg]
+
+	column m_valid_dt
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 55bc00cb-dff0-4e72-88f1-1ea831a90161
+		sourceLineageTag: m_valid_dt
+		summarizeBy: none
+		sourceColumn: m_valid_dt
+
+		annotation SummarizationSetBy = Automatic
+
+	column city_nm
+		dataType: string
+		sourceProviderType: varchar(50)
+		lineageTag: 52a1bd71-4f86-4dbc-9052-3f154b0e4e1d
+		sourceLineageTag: city_nm
+		dataCategory: City
+		summarizeBy: none
+		sourceColumn: city_nm
+
+		changedProperty = DataCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column county_nm
+		dataType: string
+		sourceProviderType: varchar(23)
+		lineageTag: 0dd4e468-a6eb-4bc6-b036-b78cb9e787dd
+		sourceLineageTag: county_nm
+		dataCategory: StateOrProvince
+		summarizeBy: none
+		sourceColumn: county_nm
+
+		changedProperty = DataCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column country_cd
+		dataType: string
+		sourceProviderType: varchar(2)
+		lineageTag: 8db25546-980a-423e-b8c8-d988da7dc4bd
+		sourceLineageTag: country_cd
+		dataCategory: Country
+		summarizeBy: none
+		sourceColumn: country_cd
+
+		changedProperty = DataCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column moonrise_t_avg_3d
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: time
+		lineageTag: b18ec887-0b77-4ee6-aabf-4da739c9885b
+		sourceLineageTag: moonrise_t_avg_3d
+		summarizeBy: none
+		sourceColumn: moonrise_t_avg_3d
+
+		annotation SummarizationSetBy = Automatic
+
+	column moonrise_t_avg_1w
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: time
+		lineageTag: f1faf4a5-8e7a-4094-8e0d-efa4f9ee951d
+		sourceLineageTag: moonrise_t_avg_1w
+		summarizeBy: none
+		sourceColumn: moonrise_t_avg_1w
+
+		annotation SummarizationSetBy = Automatic
+
+	column moonrise_t_avg_2w
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: time
+		lineageTag: ef7246ba-3d9e-4fff-bf6b-13650466e859
+		sourceLineageTag: moonrise_t_avg_2w
+		summarizeBy: none
+		sourceColumn: moonrise_t_avg_2w
+
+		annotation SummarizationSetBy = Automatic
+
+	column moonset_t_avg_3d
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: time
+		lineageTag: 224f88cb-de32-465e-b52d-701be15aff70
+		sourceLineageTag: moonset_t_avg_3d
+		summarizeBy: none
+		sourceColumn: moonset_t_avg_3d
+
+		annotation SummarizationSetBy = Automatic
+
+	column moonset_t_avg_1w
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: time
+		lineageTag: 083c302a-233c-40f2-b499-60e741fdef55
+		sourceLineageTag: moonset_t_avg_1w
+		summarizeBy: none
+		sourceColumn: moonset_t_avg_1w
+
+		annotation SummarizationSetBy = Automatic
+
+	column moonset_t_avg_2w
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: time
+		lineageTag: bae866c2-be29-4fe0-b02a-302c1abe8d5f
+		sourceLineageTag: moonset_t_avg_2w
+		summarizeBy: none
+		sourceColumn: moonset_t_avg_2w
+
+		annotation SummarizationSetBy = Automatic
+
+	column sunrise_t_avg_3d
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: time
+		lineageTag: cdb5090b-3580-454d-bbbf-25b3a0eaa4b4
+		sourceLineageTag: sunrise_t_avg_3d
+		summarizeBy: none
+		sourceColumn: sunrise_t_avg_3d
+
+		annotation SummarizationSetBy = Automatic
+
+	column sunrise_t_avg_1w
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: time
+		lineageTag: dd61d4f3-3ee8-4b0e-8e4f-3c9460da6696
+		sourceLineageTag: sunrise_t_avg_1w
+		summarizeBy: none
+		sourceColumn: sunrise_t_avg_1w
+
+		annotation SummarizationSetBy = Automatic
+
+	column sunrise_t_avg_2w
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: time
+		lineageTag: b14be50a-6680-4e17-9e0f-a24e70f2ae30
+		sourceLineageTag: sunrise_t_avg_2w
+		summarizeBy: none
+		sourceColumn: sunrise_t_avg_2w
+
+		annotation SummarizationSetBy = Automatic
+
+	column sunset_t_avg_3d
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: time
+		lineageTag: 65a41633-ce4b-4869-ac94-5219764aca5a
+		sourceLineageTag: sunset_t_avg_3d
+		summarizeBy: none
+		sourceColumn: sunset_t_avg_3d
+
+		annotation SummarizationSetBy = Automatic
+
+	column sunset_t_avg_1w
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: time
+		lineageTag: a97fe6aa-636e-439e-a252-68535efbf057
+		sourceLineageTag: sunset_t_avg_1w
+		summarizeBy: none
+		sourceColumn: sunset_t_avg_1w
+
+		annotation SummarizationSetBy = Automatic
+
+	column sunset_t_avg_2w
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: time
+		lineageTag: d3430947-0c87-4ec8-b124-366143d708bd
+		sourceLineageTag: sunset_t_avg_2w
+		summarizeBy: none
+		sourceColumn: sunset_t_avg_2w
+
+		annotation SummarizationSetBy = Automatic
+
+	column city_fk
+		dataType: string
+		sourceProviderType: varchar(256)
+		lineageTag: 08a855f9-8577-40c4-b8d3-84f22544656b
+		sourceLineageTag: city_fk
+		summarizeBy: none
+		sourceColumn: city_fk
+
+		annotation SummarizationSetBy = Automatic
+
+	partition g_fct_astro_avg = entity
+		mode: directLake
+		source
+			entityName: g_fct_astro_avg
+			schemaName: dbt_gold
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

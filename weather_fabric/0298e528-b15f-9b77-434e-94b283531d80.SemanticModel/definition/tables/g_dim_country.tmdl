@@ -1,0 +1,74 @@
+table g_dim_country
+	lineageTag: a26c70e4-a3b1-4485-a0a4-5a1f1b4a2682
+	sourceLineageTag: [dbt_gold].[g_dim_country]
+
+	column country_cd
+		dataType: string
+		sourceProviderType: varchar(2)
+		lineageTag: 1f219b3e-5576-4c0e-8f71-a8a5f1e2f5d3
+		sourceLineageTag: country_cd
+		summarizeBy: none
+		sourceColumn: country_cd
+
+		annotation SummarizationSetBy = Automatic
+
+	column country_nm
+		dataType: string
+		sourceProviderType: varchar(50)
+		lineageTag: d57f3ef7-090e-484c-a7c3-be5417311818
+		sourceLineageTag: country_nm
+		summarizeBy: none
+		sourceColumn: country_nm
+
+		annotation SummarizationSetBy = Automatic
+
+	column continent_nm
+		dataType: string
+		sourceProviderType: varchar(50)
+		lineageTag: 3f93dc42-09d5-499c-b05a-63d5d392286b
+		sourceLineageTag: continent_nm
+		summarizeBy: none
+		sourceColumn: continent_nm
+
+		annotation SummarizationSetBy = Automatic
+
+	column eu_member_flg
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: 9e1eed4b-0327-4acb-91e5-34c5233fb1b3
+		sourceLineageTag: eu_member_flg
+		summarizeBy: none
+		sourceColumn: eu_member_flg
+
+		annotation SummarizationSetBy = Automatic
+
+	column currency_cd
+		dataType: string
+		sourceProviderType: varchar(3)
+		lineageTag: 9039acbb-f9ac-4ded-b425-c0ec52febc1c
+		sourceLineageTag: currency_cd
+		summarizeBy: none
+		sourceColumn: currency_cd
+
+		annotation SummarizationSetBy = Automatic
+
+	column iso_alpha_3_cd
+		dataType: string
+		sourceProviderType: varchar(3)
+		lineageTag: f1baf35c-c268-4859-8173-28b2ea97bb35
+		sourceLineageTag: iso_alpha_3_cd
+		summarizeBy: none
+		sourceColumn: iso_alpha_3_cd
+
+		annotation SummarizationSetBy = Automatic
+
+	partition g_dim_country = entity
+		mode: directLake
+		source
+			entityName: g_dim_country
+			schemaName: dbt_gold
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

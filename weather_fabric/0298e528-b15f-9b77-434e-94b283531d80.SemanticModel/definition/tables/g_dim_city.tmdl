@@ -1,0 +1,169 @@
+table g_dim_city
+	lineageTag: 9f664a06-73c6-4fad-ad51-32cd64c3c389
+	sourceLineageTag: [dbt_gold].[g_dim_city]
+
+	column city_pk
+		dataType: string
+		sourceProviderType: varchar(256)
+		lineageTag: 714f7008-ea35-4f40-ba2f-4e4f86acd8d1
+		sourceLineageTag: city_pk
+		summarizeBy: none
+		sourceColumn: city_pk
+
+		annotation SummarizationSetBy = Automatic
+
+	column country_cd
+		dataType: string
+		sourceProviderType: varchar(16)
+		lineageTag: 9804beb0-18a6-4618-bb1a-0ebbb4ef0c1e
+		sourceLineageTag: country_cd
+		summarizeBy: none
+		sourceColumn: country_cd
+
+		annotation SummarizationSetBy = Automatic
+
+	column county_nm
+		dataType: string
+		sourceProviderType: varchar(23)
+		lineageTag: 6951e9b6-12de-4ded-85c7-4f5ae1f2ad14
+		sourceLineageTag: county_nm
+		summarizeBy: none
+		sourceColumn: county_nm
+
+		annotation SummarizationSetBy = Automatic
+
+	column city_nm
+		dataType: string
+		sourceProviderType: varchar(23)
+		lineageTag: 4b62772f-1487-448d-9e94-ba8d5da18c1a
+		sourceLineageTag: city_nm
+		summarizeBy: none
+		sourceColumn: city_nm
+
+		annotation SummarizationSetBy = Automatic
+
+	column ksh_cd
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: cd4833ba-ddcc-4d42-9cdc-4b047ab71cd7
+		sourceLineageTag: ksh_cd
+		summarizeBy: sum
+		sourceColumn: ksh_cd
+
+		annotation SummarizationSetBy = Automatic
+
+	column city_type_cd
+		dataType: string
+		sourceProviderType: varchar(35)
+		lineageTag: 98807d2d-ac25-4445-9431-1e74d46c1936
+		sourceLineageTag: city_type_cd
+		summarizeBy: none
+		sourceColumn: city_type_cd
+
+		annotation SummarizationSetBy = Automatic
+
+	column district_cd
+		dataType: string
+		sourceProviderType: varchar(16)
+		lineageTag: 7409c7b5-ea20-44ca-a4e1-834d40202fd9
+		sourceLineageTag: district_cd
+		summarizeBy: none
+		sourceColumn: district_cd
+
+		annotation SummarizationSetBy = Automatic
+
+	column district_nm
+		dataType: string
+		sourceProviderType: varchar(21)
+		lineageTag: 14dadafb-ac6f-498a-9964-bb881fa2234e
+		sourceLineageTag: district_nm
+		summarizeBy: none
+		sourceColumn: district_nm
+
+		annotation SummarizationSetBy = Automatic
+
+	column district_seat_nm
+		dataType: string
+		sourceProviderType: varchar(20)
+		lineageTag: 907de558-b6ea-4190-95ed-35dc02e5cced
+		sourceLineageTag: district_seat_nm
+		summarizeBy: none
+		sourceColumn: district_seat_nm
+
+		annotation SummarizationSetBy = Automatic
+
+	column area_no
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 21d84918-85c4-4391-888e-5021bbd6e46d
+		sourceLineageTag: area_no
+		summarizeBy: sum
+		sourceColumn: area_no
+
+		annotation SummarizationSetBy = Automatic
+
+	column population_no
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: b4215201-be05-4a35-9c77-2ce4c8ddab5f
+		sourceLineageTag: population_no
+		summarizeBy: sum
+		sourceColumn: population_no
+
+		annotation SummarizationSetBy = Automatic
+
+	column apartments_no
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: bb6f2b98-8a9b-41fd-b458-e0ca188eb662
+		sourceLineageTag: apartments_no
+		summarizeBy: sum
+		sourceColumn: apartments_no
+
+		annotation SummarizationSetBy = Automatic
+
+	column latitude_no
+		dataType: double
+		sourceProviderType: float
+		lineageTag: de445995-2767-47fd-a637-70b9d1abe2a8
+		sourceLineageTag: latitude_no
+		dataCategory: Latitude
+		summarizeBy: sum
+		sourceColumn: latitude_no
+
+		changedProperty = DataCategory
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column longitude_no
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 76bdb7aa-6e45-4385-9b15-c90ea6dd3e78
+		sourceLineageTag: longitude_no
+		dataCategory: Longitude
+		summarizeBy: sum
+		sourceColumn: longitude_no
+
+		changedProperty = FormatString
+
+		changedProperty = DataCategory
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition g_dim_city = entity
+		mode: directLake
+		source
+			entityName: g_dim_city
+			schemaName: dbt_gold
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

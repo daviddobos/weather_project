@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "VariableLibrary",
+    "displayName": "vl_weather",
+    "description": ""
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "037ab53e-45db-9d7d-4ada-c28dd572939c"
+  }
+}

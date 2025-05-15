@@ -1,0 +1,560 @@
+table g_fct_weather
+	lineageTag: e8afc586-558d-495a-a6b4-b468911d8677
+	sourceLineageTag: [dbt_gold].[g_fct_weather]
+
+	column m_valid_dt
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: a9b1f2e2-c0c6-413e-84fb-d3caa61ad9cf
+		sourceLineageTag: m_valid_dt
+		summarizeBy: none
+		sourceColumn: m_valid_dt
+
+		annotation SummarizationSetBy = Automatic
+
+	column weather_pk
+		dataType: string
+		sourceProviderType: varchar(256)
+		lineageTag: ece0e867-663f-43cc-961d-31e5ba255120
+		sourceLineageTag: weather_pk
+		summarizeBy: none
+		sourceColumn: weather_pk
+
+		annotation SummarizationSetBy = Automatic
+
+	column forecast_dt
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 93be3043-9f15-4703-bd90-e709b059ff09
+		sourceLineageTag: forecast_dt
+		summarizeBy: none
+		sourceColumn: forecast_dt
+
+		annotation SummarizationSetBy = Automatic
+
+	column city_nm
+		dataType: string
+		sourceProviderType: varchar(30)
+		lineageTag: 92b06237-6b3d-4e27-97ef-84deacce6b29
+		sourceLineageTag: city_nm
+		dataCategory: City
+		summarizeBy: none
+		sourceColumn: city_nm
+
+		changedProperty = DataCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column city_fk
+		dataType: string
+		sourceProviderType: varchar(256)
+		lineageTag: 332d7eb8-8bef-43c8-ada8-d65de7cc3757
+		sourceLineageTag: city_fk
+		summarizeBy: none
+		sourceColumn: city_fk
+
+		annotation SummarizationSetBy = Automatic
+
+	column country_cd
+		dataType: string
+		sourceProviderType: varchar(2)
+		lineageTag: 3276e9cc-30a9-4603-8f78-deb2935794f9
+		sourceLineageTag: country_cd
+		dataCategory: Country
+		summarizeBy: none
+		sourceColumn: country_cd
+
+		changedProperty = DataCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column country_nm
+		dataType: string
+		sourceProviderType: varchar(30)
+		lineageTag: ad338223-0e94-4963-a42d-b2fa6ad2e318
+		sourceLineageTag: country_nm
+		dataCategory: Country
+		summarizeBy: none
+		sourceColumn: country_nm
+
+		changedProperty = DataCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column county_nm
+		dataType: string
+		sourceProviderType: varchar(23)
+		lineageTag: b47d08bf-6d18-45a2-8a6f-1a2ad251074b
+		sourceLineageTag: county_nm
+		dataCategory: StateOrProvince
+		summarizeBy: none
+		sourceColumn: county_nm
+
+		changedProperty = DataCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column cloud_coverage_pct
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 06377bbc-7c6a-4d92-ab03-270354b6577c
+		sourceLineageTag: cloud_coverage_pct
+		summarizeBy: sum
+		sourceColumn: cloud_coverage_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column cloud_coverage_cd
+		dataType: string
+		sourceProviderType: varchar(19)
+		lineageTag: a29b47f3-66f7-4cf0-8b58-9b603976f3a5
+		sourceLineageTag: cloud_coverage_cd
+		summarizeBy: none
+		sourceColumn: cloud_coverage_cd
+
+		annotation SummarizationSetBy = Automatic
+
+	column gust_kph_no
+		dataType: double
+		formatString: #,0.00
+		sourceProviderType: decimal(14, 4)
+		lineageTag: 4ff264f6-cedb-4edc-94c5-3486859ebf38
+		sourceLineageTag: gust_kph_no
+		summarizeBy: sum
+		sourceColumn: gust_kph_no
+
+		changedProperty = FormatString
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column gust_miph_no
+		dataType: double
+		sourceProviderType: numeric(21, 10)
+		lineageTag: 9f924145-5d29-4906-914f-c3aefb9f8006
+		sourceLineageTag: gust_miph_no
+		summarizeBy: sum
+		sourceColumn: gust_miph_no
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column heatindex_c_no
+		dataType: double
+		formatString: #,0.00
+		sourceProviderType: decimal(14, 4)
+		lineageTag: 05e98ecb-fe36-4a3f-a120-42a420cce93e
+		sourceLineageTag: heatindex_c_no
+		summarizeBy: sum
+		sourceColumn: heatindex_c_no
+
+		changedProperty = DataType
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+	column heatindex_f_no
+		dataType: double
+		sourceProviderType: numeric(18, 5)
+		lineageTag: 3f942233-153a-4490-91e5-8eb80a0e3f65
+		sourceLineageTag: heatindex_f_no
+		summarizeBy: sum
+		sourceColumn: heatindex_f_no
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column heatindex_k_no
+		dataType: decimal
+		sourceProviderType: numeric(15, 4)
+		lineageTag: 20cce074-e393-409c-9928-84f47fd94f90
+		sourceLineageTag: heatindex_k_no
+		summarizeBy: sum
+		sourceColumn: heatindex_k_no
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column humidity_pct
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 40945853-01fb-43a7-a7f2-eab759f1085d
+		sourceLineageTag: humidity_pct
+		summarizeBy: sum
+		sourceColumn: humidity_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column humidity_cd
+		dataType: string
+		sourceProviderType: varchar(9)
+		lineageTag: 61f088a3-4a08-4690-b716-db05f307bc27
+		sourceLineageTag: humidity_cd
+		summarizeBy: none
+		sourceColumn: humidity_cd
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_day_flg
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: f8874172-5034-4487-ad4c-38b18c336d05
+		sourceLineageTag: is_day_flg
+		summarizeBy: none
+		sourceColumn: is_day_flg
+
+		annotation SummarizationSetBy = Automatic
+
+	column precip_mm_no
+		dataType: decimal
+		formatString: #,0
+		sourceProviderType: decimal(14, 4)
+		lineageTag: 621e20e8-b78f-4043-b69b-9950565f8243
+		sourceLineageTag: precip_mm_no
+		summarizeBy: sum
+		sourceColumn: precip_mm_no
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column pressure_mb_no
+		dataType: decimal
+		formatString: #,0.00
+		sourceProviderType: decimal(14, 4)
+		lineageTag: 65c8718d-9e25-48d7-adab-2b873cbc08cd
+		sourceLineageTag: pressure_mb_no
+		summarizeBy: sum
+		sourceColumn: pressure_mb_no
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+	column temp_c_no
+		dataType: decimal
+		formatString: #,0.00
+		sourceProviderType: decimal(14, 4)
+		lineageTag: 463ed26f-d591-49cb-bc05-cff9871b9c6f
+		sourceLineageTag: temp_c_no
+		summarizeBy: sum
+		sourceColumn: temp_c_no
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+	column temp_f_no
+		dataType: double
+		sourceProviderType: numeric(18, 5)
+		lineageTag: a4468c8e-5eee-4832-894b-5805eb4ee882
+		sourceLineageTag: temp_f_no
+		summarizeBy: sum
+		sourceColumn: temp_f_no
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column temp_k_no
+		dataType: decimal
+		sourceProviderType: numeric(15, 4)
+		lineageTag: c63907d5-d302-4749-b36b-61c5bc59eacd
+		sourceLineageTag: temp_k_no
+		summarizeBy: sum
+		sourceColumn: temp_k_no
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column temp_feelslike_no
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		sourceProviderType: decimal(14, 4)
+		lineageTag: 34b70e6c-f504-4091-87c4-def77df0bade
+		sourceLineageTag: temp_feelslike_no
+		summarizeBy: sum
+		sourceColumn: temp_feelslike_no
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column date_dtt
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: cd1e5a16-9b7b-433c-b5b0-8c9649d88be1
+		sourceLineageTag: date_dtt
+		summarizeBy: none
+		sourceColumn: date_dtt
+
+		annotation SummarizationSetBy = Automatic
+
+	column time_epoch
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: b07c10af-8bab-4e41-bf80-2cf8322f8209
+		sourceLineageTag: time_epoch
+		summarizeBy: sum
+		sourceColumn: time_epoch
+
+		annotation SummarizationSetBy = Automatic
+
+	column rain_chance_pct
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 88020ae7-d43e-4146-82e8-652fe50cd079
+		sourceLineageTag: rain_chance_pct
+		summarizeBy: sum
+		sourceColumn: rain_chance_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column rain_chance_cd
+		dataType: string
+		sourceProviderType: varchar(9)
+		lineageTag: fc3cf570-0fa6-4b08-b482-225d973452e2
+		sourceLineageTag: rain_chance_cd
+		summarizeBy: none
+		sourceColumn: rain_chance_cd
+
+		annotation SummarizationSetBy = Automatic
+
+	column snow_chance_pct
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 84a7fe86-988f-4d78-b1e0-79a8a464ccaf
+		sourceLineageTag: snow_chance_pct
+		summarizeBy: sum
+		sourceColumn: snow_chance_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column snow_chance_cd
+		dataType: string
+		sourceProviderType: varchar(9)
+		lineageTag: 564f505d-6800-4a99-beac-8a0e7229bc0b
+		sourceLineageTag: snow_chance_cd
+		summarizeBy: none
+		sourceColumn: snow_chance_cd
+
+		annotation SummarizationSetBy = Automatic
+
+	column uv_no
+		dataType: decimal
+		formatString: #,0.00
+		sourceProviderType: decimal(14, 4)
+		lineageTag: 8c6b60cf-080a-48df-9f3a-486ad6f80f65
+		sourceLineageTag: uv_no
+		summarizeBy: sum
+		sourceColumn: uv_no
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+	column vis_km_no
+		dataType: decimal
+		formatString: #,0.00
+		sourceProviderType: decimal(14, 4)
+		lineageTag: 668a81bf-eb73-4936-be1d-41b191ed9de2
+		sourceLineageTag: vis_km_no
+		summarizeBy: sum
+		sourceColumn: vis_km_no
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+	column vis_mi_no
+		dataType: double
+		sourceProviderType: numeric(21, 10)
+		lineageTag: 6122fdb4-6484-4f84-aad0-bbe3e6dbda01
+		sourceLineageTag: vis_mi_no
+		summarizeBy: sum
+		sourceColumn: vis_mi_no
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column wind_dir_cd
+		dataType: string
+		sourceProviderType: varchar(8)
+		lineageTag: 585bea05-7a82-4bd8-8615-ea6a31996290
+		sourceLineageTag: wind_dir_cd
+		summarizeBy: none
+		sourceColumn: wind_dir_cd
+
+		annotation SummarizationSetBy = Automatic
+
+	column wind_kph_no
+		dataType: decimal
+		formatString: #,0.00
+		sourceProviderType: decimal(14, 4)
+		lineageTag: d90733f5-d3b2-470c-b0f0-143e3b3f2f54
+		sourceLineageTag: wind_kph_no
+		summarizeBy: sum
+		sourceColumn: wind_kph_no
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+	column wind_miph_no
+		dataType: double
+		sourceProviderType: numeric(21, 10)
+		lineageTag: 74fa0cab-88dd-4cfe-9231-5f3b9ae9177f
+		sourceLineageTag: wind_miph_no
+		summarizeBy: sum
+		sourceColumn: wind_miph_no
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column windchill_c_no
+		dataType: decimal
+		formatString: #,0.00
+		sourceProviderType: decimal(14, 4)
+		lineageTag: b8d3d0e0-7506-4369-a3d2-b3fd7e1321a1
+		sourceLineageTag: windchill_c_no
+		summarizeBy: sum
+		sourceColumn: windchill_c_no
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+	column windchill_f_no
+		dataType: double
+		sourceProviderType: numeric(18, 5)
+		lineageTag: 7f00be74-6dff-4047-b59a-a8844aec85fe
+		sourceLineageTag: windchill_f_no
+		summarizeBy: sum
+		sourceColumn: windchill_f_no
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column windchill_k_no
+		dataType: decimal
+		sourceProviderType: numeric(15, 4)
+		lineageTag: 29c00b7c-fcc9-49ac-bf4c-a0fa844bb14a
+		sourceLineageTag: windchill_k_no
+		summarizeBy: sum
+		sourceColumn: windchill_k_no
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column m_extracted_at_dttm
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: a26968d5-408b-4926-b470-7d77cbac9d70
+		sourceLineageTag: m_extracted_at_dttm
+		summarizeBy: none
+		sourceColumn: m_extracted_at_dttm
+
+		annotation SummarizationSetBy = Automatic
+
+	column m_updated_at_dttm
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 506e09db-30e3-429d-88c8-9afb9ffd3764
+		sourceLineageTag: m_updated_at_dttm
+		summarizeBy: none
+		sourceColumn: m_updated_at_dttm
+
+		annotation SummarizationSetBy = Automatic
+
+	column precip_mm_cd
+		dataType: string
+		sourceProviderType: varchar(15)
+		lineageTag: 1809f989-8a0b-4428-a1d2-d3332bdd64f9
+		sourceLineageTag: precip_mm_cd
+		summarizeBy: none
+		sourceColumn: precip_mm_cd
+
+		annotation SummarizationSetBy = Automatic
+
+	column temp_c_cd
+		dataType: string
+		sourceProviderType: varchar(9)
+		lineageTag: 9e438961-c4fb-4069-b4fe-d1d131cdabc1
+		sourceLineageTag: temp_c_cd
+		summarizeBy: none
+		sourceColumn: temp_c_cd
+
+		annotation SummarizationSetBy = Automatic
+
+	column temp_f_cd
+		dataType: string
+		sourceProviderType: varchar(9)
+		lineageTag: cdb0c73e-8e6d-4244-91a9-d765af4b2666
+		sourceLineageTag: temp_f_cd
+		summarizeBy: none
+		sourceColumn: temp_f_cd
+
+		annotation SummarizationSetBy = Automatic
+
+	column temp_k_cd
+		dataType: string
+		sourceProviderType: varchar(9)
+		lineageTag: c611a5c4-c98a-4ce4-967f-51d39c7d4ea2
+		sourceLineageTag: temp_k_cd
+		summarizeBy: none
+		sourceColumn: temp_k_cd
+
+		annotation SummarizationSetBy = Automatic
+
+	column wind_kph_cd
+		dataType: string
+		sourceProviderType: varchar(15)
+		lineageTag: 60b18e48-b688-451b-af5a-9f291137fc2c
+		sourceLineageTag: wind_kph_cd
+		summarizeBy: none
+		sourceColumn: wind_kph_cd
+
+		annotation SummarizationSetBy = Automatic
+
+	column wind_miph_cd
+		dataType: string
+		sourceProviderType: varchar(15)
+		lineageTag: 358c1ccb-6c46-4346-840a-25e045208224
+		sourceLineageTag: wind_miph_cd
+		summarizeBy: none
+		sourceColumn: wind_miph_cd
+
+		annotation SummarizationSetBy = Automatic
+
+	partition g_fct_weather = entity
+		mode: directLake
+		source
+			entityName: g_fct_weather
+			schemaName: dbt_gold
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

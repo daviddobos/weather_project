@@ -10,5 +10,7 @@ CREATE TABLE [dbt].[city] (
 	[area_no] int NULL, 
 	[population_no] int NULL, 
 	[apartments_no] int NULL, 
-	[country_cd] varchar(16) NULL
+	[country_cd] varchar(16) NULL, 
+	[longitude_no] float NULL, 
+	[latitude_no] float NULL
 );
