@@ -1,0 +1,14 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/variableLibrary/definition/valueSet/1.0.0/schema.json",
+  "name": "tst",
+  "variableOverrides": [
+    {
+      "name": "ws_id",
+      "value": "22bc3e72-5f6c-4af9-b108-777a45da9dac"
+    },
+    {
+      "name": "lh_id",
+      "value": "477659de-5e6b-4081-b478-fdd01ead19f3"
+    }
+  ]
+}

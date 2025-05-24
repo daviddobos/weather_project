@@ -1,0 +1,713 @@
+table g_fct_weather_avg
+	lineageTag: 772920de-56a2-459d-9536-d113402f8b2a
+	sourceLineageTag: efc539a8-03fb-46e3-9f60-8baf46c80da3
+
+	column m_valid_dt
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 3b4fd14f-487d-42c0-9bcc-f0d8c47e3658
+		sourceLineageTag: 7f2d75e9-3c0a-4db3-bc77-ddea29c89a94
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: m_valid_dt
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column city_nm
+		dataType: string
+		lineageTag: eaedcb7a-5d7b-4898-8817-c358d9690a72
+		sourceLineageTag: 43240e48-4f02-415d-9a6f-3da7543d3a96
+		dataCategory: City
+		summarizeBy: none
+		sourceColumn: city_nm
+
+		annotation SummarizationSetBy = User
+
+	column county_nm
+		dataType: string
+		lineageTag: f7278ccb-ac52-4f71-bd20-1d6e27fe8d18
+		sourceLineageTag: 29249976-ac7e-49cb-a200-91526c551380
+		dataCategory: StateOrProvince
+		summarizeBy: none
+		sourceColumn: county_nm
+
+		annotation SummarizationSetBy = User
+
+	column country_cd
+		dataType: string
+		lineageTag: c1edd354-6fa5-47e4-87b5-5984c8238eba
+		sourceLineageTag: 48a0c153-abae-4afa-8668-3f147c3393b5
+		dataCategory: Country
+		summarizeBy: none
+		sourceColumn: country_cd
+
+		annotation SummarizationSetBy = User
+
+	column temperature_c_avg_3d
+		dataType: double
+		lineageTag: 6accd585-1703-4cfa-8ec3-43953ada08ea
+		sourceLineageTag: dc6e1daf-7be2-4106-acfc-99b379cee713
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: temperature_c_avg_3d
+
+		annotation SummarizationSetBy = User
+
+	column temperature_f_avg_3d
+		dataType: double
+		lineageTag: ec453128-d07f-4a87-9de0-f7f828ea1248
+		sourceLineageTag: 815f32c5-b905-40e5-91ff-f8342b049482
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: temperature_f_avg_3d
+
+		annotation SummarizationSetBy = User
+
+	column temperature_k_avg_3d
+		dataType: double
+		lineageTag: 8f3bf574-7544-4ef0-b546-4bd71c4a6113
+		sourceLineageTag: 2f0d59b6-59b8-4ed7-ab46-d813218ecbe6
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: temperature_k_avg_3d
+
+		annotation SummarizationSetBy = User
+
+	column temperature_c_avg_1w
+		dataType: double
+		lineageTag: 5235ef72-197b-41d7-b3e3-f9d2e1beb43e
+		sourceLineageTag: 13233ef8-8f03-4c76-9ffe-e566d76cc6b5
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: temperature_c_avg_1w
+
+		annotation SummarizationSetBy = User
+
+	column temperature_f_avg_1w
+		dataType: double
+		lineageTag: 4d275d03-7f99-4ca3-9cbb-c15775c45cb6
+		sourceLineageTag: ab3b5d31-f607-437e-a10b-f4f0db74ee2d
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: temperature_f_avg_1w
+
+		annotation SummarizationSetBy = User
+
+	column temperature_k_avg_1w
+		dataType: double
+		lineageTag: fcafc8bd-a217-4657-9bf1-596c56da5459
+		sourceLineageTag: fe34ecbb-7837-4bda-b06e-14ce4f736a20
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: temperature_k_avg_1w
+
+		annotation SummarizationSetBy = User
+
+	column temperature_c_avg_2w
+		dataType: double
+		lineageTag: b6530c23-8d37-4eab-8ad6-276279a3be59
+		sourceLineageTag: 0483620d-a818-46ad-b063-f1c69da92b49
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: temperature_c_avg_2w
+
+		annotation SummarizationSetBy = User
+
+	column temperature_f_avg_2w
+		dataType: double
+		lineageTag: f96f8fe9-97b4-4be6-aeb5-2566548287d7
+		sourceLineageTag: 12b6cca8-f2cd-4317-96f4-471636714dc8
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: temperature_f_avg_2w
+
+		annotation SummarizationSetBy = User
+
+	column temperature_k_avg_2w
+		dataType: double
+		lineageTag: e41e1516-e4ec-48a6-b1d9-18c37fcf7fae
+		sourceLineageTag: 15af6cbf-9b11-4ddc-bcdc-acedbf0a4306
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: temperature_k_avg_2w
+
+		annotation SummarizationSetBy = User
+
+	column cloud_coverage_avg_3d
+		dataType: int64
+		formatString: 0
+		lineageTag: 30cc8cb5-2b97-4364-9f1b-3580f5ef900d
+		sourceLineageTag: eb0b2292-ef18-430b-8e46-cc4af318d20a
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: cloud_coverage_avg_3d
+
+		annotation SummarizationSetBy = User
+
+	column cloud_coverage_avg_1w
+		dataType: int64
+		formatString: 0
+		lineageTag: fb65b741-2f6c-40eb-a57d-c9f5d768a046
+		sourceLineageTag: 3889ab5b-efc7-470a-9d0e-de09a330b963
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: cloud_coverage_avg_1w
+
+		annotation SummarizationSetBy = User
+
+	column cloud_coverage_avg_2w
+		dataType: int64
+		formatString: 0
+		lineageTag: 28157943-2245-49ae-a0c9-fbbdd42c999e
+		sourceLineageTag: 59d5e56f-974a-4494-a0df-d306605a125f
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: cloud_coverage_avg_2w
+
+		annotation SummarizationSetBy = User
+
+	column precipitation_mm_avg_3d
+		dataType: double
+		lineageTag: 35e9f3e0-7284-4021-9608-598f2989bbea
+		sourceLineageTag: 8adfb6fc-5672-4e96-834d-24664a0f4c2d
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: precipitation_mm_avg_3d
+
+		annotation SummarizationSetBy = User
+
+	column precipitation_mm_avg_1w
+		dataType: double
+		lineageTag: ca915ed4-5164-42d3-824e-f1c75c9965e9
+		sourceLineageTag: bb90e65a-6ba1-4b5f-87ff-58680bc47686
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: precipitation_mm_avg_1w
+
+		annotation SummarizationSetBy = User
+
+	column precipitation_mm_avg_2w
+		dataType: double
+		lineageTag: ef87843f-b604-4893-998f-8205a3f4afea
+		sourceLineageTag: b43bc371-1c9c-480a-95af-e4f1f2755ce7
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: precipitation_mm_avg_2w
+
+		annotation SummarizationSetBy = User
+
+	column humidity_avg_3d
+		dataType: int64
+		formatString: 0
+		lineageTag: 770c9edc-8478-420a-9189-57daa1ab6c48
+		sourceLineageTag: 19cd6750-ccc7-4dde-8532-39b12a6d3d48
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: humidity_avg_3d
+
+		annotation SummarizationSetBy = User
+
+	column humidity_avg_1w
+		dataType: int64
+		formatString: 0
+		lineageTag: 71041116-211a-41c7-8ebe-c2d0bc07d214
+		sourceLineageTag: bc6c0eab-a416-4e54-953e-7990eee7a1e6
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: humidity_avg_1w
+
+		annotation SummarizationSetBy = User
+
+	column humidity_avg_2w
+		dataType: int64
+		formatString: 0
+		lineageTag: 9d3315c1-6e8e-4537-8978-2dcc34041ccc
+		sourceLineageTag: 5b07b614-8e36-4678-9bb3-46ba88ad8766
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: humidity_avg_2w
+
+		annotation SummarizationSetBy = User
+
+	column gust_kph_avg_3d
+		dataType: double
+		lineageTag: c5fc8270-d901-4e73-a482-c579f41f25f6
+		sourceLineageTag: 33129954-3a5d-47c7-8787-a106082b44c9
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: gust_kph_avg_3d
+
+		annotation SummarizationSetBy = User
+
+	column gust_miph_avg_3d
+		dataType: double
+		lineageTag: a6803b16-8537-490c-ac4a-1fa4ab7b1dbc
+		sourceLineageTag: 94e011be-6d6c-48b7-806f-272fae3c27a9
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: gust_miph_avg_3d
+
+		annotation SummarizationSetBy = User
+
+	column gust_kph_avg_1w
+		dataType: double
+		lineageTag: 26fb5087-f41d-4599-8f73-7232fd263dd8
+		sourceLineageTag: 5d48c7d8-8ab4-4c84-bb5b-48e06be68950
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: gust_kph_avg_1w
+
+		annotation SummarizationSetBy = User
+
+	column gust_miph_avg_1w
+		dataType: double
+		lineageTag: 46c25061-a4b9-4dad-a9fb-39f8e653fcf9
+		sourceLineageTag: 896af5c2-2e3e-43cd-bf46-637844cc0d83
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: gust_miph_avg_1w
+
+		annotation SummarizationSetBy = User
+
+	column gust_kph_avg_2w
+		dataType: double
+		lineageTag: 3e2f33fc-86fa-4f38-847c-7ac45c089af5
+		sourceLineageTag: a5a655f6-8736-4453-8cfc-db0504d15d29
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: gust_kph_avg_2w
+
+		annotation SummarizationSetBy = User
+
+	column gust_miph_avg_2w
+		dataType: double
+		lineageTag: 80c20a2e-6259-4089-b184-7a956a0a78c3
+		sourceLineageTag: b9a81940-63b6-453b-8038-35bd8a008248
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: gust_miph_avg_2w
+
+		annotation SummarizationSetBy = User
+
+	column heatindex_c_no_avg_3d
+		dataType: double
+		lineageTag: 4f289ff8-2d73-46ff-8cf0-2d46bd0e4649
+		sourceLineageTag: d55d05d9-320d-4b90-91ee-84b23c99e55c
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: heatindex_c_no_avg_3d
+
+		annotation SummarizationSetBy = User
+
+	column heatindex_f_no_avg_3d
+		dataType: double
+		lineageTag: 06f60dad-a33b-463c-8cea-8074b577d3c8
+		sourceLineageTag: ed0ea3bf-ddab-44a0-8954-4e19bde9dce7
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: heatindex_f_no_avg_3d
+
+		annotation SummarizationSetBy = User
+
+	column heatindex_k_no_avg_3d
+		dataType: double
+		lineageTag: 67303d3c-e009-4e37-b506-73958a194739
+		sourceLineageTag: 1782b5bc-08ae-4cc3-b326-62c7b1fb05df
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: heatindex_k_no_avg_3d
+
+		annotation SummarizationSetBy = User
+
+	column heatindex_c_no_avg_1w
+		dataType: double
+		lineageTag: 5f066cee-4226-442f-b714-a6d900ffa5db
+		sourceLineageTag: 49b3c93d-bbbc-420e-9c7b-5665cad1a2d9
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: heatindex_c_no_avg_1w
+
+		annotation SummarizationSetBy = User
+
+	column heatindex_f_no_avg_1w
+		dataType: double
+		lineageTag: 496a3c0b-8bd7-4393-a788-153465cd7668
+		sourceLineageTag: 12ded905-bc73-4ee2-a72d-f40700fd21fa
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: heatindex_f_no_avg_1w
+
+		annotation SummarizationSetBy = User
+
+	column heatindex_k_no_avg_1w
+		dataType: double
+		lineageTag: 0bd6be26-d3b2-4ba6-b42e-f534d5c42e61
+		sourceLineageTag: 5d4e80ca-f7b3-42d8-983e-b54c45b34fe3
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: heatindex_k_no_avg_1w
+
+		annotation SummarizationSetBy = User
+
+	column heatindex_c_no_avg_2w
+		dataType: double
+		lineageTag: d4593ded-6c9e-4eb7-b1c1-4172b1977d76
+		sourceLineageTag: 6e1a3a49-5e39-4c33-97ce-420d8403479b
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: heatindex_c_no_avg_2w
+
+		annotation SummarizationSetBy = User
+
+	column heatindex_f_no_avg_2w
+		dataType: double
+		lineageTag: 9db17a5d-6071-4a55-8ee7-d5a4e7f9be30
+		sourceLineageTag: 72876d6b-94fd-45a5-bb90-f2cd82a1beca
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: heatindex_f_no_avg_2w
+
+		annotation SummarizationSetBy = User
+
+	column heatindex_k_no_avg_2w
+		dataType: double
+		lineageTag: c3c4cdcc-973c-40cd-b466-e688cd3bd18d
+		sourceLineageTag: fade1009-4f04-473b-9fdc-3103dcc81807
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: heatindex_k_no_avg_2w
+
+		annotation SummarizationSetBy = User
+
+	column wind_kph_no_avg_3d
+		dataType: double
+		lineageTag: b4d687f9-dd7c-4a23-aca9-7076334433a6
+		sourceLineageTag: 562225e5-a98a-43dd-82e7-f0c5e8adbe76
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: wind_kph_no_avg_3d
+
+		annotation SummarizationSetBy = User
+
+	column wind_miph_no_avg_3d
+		dataType: double
+		lineageTag: 3efe705f-19aa-4c9a-88a8-4ad071f781a0
+		sourceLineageTag: e486310d-3190-4da5-9dac-8782861ae882
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: wind_miph_no_avg_3d
+
+		annotation SummarizationSetBy = User
+
+	column wind_kph_no_avg_1w
+		dataType: double
+		lineageTag: 56d2c762-d187-4185-b10c-7b1e1c979338
+		sourceLineageTag: 66c1a30d-0e2f-41ee-a47c-d09eaf28974b
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: wind_kph_no_avg_1w
+
+		annotation SummarizationSetBy = User
+
+	column wind_miph_no_avg_1w
+		dataType: double
+		lineageTag: 1a90113c-2cd8-4cb4-bf66-d650c0a10e3c
+		sourceLineageTag: 722f4a24-dd31-4ee6-af73-a5c9df3222c5
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: wind_miph_no_avg_1w
+
+		annotation SummarizationSetBy = User
+
+	column wind_kph_no_avg_2w
+		dataType: double
+		lineageTag: c54cfb93-d8d0-44f6-8ef4-2d293740358b
+		sourceLineageTag: a82510c4-9741-4a17-99cf-da46b6314e72
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: wind_kph_no_avg_2w
+
+		annotation SummarizationSetBy = User
+
+	column wind_miph_no_avg_2w
+		dataType: double
+		lineageTag: fc8a98c2-e8bd-4610-8492-17a292f5faba
+		sourceLineageTag: 70db052e-5581-45f7-a6a1-3d98499b3af3
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: wind_miph_no_avg_2w
+
+		annotation SummarizationSetBy = User
+
+	column windchill_c_no_avg_3d
+		dataType: double
+		lineageTag: 640b03bc-714c-499d-a3e2-8c78ac125904
+		sourceLineageTag: d74d704a-ed61-4ddd-bbc8-52d99a3acc84
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: windchill_c_no_avg_3d
+
+		annotation SummarizationSetBy = User
+
+	column windchill_f_no_avg_3d
+		dataType: double
+		lineageTag: 3f28c0c7-6939-4884-863e-e65ce5f0dd62
+		sourceLineageTag: c9fdf45a-c867-4149-9b26-32943562a1ac
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: windchill_f_no_avg_3d
+
+		annotation SummarizationSetBy = User
+
+	column windchill_k_no_avg_3d
+		dataType: double
+		lineageTag: 03de8dbe-b626-4f87-936a-331f4e19f32e
+		sourceLineageTag: 576a3b92-0157-4d94-9b20-799509a916a5
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: windchill_k_no_avg_3d
+
+		annotation SummarizationSetBy = User
+
+	column windchill_c_no_avg_1w
+		dataType: double
+		lineageTag: c072a007-fd54-4fc3-ab59-5e6fc18daf1e
+		sourceLineageTag: eebc0e54-b1fb-4d5a-afaf-0c69f3723779
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: windchill_c_no_avg_1w
+
+		annotation SummarizationSetBy = User
+
+	column windchill_f_no_avg_1w
+		dataType: double
+		lineageTag: e67c281b-9c52-446c-9ab1-bcb37680f3ab
+		sourceLineageTag: 684e63eb-e267-4c6d-ba79-796b3f4930ae
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: windchill_f_no_avg_1w
+
+		annotation SummarizationSetBy = User
+
+	column windchill_k_no_avg_1w
+		dataType: double
+		lineageTag: 587a8083-a211-4873-b974-dad1aea77860
+		sourceLineageTag: f6f3ed88-dbb1-4f67-be06-f8661c933dda
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: windchill_k_no_avg_1w
+
+		annotation SummarizationSetBy = User
+
+	column windchill_c_no_avg_2w
+		dataType: double
+		lineageTag: e00fdc0c-02f8-40b7-833d-97e5340dcb16
+		sourceLineageTag: 260a22af-15ae-4066-a982-160d791d7981
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: windchill_c_no_avg_2w
+
+		annotation SummarizationSetBy = User
+
+	column windchill_f_no_avg_2w
+		dataType: double
+		lineageTag: ae1a839d-7bc1-4fdd-955a-3f73d10e1389
+		sourceLineageTag: 26b41e85-06eb-4f7a-8c4b-8ef483ba7dd4
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: windchill_f_no_avg_2w
+
+		annotation SummarizationSetBy = User
+
+	column windchill_k_no_avg_2w
+		dataType: double
+		lineageTag: fb9f588a-6c47-4a82-a2f0-087703a4cbbf
+		sourceLineageTag: 9e331422-d658-47cd-9f46-6fab7457bb48
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: windchill_k_no_avg_2w
+
+		annotation SummarizationSetBy = User
+
+	column city_fk
+		dataType: string
+		lineageTag: e5845183-b5ab-40a9-bb87-8feb20b0e370
+		sourceLineageTag: 7a2fba6b-ba67-4514-98a4-808d6a07d1ea
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: city_fk
+
+		annotation SummarizationSetBy = User
+
+	column temperature_c_avg_1d
+		dataType: double
+		lineageTag: c73157ff-ea55-4af3-affd-efa9cbce814c
+		sourceLineageTag: 3421dc30-0e29-469b-8754-4a4c6603e593
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: temperature_c_avg_1d
+
+		annotation SummarizationSetBy = User
+
+	column temperature_f_avg_1d
+		dataType: double
+		lineageTag: 9f0141c6-d869-4c34-927b-4a55d5995386
+		sourceLineageTag: 28de0e74-bd05-4b14-92c7-04804a855c66
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: temperature_f_avg_1d
+
+		annotation SummarizationSetBy = User
+
+	column temperature_k_avg_1d
+		dataType: double
+		lineageTag: ffc15035-65c3-4955-97d4-a338f28010d4
+		sourceLineageTag: c6103746-1c55-4e44-9dc8-e5f3ab49b1ac
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: temperature_k_avg_1d
+
+		annotation SummarizationSetBy = User
+
+	column cloud_coverage_avg_1d
+		dataType: int64
+		formatString: 0
+		lineageTag: 89d98d3c-6b7a-48f5-92b3-0fa0e68139b0
+		sourceLineageTag: 326042f6-22fe-4c55-adf6-658094271dd4
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: cloud_coverage_avg_1d
+
+		annotation SummarizationSetBy = User
+
+	column precipitation_mm_avg_1d
+		dataType: double
+		lineageTag: a06728a9-2415-4e0a-8818-f28bf595b5d5
+		sourceLineageTag: 03bfd9d5-d745-42d1-997b-9500366aa7cd
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: precipitation_mm_avg_1d
+
+		annotation SummarizationSetBy = User
+
+	column humidity_avg_1d
+		dataType: int64
+		formatString: 0
+		lineageTag: d030bfd8-58b4-4787-9cec-93956cf9825a
+		sourceLineageTag: 99d348a1-83ab-492d-985d-08600c6b1e1d
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: humidity_avg_1d
+
+		annotation SummarizationSetBy = User
+
+	column gust_kph_avg_1d
+		dataType: double
+		lineageTag: cb2489f7-fe70-4484-bb16-4482e556abba
+		sourceLineageTag: 6dc2905c-aa7d-404b-82fc-237e6bad60d4
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: gust_kph_avg_1d
+
+		annotation SummarizationSetBy = User
+
+	column gust_miph_avg_1d
+		dataType: double
+		lineageTag: 6ee3a2ff-670b-43d6-bacc-6bc9148cf770
+		sourceLineageTag: 8322ea68-ed4e-439f-a82f-b6184dbd92af
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: gust_miph_avg_1d
+
+		annotation SummarizationSetBy = User
+
+	column heatindex_c_no_avg_1d
+		dataType: double
+		lineageTag: f69040c2-9e27-4910-b0c2-ec2c6585864e
+		sourceLineageTag: 51443adc-4f36-4dcf-aaca-0c06e018f141
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: heatindex_c_no_avg_1d
+
+		annotation SummarizationSetBy = User
+
+	column heatindex_f_no_avg_1d
+		dataType: double
+		lineageTag: 26fac8ae-c985-4810-9caa-9455acd534a7
+		sourceLineageTag: 071834d5-4c14-4aa0-b5a9-9b5c21a0c7be
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: heatindex_f_no_avg_1d
+
+		annotation SummarizationSetBy = User
+
+	column heatindex_k_no_avg_1d
+		dataType: double
+		lineageTag: 65d8a333-75f2-4488-a855-357091486588
+		sourceLineageTag: bc587e75-926c-4000-af01-77dd1aad1f7c
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: heatindex_k_no_avg_1d
+
+		annotation SummarizationSetBy = User
+
+	column wind_kph_no_avg_1d
+		dataType: double
+		lineageTag: faacfcd8-4fff-4bb0-8fc2-8d36347aeae3
+		sourceLineageTag: 78bf9925-9371-450d-933e-5cb83d793dd5
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: wind_kph_no_avg_1d
+
+		annotation SummarizationSetBy = User
+
+	column wind_miph_no_avg_1d
+		dataType: double
+		lineageTag: 1d0b349e-a9ba-4d5b-8d66-cd79ae30c13d
+		sourceLineageTag: adf9e128-24f9-47d5-971f-7e203ebd5741
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: wind_miph_no_avg_1d
+
+		annotation SummarizationSetBy = User
+
+	column windchill_c_no_avg_1d
+		dataType: double
+		lineageTag: e3075173-b61f-41a8-b83f-7b4738852c90
+		sourceLineageTag: 72c1b394-9c4d-41b2-9221-872b27a3e251
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: windchill_c_no_avg_1d
+
+		annotation SummarizationSetBy = User
+
+	column windchill_f_no_avg_1d
+		dataType: double
+		lineageTag: 4d29a2ab-ee45-4c10-a65e-35185569c069
+		sourceLineageTag: 01a5a5f4-7da7-4871-98ef-3fe52850a278
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: windchill_f_no_avg_1d
+
+		annotation SummarizationSetBy = User
+
+	column windchill_k_no_avg_1d
+		dataType: double
+		lineageTag: eb421ec7-37ab-44aa-a1f3-7dd7ef8be7b3
+		sourceLineageTag: 2d52f307-02c3-4c38-a01d-f66b0b7d764d
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: windchill_k_no_avg_1d
+
+		annotation SummarizationSetBy = User
+
+	partition g_fct_weather_avg = entity
+		mode: directQuery
+		source
+			entityName: g_fct_weather_avg
+			expressionSource: 'DirectQuery to AS - sm_weather'
+

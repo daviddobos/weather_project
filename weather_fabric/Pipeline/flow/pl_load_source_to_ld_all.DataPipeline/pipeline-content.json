@@ -65,8 +65,8 @@
       {
         "type": "TridentNotebook",
         "typeProperties": {
-          "notebookId": "526b3a57-4e71-aa52-4787-88781919b008",
-          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "notebookId": "1919b008-8878-4787-aa52-4e71526b3a57",
+          "workspaceId": "a65228af-1fd8-41a6-8294-aceec3a6ebd5",
           "parameters": {
             "p_load_success_flg": {
               "value": {
@@ -85,6 +85,8 @@
           "secureOutput": false
         },
         "name": "nb_email_send",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
         "dependsOn": [
           {
             "activity": "set success_flg",
@@ -108,6 +110,8 @@
           "secureOutput": false
         },
         "name": "set success_flg",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
         "dependsOn": [
           {
             "activity": "pl_load_lr_to_ld_all",
@@ -125,6 +129,8 @@
           "errorCode": "500"
         },
         "name": "Fail",
+        "state": "Inactive",
+        "onInactiveMarkAs": "Succeeded",
         "dependsOn": [
           {
             "activity": "pl_load_lr_to_ld_all",

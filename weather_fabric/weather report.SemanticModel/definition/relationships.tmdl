@@ -1,0 +1,128 @@
+relationship e2aa0ff9-c4e0-4239-b630-a342aacf3593
+	fromColumn: g_fct_weather_avg.country_cd
+	toColumn: g_dim_country.country_cd
+
+relationship 48c4f457-feff-4d90-9779-44d4c4c39f50
+	fromColumn: g_fct_weather_avg.m_valid_dt
+	toColumn: g_dim_date.date
+
+relationship 31cb1c25-3832-4797-9bb2-b2488ddbf3b1
+	fromColumn: g_fct_weather_avg.city_fk
+	toColumn: g_dim_city.city_pk
+
+relationship 6016dc72-1a56-469f-ac17-036120152209
+	fromColumn: g_fct_astro_avg.country_cd
+	toColumn: g_dim_country.country_cd
+
+relationship eddcdc86-0b0a-456e-9fcc-4f4bbd4a6825
+	fromColumn: g_fct_astro_avg.m_valid_dt
+	toColumn: g_dim_date.date
+
+relationship 0c6b7e85-b242-4769-93d6-191d898c526f
+	fromColumn: g_fct_astro_avg.city_fk
+	toColumn: g_dim_city.city_pk
+
+relationship 85a33750-06b0-42a6-a62a-00b9d5ebdcb2
+	fromColumn: g_fct_astro_forecast_avg.country_cd
+	toColumn: g_dim_country.country_cd
+
+relationship 413bc38d-1943-4e11-92b5-894477b2913d
+	fromColumn: g_fct_astro_forecast_avg.m_valid_dt
+	toColumn: g_dim_date.date
+
+relationship a4061e5d-2342-4e14-9c6c-0c4d3b24cc59
+	fromColumn: g_fct_astro_forecast_avg.city_fk
+	toColumn: g_dim_city.city_pk
+
+relationship 1ea4c94b-dd38-46ff-b6cc-ce477d184cfa
+	fromColumn: g_fct_weather_forecast_avg.country_cd
+	toColumn: g_dim_country.country_cd
+
+relationship 64f45f61-0770-4efe-99f5-c18c81edce19
+	fromColumn: g_fct_weather_forecast_avg.m_valid_dt
+	toColumn: g_dim_date.date
+
+relationship 2b15178a-7a95-4290-a97e-99b7040a97f5
+	fromColumn: g_fct_weather_forecast_avg.city_fk
+	toColumn: g_dim_city.city_pk
+
+relationship 7bd301a6-9220-448a-8423-e35c03cb12f5
+	fromColumn: g_fct_astro_forecast.country_cd
+	toColumn: g_dim_country.country_cd
+
+relationship 81878181-7ffe-40a5-9c96-457d074afe96
+	fromColumn: g_fct_astro_forecast.city_fk
+	toColumn: g_dim_city.city_pk
+
+relationship d9a7040e-7a00-4cf2-b66f-d2413cb2f1a1
+	fromColumn: g_fct_astro_forecast.m_valid_dt
+	toColumn: g_dim_date.date
+
+relationship e4711d5f-bfad-4ebd-897d-e3bf00575ea4
+	fromColumn: g_fct_weather.country_cd
+	toColumn: g_dim_country.country_cd
+
+relationship 434eb2ea-2025-43c6-89a3-1dede73533b1
+	fromColumn: g_fct_weather.city_fk
+	toColumn: g_dim_city.city_pk
+
+relationship 99037216-280d-4c52-8e60-4e1261db4e52
+	fromColumn: g_fct_weather.m_valid_dt
+	toColumn: g_dim_date.date
+
+relationship e4db92a2-334a-4c4a-8ed5-90813f0562b7
+	fromColumn: g_fct_astro.country_cd
+	toColumn: g_dim_country.country_cd
+
+relationship 6d089c69-a7ae-4750-885b-d5785c4deed1
+	fromColumn: g_fct_astro.city_fk
+	toColumn: g_dim_city.city_pk
+
+relationship 818b6ae6-06fa-4a5a-9140-2231da26650e
+	fromColumn: g_fct_astro.m_valid_dt
+	toColumn: g_dim_date.date
+
+relationship b527aba8-49b2-457e-8f20-61ceca0b59e0
+	fromColumn: g_fct_weather_forecast.country_cd
+	toColumn: g_dim_country.country_cd
+
+relationship 3b54c7e3-7682-46b1-906c-7692846be90a
+	fromColumn: g_fct_weather_forecast.city_fk
+	toColumn: g_dim_city.city_pk
+
+relationship 8f804864-219f-4b08-9580-5a3abe0a5c1b
+	fromColumn: g_fct_weather_forecast.m_valid_dt
+	toColumn: g_dim_date.date
+
+relationship 85e2e55f-995d-4d4a-9122-364abce5b5ae
+	fromColumn: g_fct_weather_avg.county_nm
+	toColumn: g_dim_county_nm.county_nm
+
+relationship d6e7b37b-2cb3-4df8-8b0a-5e583072e9d0
+	fromColumn: g_fct_astro_avg.county_nm
+	toColumn: g_dim_county_nm.county_nm
+
+relationship 1115ed0e-2dd5-4b4c-8608-d59473e8e58f
+	fromColumn: g_fct_astro_forecast_avg.county_nm
+	toColumn: g_dim_county_nm.county_nm
+
+relationship 80db98cd-7ccf-4459-af7d-a8797f22b9af
+	fromColumn: g_fct_weather_forecast_avg.county_nm
+	toColumn: g_dim_county_nm.county_nm
+
+relationship f7a43289-8791-4ce2-9333-1e96ae34089f
+	fromColumn: g_fct_astro_forecast.county_nm
+	toColumn: g_dim_county_nm.county_nm
+
+relationship 6d93d550-4012-4972-9d83-4246e2156640
+	fromColumn: g_fct_weather.county_nm
+	toColumn: g_dim_county_nm.county_nm
+
+relationship 9be0d8c2-8f71-4ef5-be0f-7138716f6ae7
+	fromColumn: g_fct_astro.county_nm
+	toColumn: g_dim_county_nm.county_nm
+
+relationship 2d11fd59-294a-40ca-b88d-31357df0e2f6
+	fromColumn: g_fct_weather_forecast.county_nm
+	toColumn: g_dim_county_nm.county_nm
+

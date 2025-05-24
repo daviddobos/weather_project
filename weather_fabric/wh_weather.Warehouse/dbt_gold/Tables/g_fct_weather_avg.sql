@@ -3,7 +3,7 @@ CREATE TABLE [dbt_gold].[g_fct_weather_avg] (
 	[m_valid_dt] date NULL, 
 	[city_nm] varchar(30) NULL, 
 	[city_fk] varchar(256) NULL, 
-	[county_nm] varchar(23) NULL, 
+	[county_nm] varchar(50) NULL, 
 	[country_cd] varchar(2) NULL, 
 	[temperature_c_avg_1d] decimal(38,6) NULL, 
 	[temperature_f_avg_1d] decimal(38,6) NULL, 

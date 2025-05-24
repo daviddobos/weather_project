@@ -1,0 +1,123 @@
+table Parameter
+	lineageTag: ef5601f1-04bf-494e-ab7e-6d41fc7c5433
+
+	measure 'Non Blank Count' = ```
+			
+			COUNTROWS(
+			    FILTER(
+			        g_fct_weather_avg,
+			        NOT ISBLANK(g_fct_weather_avg[cloud_coverage_avg_1w])
+			    )
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 86b941b7-5f18-43d2-bc70-60288d1c41b4
+
+	column Parameter
+		lineageTag: fc2f479e-747a-43bb-8204-bb44abba88b2
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Parameter Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Parameter Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Fields'
+		isHidden
+		lineageTag: 70ebd856-aaa4-41f0-ab7a-64f8a8762b59
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Parameter Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Order'
+		isHidden
+		formatString: 0
+		lineageTag: 71336b0f-0ff5-461b-9d96-c8fe168603ce
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Parameter = calculated
+		mode: import
+		source =
+				{
+				    ("Cloud Coverage - 1 day", NAMEOF('_Measure'[Cloud Coverage - 1 day]), 0),
+				    ("Cloud Coverage - 3 days", NAMEOF('_Measure'[Cloud Coverage - 3 days]), 1),
+				    ("Cloud Coverage - 1 week", NAMEOF('_Measure'[Cloud Coverage - 1 week]), 2),
+				    ("Cloud Coverage - 2 weeks", NAMEOF('_Measure'[Cloud Coverage - 2 weeks]), 3),
+				    ("Gust(km/h) - 1 day", NAMEOF('_Measure'[Gust(km/h) - 1 day]), 4),
+				    ("Gust(km/h) - 3 days", NAMEOF('_Measure'[Gust(km/h) - 3 days]), 5),
+				    ("Gust(km/h) - 1 week", NAMEOF('_Measure'[Gust(km/h) - 1 week]), 6),
+				    ("Gust(km/h) - 2 weeks", NAMEOF('_Measure'[Gust(km/h) - 2 weeks]), 7),
+				    ("Gust(mi/h) - 1 day", NAMEOF('_Measure'[Gust(mi/h) - 1 day]), 8),
+				    ("Gust(mi/h) - 3 days", NAMEOF('_Measure'[Gust(mi/h) - 3 days]), 9),
+				    ("Gust(mi/h) - 1 week", NAMEOF('_Measure'[Gust(mi/h) - 1 week]), 10),
+				    ("Gust(mi/h) - 2 weeks", NAMEOF('_Measure'[Gust(mi/h) - 2 weeks]), 11),
+				    ("Heatindex(°C) - 1 day", NAMEOF('_Measure'[Heatindex(°C) - 1 day]), 12),
+				    ("Heatindex(°C) - 3 days", NAMEOF('_Measure'[Heatindex(°C) - 3 days]), 13),
+				    ("Heatindex(°C) - 1 week", NAMEOF('_Measure'[Heatindex(°C) - 1 week]), 14),
+				    ("Heatindex(°C) - 2 weeks", NAMEOF('_Measure'[Heatindex(°C) - 2 weeks]), 15),
+				    ("Heatindex(°F) - 1 day", NAMEOF('_Measure'[Heatindex(°F) - 1 day]), 16),
+				    ("Heatindex(°F) - 3 days", NAMEOF('_Measure'[Heatindex(°F) - 3 days]), 17),
+				    ("Heatindex(°F) - 1 week", NAMEOF('_Measure'[Heatindex(°F) - 1 week]), 18),
+				    ("Heatindex(°F) - 2 weeks", NAMEOF('_Measure'[Heatindex(°F) - 2 weeks]), 19),
+				    ("Heatindex(K) - 1 day", NAMEOF('_Measure'[Heatindex(K) - 1 day]), 20),
+				    ("Heatindex(K) - 3 days", NAMEOF('_Measure'[Heatindex(K) - 3 days]), 21),
+				    ("Heatindex(K) - 1 week", NAMEOF('_Measure'[Heatindex(K) - 1 week]), 22),
+				    ("Heatindex(K) - 2 weeks", NAMEOF('_Measure'[Heatindex(K) - 2 weeks]), 23),
+				    ("Humidity - 1 day", NAMEOF('_Measure'[Humidity - 1 day]), 24),
+				    ("Humidity - 3 days", NAMEOF('_Measure'[Humidity - 3 days]), 25),
+				    ("Humidity - 1 week", NAMEOF('_Measure'[Humidity - 1 week]), 26),
+				    ("Humidity - 2 weeks", NAMEOF('_Measure'[Humidity - 2 weeks]), 27),
+				    ("Precipitation(mm) - 1 day", NAMEOF('_Measure'[Precipitation(mm) - 1 day]), 28),
+				    ("Precipitation(mm) - 3 days", NAMEOF('_Measure'[Precipitation(mm) - 3 days]), 29),
+				    ("Precipitation(mm) - 1 week", NAMEOF('_Measure'[Precipitation(mm) - 1 week]), 30),
+				    ("Precipitation(mm) - 2 weeks", NAMEOF('_Measure'[Precipitation(mm) - 2 weeks]), 31),
+				    ("Temperature(°C) - 1 day", NAMEOF('_Measure'[Temperature(°C) - 1 day]), 32),
+				    ("Temperature(°C) - 3 days", NAMEOF('_Measure'[Temperature(°C) - 3 days]), 33),
+				    ("Temperature(°C) - 1 week", NAMEOF('_Measure'[Temperature(°C) - 1 week]), 34),
+				    ("Temperature(°C) - 2 weeks", NAMEOF('_Measure'[Temperature(°C) - 2 weeks]), 35),
+				    ("Temperature(°F) - 1 day", NAMEOF('_Measure'[Temperature(°F) - 1 day]), 36),
+				    ("Temperature(°F) - 3 days", NAMEOF('_Measure'[Temperature(°F) - 3 days]), 37),
+				    ("Temperature(°F) - 1 week", NAMEOF('_Measure'[Temperature(°F) - 1 week]), 38),
+				    ("Temperature(°F) - 2 weeks", NAMEOF('_Measure'[Temperature(°F) - 2 weeks]), 39),
+				    ("Temperature(K) - 1 day", NAMEOF('_Measure'[Temperature(K) - 1 day]), 40),
+				    ("Temperature(K) - 3 days", NAMEOF('_Measure'[Temperature(K) - 3 days]), 41),
+				    ("Temperature(K) - 1 week", NAMEOF('_Measure'[Temperature(K) - 1 week]), 42),
+				    ("Temperature(K) - 2 weeks", NAMEOF('_Measure'[Temperature(K) - 2 weeks]), 43),
+				    ("Wind(km/h) - 1 day", NAMEOF('_Measure'[Wind(km/h) - 1 day]), 44),
+				    ("Wind(km/h) - 3 days", NAMEOF('_Measure'[Wind(km/h) - 3 days]), 45),
+				    ("Wind(km/h) - 1 week", NAMEOF('_Measure'[Wind(km/h) - 1 week]), 46),
+				    ("Wind(km/h) - 2 weeks", NAMEOF('_Measure'[Wind(km/h) - 2 weeks]), 47),
+				    ("Wind(mi/h) - 1 day", NAMEOF('_Measure'[Wind(mi/h) - 1 day]), 48),
+				    ("Wind(mi/h) - 3 days", NAMEOF('_Measure'[Wind(mi/h) - 3 days]), 49),
+				    ("Wind(mi/h) - 1 week", NAMEOF('_Measure'[Wind(mi/h) - 1 week]), 50),
+				    ("Wind(mi/h) - 2 weeks", NAMEOF('_Measure'[Wind(mi/h) - 2 weeks]), 51),
+				    ("Windchill(°C) - 1 day", NAMEOF('_Measure'[Windchill(°C) - 1 day]), 52),
+				    ("Windchill(°C) - 3 days", NAMEOF('_Measure'[Windchill(°C) - 3 days]), 53),
+				    ("Windchill(°C) - 1 week", NAMEOF('_Measure'[Windchill(°C) - 1 week]), 54),
+				    ("Windchill(°C) - 2 weeks", NAMEOF('_Measure'[Windchill(°C) - 2 weeks]), 55),
+				    ("Windchill(°F) - 1 day", NAMEOF('_Measure'[Windchill(°F) - 1 day]), 56),
+				    ("Windchill(°F) - 3 days", NAMEOF('_Measure'[Windchill(°F) - 3 days]), 57),
+				    ("Windchill(°F) - 1 week", NAMEOF('_Measure'[Windchill(°F) - 1 week]), 58),
+				    ("Windchill(°F) - 2 weeks", NAMEOF('_Measure'[Windchill(°F) - 2 weeks]), 59),
+				    ("Windchill(K) - 1 day", NAMEOF('_Measure'[Windchill(K) - 1 day]), 60),
+				    ("Windchill(K) - 3 days", NAMEOF('_Measure'[Windchill(K) - 3 days]), 61),
+				    ("Windchill(K) - 1 week", NAMEOF('_Measure'[Windchill(K) - 1 week]), 62),
+				    ("Windchill(K) - 2 weeks", NAMEOF('_Measure'[Windchill(K) - 2 weeks]), 63)
+				}
+
+	annotation PBI_Id = 4a3d72762f994a109de0a219d891e78f
+

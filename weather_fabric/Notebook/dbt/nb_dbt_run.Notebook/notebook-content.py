@@ -21,22 +21,6 @@
 
 # CELL ********************
 
-# MAGIC %%configure -f
-# MAGIC { 
-# MAGIC             "defaultLakehouse": {
-# MAGIC                 "name": 'lh_weather'
-# MAGIC             }
-# MAGIC }
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
 import pandas as pd
 import os
 import re
@@ -70,7 +54,8 @@ secret_name_tenant = 'dd-thesis-sp-tenant-id'
 secret_name_client = 'dd-thesis-sp-client-id'
 secret_name_secret = 'dd-thesis-sp-secret'
 secret_name_git_pat = 'dd-thesis-github-token'
-git_provider = 'github' # the variable value should be 'github' in case the repo is there, in case of any other value the script will use Azure DevOps
+git_provider = 'github' 
+p_dbt_param = ''
 
 # METADATA ********************
 
@@ -91,7 +76,7 @@ client = fabric.FabricRestClient()
 # GET personal access token for github texhnical user
 git_pat = notebookutils.credentials.getSecret(str(keyvault),str(secret_name_git_pat))
 print(git_pat)
-# quick and dirty, will have to make changes to pull all the repo information from the workspace like what we have for ADO
+
 repo = "weather_project"
 repo_URL = f"https://oauth2:{git_pat}@github.com/daviddobos/"
 repo_path = repo_URL + repo + ".git"
@@ -185,6 +170,17 @@ lakehouse_abfs_path = notebookutils.lakehouse.get(f'{log_lakehouse}')['propertie
 
 # CELL ********************
 
+display(cap_debug)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
 current_date_debug = str(spark.range(1).select(date_format(from_utc_timestamp(current_timestamp(), "Europe/Budapest"),"yyyy/MM/dd")).head()[0])
 
 current_time_debug = str(spark.range(1).select(date_format(from_utc_timestamp(current_timestamp(), "Europe/Budapest"),"yyyyMMddHHmmss")).head()[0])
@@ -237,6 +233,8 @@ elif re.search("error", content_debug.lower()):
 
 !dbt seed
 
+!dbt test
+
 # METADATA ********************
 
 # META {
@@ -248,7 +246,7 @@ elif re.search("error", content_debug.lower()):
 
 # MAGIC %%capture cap_run
 # MAGIC 
-# MAGIC !dbt run #--exclude "040_dq" "050_dq_rpt"
+# MAGIC !dbt run {p_dbt_param}
 
 # METADATA ********************
 

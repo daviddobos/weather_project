@@ -1,0 +1,769 @@
+table _Measure
+	lineageTag: 182e6e8d-e015-4bf4-9b08-4615e48888c4
+
+	measure SelectedGust_KPH = ```
+			
+			SWITCH(
+			    TRUE(),
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "3 day", 
+			        MAX(g_fct_weather_avg[gust_kph_avg_3d]),
+			
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "1 week", 
+			        MAX(g_fct_weather_avg[gust_kph_avg_1w]),
+			
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "2 weeks", 
+			        MAX(g_fct_weather_avg[gust_kph_avg_2w]),
+			
+			    MAX(g_fct_weather_avg[gust_kph_avg_1w]) -- default fallback
+			)
+			
+			```
+		displayFolder: weather-tendency
+		lineageTag: 1bc4d675-8337-4a31-8282-4c145446dc62
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure SelectedGust_MIPH = ```
+			
+			SWITCH(
+			    TRUE(),
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "3 day", 
+			        MAX(g_fct_weather_avg[gust_miph_avg_3d]),
+			
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "1 week", 
+			        MAX(g_fct_weather_avg[gust_miph_avg_1w]),
+			
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "2 weeks", 
+			        MAX(g_fct_weather_avg[gust_miph_avg_2w]),
+			
+			    MAX(g_fct_weather_avg[gust_miph_avg_1w]) -- default fallback
+			)
+			
+			```
+		displayFolder: weather-tendency
+		lineageTag: 42724b63-2754-4841-a5f8-c504e3b1a885
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure RollingOptions = ```
+			
+			DATATABLE(
+			    "Rolling", STRING,
+			    {
+			        {"3 day"},
+			        {"1 week"},
+			        {"2 weeks"}
+			    }
+			)
+			
+			```
+		displayFolder: weather-tendency
+		lineageTag: f770832b-3416-43dc-a95d-d98e44a02119
+
+	measure SelectedHeatindex_C = ```
+			
+			SWITCH(
+			    TRUE(),
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "3 day", 
+			        MAX(g_fct_weather_avg[heatindex_c_no_avg_3d]),
+			
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "1 week", 
+			        MAX(g_fct_weather_avg[heatindex_c_no_avg_1w]),
+			
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "2 weeks", 
+			        MAX(g_fct_weather_avg[heatindex_c_no_avg_2w]),
+			
+			    MAX(g_fct_weather_avg[heatindex_c_no_avg_1w]) -- default fallback
+			)
+			
+			```
+		displayFolder: weather-tendency
+		lineageTag: f9003255-1c55-4dfd-bee8-dd42a27d2ebb
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure SelectedHeatindex_F = ```
+			
+			SWITCH(
+			    TRUE(),
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "3 day", 
+			        MAX(g_fct_weather_avg[heatindex_f_no_avg_3d]),
+			
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "1 week", 
+			        MAX(g_fct_weather_avg[heatindex_f_no_avg_1w]),
+			
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "2 weeks", 
+			        MAX(g_fct_weather_avg[heatindex_f_no_avg_2w]),
+			
+			    MAX(g_fct_weather_avg[heatindex_f_no_avg_1w]) -- default fallback
+			)
+			
+			```
+		displayFolder: weather-tendency
+		lineageTag: 87fade59-7cc8-4601-a46d-683252601e75
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure SelectedHeatindex_K = ```
+			
+			SWITCH(
+			    TRUE(),
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "3 day", 
+			        MAX(g_fct_weather_avg[heatindex_k_no_avg_3d]),
+			
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "1 week", 
+			        MAX(g_fct_weather_avg[heatindex_k_no_avg_1w]),
+			
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "2 weeks", 
+			        MAX(g_fct_weather_avg[heatindex_k_no_avg_2w]),
+			
+			    MAX(g_fct_weather_avg[heatindex_k_no_avg_1w]) -- default fallback
+			)
+			
+			```
+		displayFolder: weather-tendency
+		lineageTag: 7243bc9f-1af5-4569-915a-52d9d08ac674
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure SelectedHumidity = ```
+			
+			SWITCH(
+			    TRUE(),
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "3 day", 
+			        MAX(g_fct_weather_avg[humidity_avg_3d]),
+			
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "1 week", 
+			        MAX(g_fct_weather_avg[humidity_avg_1w]),
+			
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "2 weeks", 
+			        MAX(g_fct_weather_avg[humidity_avg_2w]),
+			
+			    MAX(g_fct_weather_avg[humidity_avg_1w]) -- default fallback
+			)
+			
+			```
+		formatString: 0
+		displayFolder: weather-tendency
+		lineageTag: db223b53-4f25-43cd-8ff6-e3ccb44648a7
+
+	measure Selectedprecipitation_MM = ```
+			
+			SWITCH(
+			    TRUE(),
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "3 day", 
+			        MAX(g_fct_weather_avg[precipitation_mm_avg_3d]),
+			
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "1 week", 
+			        MAX(g_fct_weather_avg[precipitation_mm_avg_1w]),
+			
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "2 weeks", 
+			        MAX(g_fct_weather_avg[precipitation_mm_avg_2w]),
+			
+			    MAX(g_fct_weather_avg[precipitation_mm_avg_1w]) -- default fallback
+			)
+			
+			```
+		displayFolder: weather-tendency
+		lineageTag: 45e8fc91-34a1-48e5-87c9-a5dd0afa7324
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure SelectedTemperature_C = ```
+			
+			SWITCH(
+			    TRUE(),
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "3 day", 
+			        MAX(g_fct_weather_avg[temperature_c_avg_3d]),
+			
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "1 week", 
+			        MAX(g_fct_weather_avg[temperature_c_avg_1w]),
+			
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "2 weeks", 
+			        MAX(g_fct_weather_avg[temperature_c_avg_2w]),
+			
+			    MAX(g_fct_weather_avg[temperature_c_avg_1w]) -- default fallback
+			)
+			
+			```
+		displayFolder: weather-tendency
+		lineageTag: 663f922a-d432-4221-9a1c-bbf966da7d0a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure SelectedTemperature_F = ```
+			
+			SWITCH(
+			    TRUE(),
+			    MAX(RollingOptions[Rolling]) = "3 day", 
+			        MAX(g_fct_weather_avg[temperature_f_avg_3d]),
+			
+			    MAX(RollingOptions[Rolling]) = "1 week", 
+			        MAX(g_fct_weather_avg[temperature_f_avg_1w]),
+			
+			    MAX(RollingOptions[Rolling]) = "2 weeks", 
+			        MAX(g_fct_weather_avg[temperature_f_avg_2w]),
+			
+			    SELECTEDVALUE(g_fct_weather_avg[temperature_f_avg_1w]) -- default fallback
+			)
+			
+			```
+		displayFolder: weather-tendency
+		lineageTag: bfeb3198-5eaf-445c-a03b-7d00e9a119e2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure SelectedTemperature_K = ```
+			
+			SWITCH(
+			    TRUE(),
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "3 day", 
+			        MAX(g_fct_weather_avg[temperature_k_avg_3d]),
+			
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "1 week", 
+			        MAX(g_fct_weather_avg[temperature_k_avg_1w]),
+			
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "2 weeks", 
+			        MAX(g_fct_weather_avg[temperature_k_avg_2w]),
+			
+			    MAX(g_fct_weather_avg[temperature_k_avg_1w]) -- default fallback
+			)
+			
+			```
+		displayFolder: weather-tendency
+		lineageTag: 0a89f578-cc02-43be-b56d-41aa1b92465a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure SelectedWindchill_C = ```
+			
+			SWITCH(
+			    TRUE(),
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "3 day", 
+			        MAX(g_fct_weather_avg[windchill_c_no_avg_3d]),
+			
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "1 week", 
+			        MAX(g_fct_weather_avg[windchill_c_no_avg_1w]),
+			
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "2 weeks", 
+			        MAX(g_fct_weather_avg[windchill_c_no_avg_2w]),
+			
+			    MAX(g_fct_weather_avg[windchill_c_no_avg_1w]) -- default fallback
+			)
+			
+			```
+		displayFolder: weather-tendency
+		lineageTag: d23bbef7-2091-4afb-81e4-685665f9d6d3
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure SelectedWindchill_F = ```
+			
+			SWITCH(
+			    TRUE(),
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "3 day", 
+			        MAX(g_fct_weather_avg[windchill_f_no_avg_3d]),
+			
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "1 week", 
+			        MAX(g_fct_weather_avg[windchill_f_no_avg_1w]),
+			
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "2 weeks", 
+			        MAX(g_fct_weather_avg[windchill_f_no_avg_2w]),
+			
+			    MAX(g_fct_weather_avg[windchill_f_no_avg_1w]) -- default fallback
+			)
+			
+			```
+		displayFolder: weather-tendency
+		lineageTag: 04defb03-db51-4164-83bd-0e067d04ab4c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure SelectedWindchill_K = ```
+			
+			SWITCH(
+			    TRUE(),
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "3 day", 
+			        MAX(g_fct_weather_avg[windchill_k_no_avg_3d]),
+			
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "1 week", 
+			        MAX(g_fct_weather_avg[windchill_k_no_avg_1w]),
+			
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "2 weeks", 
+			        MAX(g_fct_weather_avg[windchill_k_no_avg_2w]),
+			
+			    MAX(g_fct_weather_avg[windchill_k_no_avg_1w]) -- default fallback
+			)
+			
+			```
+		displayFolder: weather-tendency
+		lineageTag: 58175d24-ae38-4059-ad65-ad47aece47e9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure SelectedWind_KPH = ```
+			
+			SWITCH(
+			    TRUE(),
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "3 day", 
+			        MAX(g_fct_weather_avg[wind_kph_no_avg_3d]),
+			
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "1 week", 
+			        MAX(g_fct_weather_avg[wind_kph_no_avg_1w]),
+			
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "2 weeks", 
+			        MAX(g_fct_weather_avg[wind_kph_no_avg_2w]),
+			
+			    MAX(g_fct_weather_avg[wind_kph_no_avg_1w]) -- default fallback
+			)
+			
+			```
+		displayFolder: weather-tendency
+		lineageTag: 3d92a755-4134-4171-9bad-ea46f20e6e5c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure SelectedWind_MIPH = ```
+			
+			SWITCH(
+			    TRUE(),
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "3 day", 
+			        MAX(g_fct_weather_avg[wind_miph_no_avg_3d]),
+			
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "1 week", 
+			        MAX(g_fct_weather_avg[wind_miph_no_avg_1w]),
+			
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "2 weeks", 
+			        MAX(g_fct_weather_avg[wind_miph_no_avg_2w]),
+			
+			    MAX(g_fct_weather_avg[wind_miph_no_avg_1w]) -- default fallback
+			)
+			
+			```
+		displayFolder: weather-tendency
+		lineageTag: 3faea3ad-d350-4500-802b-c96028b28eeb
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Cloud Coverage - 3 days' = MAX(g_fct_weather_avg[cloud_coverage_avg_3d])
+		formatString: 0
+		displayFolder: weather-map
+		lineageTag: 8e9e27b7-b58c-4785-8df1-57ee24fcb197
+
+	measure 'Cloud Coverage - 1 week' = SELECTEDVALUE(g_fct_weather_avg[cloud_coverage_avg_1w])
+		formatString: 0
+		displayFolder: weather-map
+		lineageTag: d3012de5-e5c8-4d24-a6cd-4ff1e37d4b9d
+
+	measure 'Cloud Coverage - 2 weeks' = MAX(g_fct_weather_avg[cloud_coverage_avg_2w])
+		formatString: 0
+		displayFolder: weather-map
+		lineageTag: 92b369da-78f2-4a23-8b0e-1375bf5d4830
+
+	measure 'Cloud Coverage - 1 day' = MAX(g_fct_weather_avg[cloud_coverage_avg_1d])
+		formatString: 0
+		displayFolder: weather-map
+		lineageTag: 7b9c1cde-bfb7-44d3-8783-2dded151f494
+
+	measure 'Humidity - 1 day' = MAX(g_fct_weather_avg[humidity_avg_1d])
+		formatString: 0
+		displayFolder: weather-map
+		lineageTag: 78cf3999-0dea-473f-973c-707be6544e2f
+
+	measure 'Humidity - 3 days' = MAX(g_fct_weather_avg[humidity_avg_3d])
+		formatString: 0
+		displayFolder: weather-map
+		lineageTag: e21721f2-c983-4470-bf49-3f1c4faaff9b
+
+	measure 'Humidity - 1 week' = MAX(g_fct_weather_avg[humidity_avg_1w])
+		formatString: 0
+		displayFolder: weather-map
+		lineageTag: 7255a28d-6ae6-44b3-9625-90f6cdf26356
+
+	measure 'Humidity - 2 weeks' = MAX(g_fct_weather_avg[humidity_avg_2w])
+		formatString: 0
+		displayFolder: weather-map
+		lineageTag: b297435f-0fea-4f7a-8132-b576db5097bf
+
+	measure 'Precipitation(mm) - 1 day' = MAX(g_fct_weather_avg[precipitation_mm_avg_1d])
+		displayFolder: weather-map
+		lineageTag: 3763f484-f7fc-4845-b002-e92ef6d666b6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Precipitation(mm) - 3 days' = MAX(g_fct_weather_avg[precipitation_mm_avg_3d])
+		displayFolder: weather-map
+		lineageTag: 4c638e65-db69-4206-ae03-4f59f0b6e30c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Precipitation(mm) - 1 week' = MAX(g_fct_weather_avg[precipitation_mm_avg_1w])
+		displayFolder: weather-map
+		lineageTag: 5085645e-4192-4707-b73d-0f5f2be13227
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Precipitation(mm) - 2 weeks' = MAX(g_fct_weather_avg[precipitation_mm_avg_2w])
+		displayFolder: weather-map
+		lineageTag: 30d88b37-99eb-4855-9962-53b133827bef
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Temperature(°C) - 1 day' = MAX(g_fct_weather_avg[temperature_c_avg_1d])
+		displayFolder: weather-map
+		lineageTag: 086febb7-73cc-4877-8658-1c3f58eed95b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Temperature(°C) - 3 days' = MAX(g_fct_weather_avg[temperature_c_avg_3d])
+		displayFolder: weather-map
+		lineageTag: 297ad541-f8f2-44c6-940f-b4de69274a6c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Temperature(°C) - 1 week' = MAX(g_fct_weather_avg[temperature_c_avg_1w])
+		displayFolder: weather-map
+		lineageTag: 90a4187c-6343-47cf-b118-0490790eaf74
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Temperature(°C) - 2 weeks' = MAX(g_fct_weather_avg[temperature_c_avg_2w])
+		displayFolder: weather-map
+		lineageTag: d953c2a6-108b-4d0f-bd6b-37b349b164d7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Temperature(°F) - 2 weeks' = MAX(g_fct_weather_avg[temperature_f_avg_2w])
+		displayFolder: weather-map
+		lineageTag: cbd73a83-4cdd-498b-9fe3-4ffd7b02d979
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Temperature(°F) - 1 week' = MAX(g_fct_weather_avg[temperature_f_avg_1w])
+		displayFolder: weather-map
+		lineageTag: 65dad145-62eb-467e-9524-09a978ba90ba
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Temperature(°F) - 3 days' = MAX(g_fct_weather_avg[temperature_f_avg_3d])
+		displayFolder: weather-map
+		lineageTag: 16fc3c5b-285e-4ae1-8258-7b497783c9a4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Temperature(°F) - 1 day' = MAX(g_fct_weather_avg[temperature_f_avg_1d])
+		displayFolder: weather-map
+		lineageTag: dae21101-faa1-42bf-9332-fe713409d4a6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Temperature(K) - 1 day' = MAX(g_fct_weather_avg[temperature_k_avg_1d])
+		displayFolder: weather-map
+		lineageTag: 47404ef6-c46e-4b43-b351-13e840bedf9e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Temperature(K) - 3 days' = MAX(g_fct_weather_avg[temperature_k_avg_3d])
+		displayFolder: weather-map
+		lineageTag: 4ae0f8f9-c42a-4275-b941-eb531f647455
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Temperature(K) - 1 week' = MAX(g_fct_weather_avg[temperature_k_avg_1w])
+		displayFolder: weather-map
+		lineageTag: 405b8ec9-a870-4417-917a-cb2e5c2d55c0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Temperature(K) - 2 weeks' = MAX(g_fct_weather_avg[temperature_k_avg_2w])
+		displayFolder: weather-map
+		lineageTag: 14715b59-1960-4e2d-9231-783d91514455
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Gust(km/h) - 2 weeks' = MAX(g_fct_weather_avg[gust_kph_avg_2w])
+		displayFolder: weather-map
+		lineageTag: c62c2b24-e7d3-41ff-89ed-07c523bfa612
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Gust(km/h) - 1 week' = MAX(g_fct_weather_avg[gust_kph_avg_1w])
+		displayFolder: weather-map
+		lineageTag: ff99c34e-0bdf-42d4-b162-02f2a02223be
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Gust(km/h) - 3 days' = MAX(g_fct_weather_avg[gust_kph_avg_3d])
+		displayFolder: weather-map
+		lineageTag: 2cc365f6-f891-485b-8f31-501fccdc0fcd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Gust(km/h) - 1 day' = MAX(g_fct_weather_avg[gust_kph_avg_1d])
+		displayFolder: weather-map
+		lineageTag: 9307db41-5914-49c8-a2bd-3139b02585eb
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Gust(mi/h) - 3 days' = MAX(g_fct_weather_avg[gust_miph_avg_3d])
+		displayFolder: weather-map
+		lineageTag: abfa0834-d622-4533-8d14-81a7195c9a15
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Gust(mi/h) - 1 day' = MAX(g_fct_weather_avg[gust_miph_avg_1d])
+		displayFolder: weather-map
+		lineageTag: 2c60337d-1e71-4e91-8db3-e7c206304d07
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Gust(mi/h) - 1 week' = MAX(g_fct_weather_avg[gust_miph_avg_1w])
+		displayFolder: weather-map
+		lineageTag: ab77a1d7-8d2a-45c9-8e3c-3bd237814e2b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Gust(mi/h) - 2 weeks' = MAX(g_fct_weather_avg[gust_miph_avg_2w])
+		displayFolder: weather-map
+		lineageTag: ac4127d0-85d5-478c-bb48-476b4763b549
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Wind(km/h) - 1 week' = MAX(g_fct_weather_avg[wind_kph_no_avg_1w])
+		displayFolder: weather-map
+		lineageTag: e3db35c2-573e-4baa-89c1-1c80657751ab
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Wind(km/h) - 2 weeks' = MAX(g_fct_weather_avg[wind_kph_no_avg_2w])
+		displayFolder: weather-map
+		lineageTag: 56350bf8-7c73-4ff7-83a2-ff04251e7804
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Wind(km/h) - 1 day' = MAX(g_fct_weather_avg[wind_kph_no_avg_1d])
+		displayFolder: weather-map
+		lineageTag: 4979bfeb-9972-4112-9f05-22cd443d600e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Wind(km/h) - 3 days' = MAX(g_fct_weather_avg[wind_kph_no_avg_3d])
+		displayFolder: weather-map
+		lineageTag: 7ed8c043-70e2-49aa-996d-30ef1287d56a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Wind(mi/h) - 3 days' = MAX(g_fct_weather_avg[wind_miph_no_avg_3d])
+		displayFolder: weather-map
+		lineageTag: 7e3e381f-be68-4db0-83d9-a743c09281d8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Wind(mi/h) - 1 day' = MAX(g_fct_weather_avg[wind_miph_no_avg_1d])
+		displayFolder: weather-map
+		lineageTag: 8d65bf16-89c3-479d-9a8d-25b3ad1c7f49
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Wind(mi/h) - 1 week' = MAX(g_fct_weather_avg[wind_miph_no_avg_1w])
+		displayFolder: weather-map
+		lineageTag: a8a0afb2-7be7-4510-9349-a428a4655ed1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Wind(mi/h) - 2 weeks' = MAX(g_fct_weather_avg[wind_miph_no_avg_2w])
+		displayFolder: weather-map
+		lineageTag: 3f74fe0f-d7bb-4278-808a-57dc502cf0e2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Heatindex(°C) - 1 day' = MAX(g_fct_weather_avg[heatindex_c_no_avg_1d])
+		displayFolder: weather-map
+		lineageTag: ada7584e-234d-4078-87b6-87bccda028e7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Heatindex(°C) - 3 days' = MAX(g_fct_weather_avg[heatindex_c_no_avg_3d])
+		displayFolder: weather-map
+		lineageTag: 80e0cb11-f84e-4f2f-a09e-d9765696adfc
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Heatindex(°C) - 1 week' = MAX(g_fct_weather_avg[heatindex_c_no_avg_1w])
+		displayFolder: weather-map
+		lineageTag: 0f66ea93-6a74-4dcd-a873-b20ce0227b5d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Heatindex(°C) - 2 weeks' = MAX(g_fct_weather_avg[heatindex_c_no_avg_2w])
+		displayFolder: weather-map
+		lineageTag: 46218799-c355-425f-9920-0e3f61555bcb
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Heatindex(°F) - 2 weeks' = MAX(g_fct_weather_avg[heatindex_f_no_avg_2w])
+		displayFolder: weather-map
+		lineageTag: ce57f94b-d9f5-4b19-bb41-53a1f18417b2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Heatindex(°F) - 1 week' = MAX(g_fct_weather_avg[heatindex_f_no_avg_1w])
+		displayFolder: weather-map
+		lineageTag: 85c8d5b0-422c-437c-9659-963da655c408
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Heatindex(°F) - 3 days' = MAX(g_fct_weather_avg[heatindex_f_no_avg_3d])
+		displayFolder: weather-map
+		lineageTag: 92fac80d-888f-4ed6-8c4d-3ff66d198686
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Heatindex(°F) - 1 day' = MAX(g_fct_weather_avg[heatindex_f_no_avg_1d])
+		displayFolder: weather-map
+		lineageTag: 0ce6ba28-3638-4e9b-a69f-786aeda13cc0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Heatindex(K) - 1 day' = MAX(g_fct_weather_avg[heatindex_k_no_avg_1d])
+		displayFolder: weather-map
+		lineageTag: f72daec8-704d-410d-8e16-32ebdfde2c3f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Heatindex(K) - 3 days' = MAX(g_fct_weather_avg[heatindex_k_no_avg_3d])
+		displayFolder: weather-map
+		lineageTag: 0b9ed7e7-d1d4-400a-b683-c2391f1764bf
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Heatindex(K) - 1 week' = MAX(g_fct_weather_avg[heatindex_k_no_avg_1w])
+		displayFolder: weather-map
+		lineageTag: 1fef7f81-8606-4f9b-b5a8-ef304f440f54
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Heatindex(K) - 2 weeks' = MAX(g_fct_weather_avg[heatindex_k_no_avg_2w])
+		displayFolder: weather-map
+		lineageTag: 1125509b-f05d-4328-84e6-c0624c28a382
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Windchill(°C) - 1 week' = MAX(g_fct_weather_avg[windchill_c_no_avg_1w])
+		displayFolder: weather-map
+		lineageTag: 08b556e7-124b-4a64-89b8-61d45c66a72b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Windchill(°C) - 2 weeks' = MAX(g_fct_weather_avg[windchill_c_no_avg_2w])
+		displayFolder: weather-map
+		lineageTag: 5f97c318-cca2-4e74-b5bc-9244c8c4ff6e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Windchill(°C) - 1 day' = MAX(g_fct_weather_avg[windchill_c_no_avg_1d])
+		displayFolder: weather-map
+		lineageTag: 17b8e284-2fae-4a35-94fb-372a872da541
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Windchill(°C) - 3 days' = MAX(g_fct_weather_avg[windchill_c_no_avg_3d])
+		displayFolder: weather-map
+		lineageTag: 749dbbed-ef35-4b9c-9c32-437543e79490
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Windchill(°F) - 3 days' = MAX(g_fct_weather_avg[windchill_f_no_avg_3d])
+		displayFolder: weather-map
+		lineageTag: 3c6116e9-ebc3-4893-98a5-40a1d53aa19f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Windchill(°F) - 1 day' = MAX(g_fct_weather_avg[windchill_f_no_avg_1d])
+		displayFolder: weather-map
+		lineageTag: 413e1885-74a4-42ed-a3f2-8b9025d02341
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Windchill(°F) - 1 week' = MAX(g_fct_weather_avg[windchill_f_no_avg_1w])
+		displayFolder: weather-map
+		lineageTag: ec764447-7101-40ee-9ec7-ed6e11cf2fd2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Windchill(°F) - 2 weeks' = MAX(g_fct_weather_avg[windchill_f_no_avg_2w])
+		displayFolder: weather-map
+		lineageTag: e005bb9e-7b35-4e72-ba34-37ca786beb64
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Windchill(K) - 1 day' = MAX(g_fct_weather_avg[windchill_k_no_avg_1d])
+		displayFolder: weather-map
+		lineageTag: 3312eefc-545d-4f4f-8497-c812e045e8d0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Windchill(K) - 3 days' = MAX(g_fct_weather_avg[windchill_k_no_avg_3d])
+		displayFolder: weather-map
+		lineageTag: 88a27674-00c8-467f-afd6-02af2a5c3866
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Windchill(K) - 1 week' = MAX(g_fct_weather_avg[windchill_k_no_avg_1w])
+		displayFolder: weather-map
+		lineageTag: 7be69dbf-6d1f-47a6-81ae-5bd1978bb018
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Windchill(K) - 2 weeks' = MAX(g_fct_weather_avg[windchill_k_no_avg_2w])
+		displayFolder: weather-map
+		lineageTag: c64bd434-1389-456f-8147-b53d80c8452e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure SelectedMoonrise = ```
+			
+			SWITCH(
+			    TRUE(),
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "3 day", 
+			        SELECTEDVALUE(g_fct_astro_avg[moonrise_t_avg_3d]),
+			
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "1 week", 
+			        SELECTEDVALUE(g_fct_astro_avg[moonrise_t_avg_1w]),
+			
+			    SELECTEDVALUE(RollingOptions[Rolling]) = "2 weeks", 
+			        SELECTEDVALUE(g_fct_astro_avg[moonrise_t_avg_2w]),
+			
+			    SELECTEDVALUE(g_fct_astro_avg[moonrise_t_avg_1w]) -- default fallback
+			)
+			
+			```
+		formatString: General Date
+		lineageTag: 506461da-da33-41d7-848e-7754d151d007
+
+	measure SelectedMoonrise2 = ```
+			
+			VAR Rolling = SELECTEDVALUE(RollingOptions[Rolling], "1 week")
+			RETURN
+			    SWITCH(
+			        Rolling,
+			        "3 days", SELECTEDVALUE(g_fct_astro_avg[moonrise_t_avg_3d])),
+			        "1 week", SELECTEDVALUE(g_fct_astro_avg[moonrise_t_avg_1w])),
+			        "2 weeks", SELECTEDVALUE(g_fct_astro_avg[moonrise_t_avg_2w])),
+			    )
+			
+			```
+		lineageTag: 7e54a7a2-f56d-4d2c-b737-2e9898b01077
+
+	partition _Measure = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Measures = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Measures", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Measures"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+

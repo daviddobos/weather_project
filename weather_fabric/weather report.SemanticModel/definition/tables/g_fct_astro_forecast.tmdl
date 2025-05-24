@@ -1,0 +1,205 @@
+table g_fct_astro_forecast
+	lineageTag: 3a0e19cd-b107-49e9-b101-feeaead15ccf
+	sourceLineageTag: c9096542-bbaf-4f11-8d2d-138603a27cd5
+
+	column m_valid_dt
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 3fd25aad-e75d-4e7a-8dbd-c99a2caf886a
+		sourceLineageTag: 77c8a3ff-3621-4a85-9c8e-d6eb8021fd66
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: m_valid_dt
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column astro_forecast_pk
+		dataType: string
+		lineageTag: 2d86546f-1c60-4132-a958-2e50fc139fc5
+		sourceLineageTag: 42b46abc-9221-4dc1-9137-a30e08751423
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: astro_forecast_pk
+
+		annotation SummarizationSetBy = User
+
+	column forecast_dt
+		dataType: dateTime
+		formatString: General Number
+		lineageTag: faacf0a1-50e8-4a3b-9bbd-d1d701944d80
+		sourceLineageTag: 574bbc6c-2b9d-4070-a952-a6e3bea4c0d0
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: forecast_dt
+
+		annotation SummarizationSetBy = User
+
+	column city_nm
+		dataType: string
+		lineageTag: a9c96409-32b5-4233-9884-1fa7b69f7555
+		sourceLineageTag: eb5ebd84-da86-4956-8b04-605057505f1f
+		dataCategory: City
+		summarizeBy: none
+		sourceColumn: city_nm
+
+		annotation SummarizationSetBy = User
+
+	column city_fk
+		dataType: string
+		lineageTag: f504edf4-b158-4f5b-9aca-8fa32b77535f
+		sourceLineageTag: f4093573-9499-456d-a1a9-b008fa54c0c8
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: city_fk
+
+		annotation SummarizationSetBy = User
+
+	column country_cd
+		dataType: string
+		lineageTag: 9d7b85cd-e203-4dd4-a0e1-b5e156ba11ed
+		sourceLineageTag: 46556adc-d78c-4340-ac9a-d13accca35fe
+		dataCategory: Country
+		summarizeBy: none
+		sourceColumn: country_cd
+
+		annotation SummarizationSetBy = User
+
+	column country_nm
+		dataType: string
+		lineageTag: 93edf4e5-5fcb-464f-a273-69265c973ed8
+		sourceLineageTag: eeae1cd9-b344-447e-8f56-c49570cc9e31
+		dataCategory: Country
+		summarizeBy: none
+		sourceColumn: country_nm
+
+		annotation SummarizationSetBy = User
+
+	column county_nm
+		dataType: string
+		lineageTag: 4c3285f4-c7e7-4404-a154-9367b66421e1
+		sourceLineageTag: e6cb98d9-66de-43fb-bde4-04b7c153e5a7
+		dataCategory: StateOrProvince
+		summarizeBy: none
+		sourceColumn: county_nm
+
+		annotation SummarizationSetBy = User
+
+	column moon_up_flg
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: a07327d7-d346-4aec-93ee-da618606e4b4
+		sourceLineageTag: 8e280af8-5227-4a1b-8521-ad7cdc4c8329
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: moon_up_flg
+
+		annotation SummarizationSetBy = User
+
+	column sun_up_flg
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: fc1f04a6-e0da-44ee-91a9-f71a5676547b
+		sourceLineageTag: 68886453-3080-40bf-a711-47997c87d050
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: sun_up_flg
+
+		annotation SummarizationSetBy = User
+
+	column moon_illumination_pct
+		dataType: int64
+		formatString: 0
+		lineageTag: a35ec52d-0b61-42b5-be53-efa01ba800d7
+		sourceLineageTag: 372fcb7c-2dbd-4451-9634-3a2c4b228918
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: moon_illumination_pct
+
+		annotation SummarizationSetBy = User
+
+	column moon_phase_cd
+		dataType: string
+		lineageTag: ddbeef32-e62b-4f2c-82f9-29984f896761
+		sourceLineageTag: 2f76f18c-c432-49a6-99c1-05405af0967b
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: moon_phase_cd
+
+		annotation SummarizationSetBy = User
+
+	column moonrise_t
+		dataType: dateTime
+		formatString: General Number
+		lineageTag: 3cd967bf-1e45-459a-ade9-5eb80eed3365
+		sourceLineageTag: a0c47c91-088a-4072-a877-a327f2093cfe
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: moonrise_t
+
+		annotation SummarizationSetBy = User
+
+	column moonset_t
+		dataType: dateTime
+		formatString: General Number
+		lineageTag: d666f97a-0636-43e2-9527-83ce1c57f61e
+		sourceLineageTag: 4b3bc682-4e4f-4a41-b424-a2419affad9e
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: moonset_t
+
+		annotation SummarizationSetBy = User
+
+	column sunrise_t
+		dataType: dateTime
+		formatString: General Number
+		lineageTag: 46258053-0c61-4c75-b0e7-6fd6d12aa2b4
+		sourceLineageTag: d1dfaf5a-fc66-4f29-baab-4698d0baf511
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: sunrise_t
+
+		annotation SummarizationSetBy = User
+
+	column sunset_t
+		dataType: dateTime
+		formatString: General Number
+		lineageTag: cb7c6bfc-8049-469f-89cf-608fd9ce05d2
+		sourceLineageTag: 057a6129-7b8e-4c25-868a-7b84bb3bb3ba
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: sunset_t
+
+		annotation SummarizationSetBy = User
+
+	column m_extracted_at_dttm
+		dataType: dateTime
+		formatString: General Number
+		lineageTag: ed06a377-0700-4305-aaf6-bfb0f11e5c0f
+		sourceLineageTag: 6b725159-dc9f-449d-92fd-c137038c92e4
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: m_extracted_at_dttm
+
+		annotation SummarizationSetBy = User
+
+	column m_updated_at_dttm
+		dataType: dateTime
+		formatString: General Number
+		lineageTag: 0dc14b8b-3827-4290-a490-1c7760c5f6f9
+		sourceLineageTag: 39eea925-3bee-422a-9d2b-9e231912656f
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: m_updated_at_dttm
+
+		annotation SummarizationSetBy = User
+
+	partition g_fct_astro_forecast = entity
+		mode: directQuery
+		source
+			entityName: g_fct_astro_forecast
+			expressionSource: 'DirectQuery to AS - sm_weather'
+

@@ -1,0 +1,72 @@
+table g_dim_country
+	lineageTag: b3ccebba-6c58-4d72-a5c8-80436b27c6bc
+	sourceLineageTag: a26c70e4-a3b1-4485-a0a4-5a1f1b4a2682
+
+	column country_cd
+		dataType: string
+		isNullable: false
+		lineageTag: 3f2b8da7-04a9-4433-81ca-7013e4576e7a
+		sourceLineageTag: 1f219b3e-5576-4c0e-8f71-a8a5f1e2f5d3
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: country_cd
+
+		annotation SummarizationSetBy = User
+
+	column country_nm
+		dataType: string
+		lineageTag: a6ef6e70-12d8-45a5-9f77-5ce6642d76f2
+		sourceLineageTag: d57f3ef7-090e-484c-a7c3-be5417311818
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: country_nm
+
+		annotation SummarizationSetBy = User
+
+	column continent_nm
+		dataType: string
+		lineageTag: ff7c6c25-5afc-4710-9e0f-8a8aa1a8b619
+		sourceLineageTag: 3f93dc42-09d5-499c-b05a-63d5d392286b
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: continent_nm
+
+		annotation SummarizationSetBy = User
+
+	column eu_member_flg
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 0732cc49-2ad4-47ab-8242-334b99fde8df
+		sourceLineageTag: 9e1eed4b-0327-4acb-91e5-34c5233fb1b3
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: eu_member_flg
+
+		annotation SummarizationSetBy = User
+
+	column currency_cd
+		dataType: string
+		lineageTag: 017e836c-8d75-44f2-9b8a-1122bf6cabac
+		sourceLineageTag: 9039acbb-f9ac-4ded-b425-c0ec52febc1c
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: currency_cd
+
+		annotation SummarizationSetBy = User
+
+	column iso_alpha_3_cd
+		dataType: string
+		lineageTag: 3f6bfad0-0681-4607-8bfe-7d7e60e829df
+		sourceLineageTag: f1baf35c-c268-4859-8173-28b2ea97bb35
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: iso_alpha_3_cd
+
+		annotation SummarizationSetBy = User
+
+	partition g_dim_country = entity
+		mode: directQuery
+		source
+			entityName: g_dim_country
+			expressionSource: 'DirectQuery to AS - sm_weather'
+

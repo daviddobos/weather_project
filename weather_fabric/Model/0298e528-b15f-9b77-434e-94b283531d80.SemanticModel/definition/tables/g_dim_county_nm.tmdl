@@ -1,0 +1,26 @@
+table g_dim_county_nm
+	lineageTag: 1f263ef8-6c62-4fd8-8499-e891b2af782a
+	sourceLineageTag: [dbt_gold].[g_dim_county_nm]
+
+	column county_nm
+		dataType: string
+		sourceProviderType: varchar(50)
+		lineageTag: ef4120f2-12a4-4c65-8b65-286e735cae24
+		sourceLineageTag: county_nm
+		dataCategory: StateOrProvince
+		summarizeBy: none
+		sourceColumn: county_nm
+
+		changedProperty = DataCategory
+
+		annotation SummarizationSetBy = Automatic
+
+	partition g_dim_county_nm = entity
+		mode: directLake
+		source
+			entityName: g_dim_county_nm
+			schemaName: dbt_gold
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

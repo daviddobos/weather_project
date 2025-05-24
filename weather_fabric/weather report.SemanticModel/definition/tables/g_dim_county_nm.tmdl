@@ -1,0 +1,21 @@
+table g_dim_county_nm
+	lineageTag: d699acb6-a3f4-4d6b-b9e5-caa52e1dc2d4
+	sourceLineageTag: 1f263ef8-6c62-4fd8-8499-e891b2af782a
+
+	column county_nm
+		dataType: string
+		isNullable: false
+		lineageTag: ab068bcc-f39b-4fc8-aea1-82aa3bae6382
+		sourceLineageTag: ef4120f2-12a4-4c65-8b65-286e735cae24
+		dataCategory: StateOrProvince
+		summarizeBy: none
+		sourceColumn: county_nm
+
+		annotation SummarizationSetBy = User
+
+	partition g_dim_county_nm = entity
+		mode: directQuery
+		source
+			entityName: g_dim_county_nm
+			expressionSource: 'DirectQuery to AS - sm_weather'
+

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/variableLibrary/definition/valueSet/1.0.0/schema.json",
+  "name": "dev",
+  "variableOverrides": [
+    {
+      "name": "lh_id",
+      "value": "8c3179ca-6f42-4378-8b2b-7a2e62924e9a"
+    },
+    {
+      "name": "ws_id",
+      "value": "a65228af-1fd8-41a6-8294-aceec3a6ebd5"
+    }
+  ]
+}

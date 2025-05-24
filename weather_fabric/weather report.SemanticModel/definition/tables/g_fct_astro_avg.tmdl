@@ -1,0 +1,209 @@
+table g_fct_astro_avg
+	lineageTag: a99d2dbe-4170-4298-a29f-c01881a55e44
+	sourceLineageTag: f093c642-ae9d-4ca0-8f0e-63af57f7b8a1
+
+	column m_valid_dt
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 27151801-a74b-4dde-9434-af3c3db67e6e
+		sourceLineageTag: 55bc00cb-dff0-4e72-88f1-1ea831a90161
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: m_valid_dt
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column city_nm
+		dataType: string
+		lineageTag: 4e014cfb-cc81-4cb1-8880-e1a652e98ae4
+		sourceLineageTag: 52a1bd71-4f86-4dbc-9052-3f154b0e4e1d
+		dataCategory: City
+		summarizeBy: none
+		sourceColumn: city_nm
+
+		annotation SummarizationSetBy = User
+
+	column county_nm
+		dataType: string
+		lineageTag: bd283a51-0c97-489b-959b-d5d0691c48eb
+		sourceLineageTag: 0dd4e468-a6eb-4bc6-b036-b78cb9e787dd
+		dataCategory: StateOrProvince
+		summarizeBy: none
+		sourceColumn: county_nm
+
+		annotation SummarizationSetBy = User
+
+	column country_cd
+		dataType: string
+		lineageTag: 41d4ece9-0967-4ac9-91cb-c47280f8b178
+		sourceLineageTag: 8db25546-980a-423e-b8c8-d988da7dc4bd
+		dataCategory: Country
+		summarizeBy: none
+		sourceColumn: country_cd
+
+		annotation SummarizationSetBy = User
+
+	column moonrise_t_avg_3d
+		dataType: dateTime
+		formatString: yyyy-mm-dd hh:nn:ss AM/PM
+		lineageTag: 15d2a1a3-05fc-4378-8a4a-da678797bd30
+		sourceLineageTag: b18ec887-0b77-4ee6-aabf-4da739c9885b
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: moonrise_t_avg_3d
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column moonrise_t_avg_1w
+		dataType: dateTime
+		formatString: yyyy-mm-dd hh:nn:ss AM/PM
+		lineageTag: d05d9f03-077e-4076-bc39-f43762111db2
+		sourceLineageTag: f1faf4a5-8e7a-4094-8e0d-efa4f9ee951d
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: moonrise_t_avg_1w
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column moonrise_t_avg_2w
+		dataType: dateTime
+		formatString: yyyy-mm-dd hh:nn:ss AM/PM
+		lineageTag: f4b47c60-5213-4f3e-9ffb-021d29c4a91d
+		sourceLineageTag: ef7246ba-3d9e-4fff-bf6b-13650466e859
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: moonrise_t_avg_2w
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column moonset_t_avg_3d
+		dataType: dateTime
+		formatString: General Number
+		lineageTag: a0265582-0223-479f-a778-51e243071be1
+		sourceLineageTag: 224f88cb-de32-465e-b52d-701be15aff70
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: moonset_t_avg_3d
+
+		annotation SummarizationSetBy = User
+
+	column moonset_t_avg_1w
+		dataType: dateTime
+		formatString: General Number
+		lineageTag: 5c0bebad-a77a-4d66-96bc-693695566ec9
+		sourceLineageTag: 083c302a-233c-40f2-b499-60e741fdef55
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: moonset_t_avg_1w
+
+		annotation SummarizationSetBy = User
+
+	column moonset_t_avg_2w
+		dataType: dateTime
+		formatString: General Number
+		lineageTag: 9fd2b434-a8ea-4a7c-9710-caca4b2adfc0
+		sourceLineageTag: bae866c2-be29-4fe0-b02a-302c1abe8d5f
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: moonset_t_avg_2w
+
+		annotation SummarizationSetBy = User
+
+	column sunrise_t_avg_3d
+		dataType: dateTime
+		formatString: General Number
+		lineageTag: fca34ff7-cf1f-4026-abfb-c06c85446aa4
+		sourceLineageTag: cdb5090b-3580-454d-bbbf-25b3a0eaa4b4
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: sunrise_t_avg_3d
+
+		annotation SummarizationSetBy = User
+
+	column sunrise_t_avg_1w
+		dataType: dateTime
+		formatString: General Number
+		lineageTag: c0fb75eb-d68f-425b-8296-7c0e246633de
+		sourceLineageTag: dd61d4f3-3ee8-4b0e-8e4f-3c9460da6696
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: sunrise_t_avg_1w
+
+		annotation SummarizationSetBy = User
+
+	column sunrise_t_avg_2w
+		dataType: dateTime
+		formatString: General Number
+		lineageTag: 109d0c3e-5277-4443-ab2d-570947184843
+		sourceLineageTag: b14be50a-6680-4e17-9e0f-a24e70f2ae30
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: sunrise_t_avg_2w
+
+		annotation SummarizationSetBy = User
+
+	column sunset_t_avg_3d
+		dataType: dateTime
+		formatString: General Number
+		lineageTag: bf6b5687-ead6-49e0-8b27-52d7a3567256
+		sourceLineageTag: 65a41633-ce4b-4869-ac94-5219764aca5a
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: sunset_t_avg_3d
+
+		annotation SummarizationSetBy = User
+
+	column sunset_t_avg_1w
+		dataType: dateTime
+		formatString: General Number
+		lineageTag: 310792aa-387f-4307-a4e7-0d6df98e90b7
+		sourceLineageTag: a97fe6aa-636e-439e-a252-68535efbf057
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: sunset_t_avg_1w
+
+		annotation SummarizationSetBy = User
+
+	column sunset_t_avg_2w
+		dataType: dateTime
+		formatString: General Number
+		lineageTag: 769a90da-1acf-409d-ba23-2fd1ffd91eb2
+		sourceLineageTag: d3430947-0c87-4ec8-b124-366143d708bd
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: sunset_t_avg_2w
+
+		annotation SummarizationSetBy = User
+
+	column city_fk
+		dataType: string
+		lineageTag: 77a02d48-7f26-466f-9da9-029c032e0b7a
+		sourceLineageTag: 08a855f9-8577-40c4-b8d3-84f22544656b
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: city_fk
+
+		annotation SummarizationSetBy = User
+
+	partition g_fct_astro_avg = entity
+		mode: directQuery
+		source
+			entityName: g_fct_astro_avg
+			expressionSource: 'DirectQuery to AS - sm_weather'
+

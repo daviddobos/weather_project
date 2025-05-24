@@ -1,0 +1,155 @@
+table g_dim_city
+	lineageTag: 24658bf9-0fd5-49b8-95d6-7f0ff0177c63
+	sourceLineageTag: 9f664a06-73c6-4fad-ad51-32cd64c3c389
+
+	column city_pk
+		dataType: string
+		isNullable: false
+		lineageTag: e910db73-6961-413a-a1ec-3f4b49ca2f2d
+		sourceLineageTag: 714f7008-ea35-4f40-ba2f-4e4f86acd8d1
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: city_pk
+
+		annotation SummarizationSetBy = User
+
+	column country_cd
+		dataType: string
+		lineageTag: 3d9eb317-3f39-4b41-8529-7d31aaf348d7
+		sourceLineageTag: 9804beb0-18a6-4618-bb1a-0ebbb4ef0c1e
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: country_cd
+
+		annotation SummarizationSetBy = User
+
+	column county_nm
+		dataType: string
+		lineageTag: 9295dba3-b328-4179-a8cb-72d2491023f0
+		sourceLineageTag: 6951e9b6-12de-4ded-85c7-4f5ae1f2ad14
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: county_nm
+
+		annotation SummarizationSetBy = User
+
+	column city_nm
+		dataType: string
+		lineageTag: e266a2e3-7f9a-4161-bb50-c4c9b69fa7e9
+		sourceLineageTag: 4b62772f-1487-448d-9e94-ba8d5da18c1a
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: city_nm
+
+		annotation SummarizationSetBy = User
+
+	column ksh_cd
+		dataType: int64
+		formatString: 0
+		lineageTag: 0a7b4247-9b2b-4fd0-9692-d11357ad7c6f
+		sourceLineageTag: cd4833ba-ddcc-4d42-9cdc-4b047ab71cd7
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: ksh_cd
+
+		annotation SummarizationSetBy = User
+
+	column city_type_cd
+		dataType: string
+		lineageTag: 299899c7-a9c9-4461-bb23-b55b52903430
+		sourceLineageTag: 98807d2d-ac25-4445-9431-1e74d46c1936
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: city_type_cd
+
+		annotation SummarizationSetBy = User
+
+	column district_cd
+		dataType: string
+		lineageTag: 8225a2c7-50a0-4322-b7b1-af387927e173
+		sourceLineageTag: 7409c7b5-ea20-44ca-a4e1-834d40202fd9
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: district_cd
+
+		annotation SummarizationSetBy = User
+
+	column district_nm
+		dataType: string
+		lineageTag: 73ef1119-1aed-4673-840e-1d4984ec81db
+		sourceLineageTag: 14dadafb-ac6f-498a-9964-bb881fa2234e
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: district_nm
+
+		annotation SummarizationSetBy = User
+
+	column district_seat_nm
+		dataType: string
+		lineageTag: ac968209-5003-4f7c-8542-af96762eb3d6
+		sourceLineageTag: 907de558-b6ea-4190-95ed-35dc02e5cced
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: district_seat_nm
+
+		annotation SummarizationSetBy = User
+
+	column area_no
+		dataType: int64
+		formatString: 0
+		lineageTag: 6921ff02-a4de-4ae3-ba94-970dc3fc0e7a
+		sourceLineageTag: 21d84918-85c4-4391-888e-5021bbd6e46d
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: area_no
+
+		annotation SummarizationSetBy = User
+
+	column population_no
+		dataType: int64
+		formatString: 0
+		lineageTag: 216b8c7f-2cb9-45ba-8253-e40234f7267c
+		sourceLineageTag: b4215201-be05-4a35-9c77-2ce4c8ddab5f
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: population_no
+
+		annotation SummarizationSetBy = User
+
+	column apartments_no
+		dataType: int64
+		formatString: 0
+		lineageTag: e0a64736-3cc4-40a9-bec5-c2b29f515a7b
+		sourceLineageTag: bb6f2b98-8a9b-41fd-b458-e0ca188eb662
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: apartments_no
+
+		annotation SummarizationSetBy = User
+
+	column latitude_no
+		dataType: double
+		lineageTag: 4e64eaa0-05e1-482c-8acf-0358f9da023c
+		sourceLineageTag: de445995-2767-47fd-a637-70b9d1abe2a8
+		dataCategory: Latitude
+		summarizeBy: sum
+		sourceColumn: latitude_no
+
+		annotation SummarizationSetBy = User
+
+	column longitude_no
+		dataType: double
+		lineageTag: d84cc3a3-06e8-431f-90e1-f233906ccdc3
+		sourceLineageTag: 76bdb7aa-6e45-4385-9b15-c90ea6dd3e78
+		dataCategory: Longitude
+		summarizeBy: sum
+		sourceColumn: longitude_no
+
+		annotation SummarizationSetBy = User
+
+	partition g_dim_city = entity
+		mode: directQuery
+		source
+			entityName: g_dim_city
+			expressionSource: 'DirectQuery to AS - sm_weather'
+

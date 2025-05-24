@@ -1,0 +1,741 @@
+cultureInfo en-US
+
+	linguisticMetadata =
+			{
+			  "Version": "2.0.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "g_fct_weather.county_nm": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "g_fct_weather",
+			          "ConceptualProperty": "county_nm"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "table_measure.selectedgust_kph": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measure",
+			          "ConceptualProperty": "SelectedGust_KPH"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Gust": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measure.selectedgust_miph": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measure",
+			          "ConceptualProperty": "SelectedGust_MIPH"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Gust": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measure.selectedheatindex_c": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measure",
+			          "ConceptualProperty": "SelectedHeatindex_C"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Heatindex": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measure.selectedheatindex_f": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measure",
+			          "ConceptualProperty": "SelectedHeatindex_F"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Heatindex": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measure.selectedheatindex_k": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measure",
+			          "ConceptualProperty": "SelectedHeatindex_K"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Heatindex": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measure.selectedwind_miph": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measure",
+			          "ConceptualProperty": "SelectedWind_MIPH"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Wind": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measure.selectedwind_kph": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measure",
+			          "ConceptualProperty": "SelectedWind_KPH"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Wind": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measure.selectedtemperature_c": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measure",
+			          "ConceptualProperty": "SelectedTemperature_C"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Temperature": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measure.selectedprecipitation_mm": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measure",
+			          "ConceptualProperty": "Selectedprecipitation_MM"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Precipitation": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "rollingoptions.rolling": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "RollingOptions",
+			          "ConceptualProperty": "Rolling"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Timeframe": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measure.selectedhumidity": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measure",
+			          "ConceptualProperty": "SelectedHumidity"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Humidity": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measure.selectedtemperature_f": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measure",
+			          "ConceptualProperty": "SelectedTemperature_F"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Temperature": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measure.selectedtemperature_k": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measure",
+			          "ConceptualProperty": "SelectedTemperature_K"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Temperature": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measure.selectedwindchill_c": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measure",
+			          "ConceptualProperty": "SelectedWindchill_C"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Windchill": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measure.selectedwindchill_f": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measure",
+			          "ConceptualProperty": "SelectedWindchill_F"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Windchill": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measure.selectedwindchill_k": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measure",
+			          "ConceptualProperty": "SelectedWindchill_K"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Windchill": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "g_fct_weather_avg.m_valid_dt": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "g_fct_weather_avg",
+			          "ConceptualProperty": "m_valid_dt"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Date": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "g_dim_date.date": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "g_dim_date",
+			          "ConceptualProperty": "date"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Date": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "g_dim_city.county_nm": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "g_dim_city",
+			          "ConceptualProperty": "county_nm"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "County:": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "County": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "g_fct_weather.temp_f_cd": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "g_fct_weather",
+			          "ConceptualProperty": "temp_f_cd"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Category:": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "g_fct_weather.temp_k_cd": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "g_fct_weather",
+			          "ConceptualProperty": "temp_k_cd"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Category:": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "g_fct_weather.temp_c_cd": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "g_fct_weather",
+			          "ConceptualProperty": "temp_c_cd"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Category:": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "g_fct_weather.cloud_coverage_cd": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "g_fct_weather",
+			          "ConceptualProperty": "cloud_coverage_cd"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Category:": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "g_fct_weather.snow_chance_cd": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "g_fct_weather",
+			          "ConceptualProperty": "snow_chance_cd"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Category:": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "g_fct_weather.humidity_cd": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "g_fct_weather",
+			          "ConceptualProperty": "humidity_cd"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Category:": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "g_fct_weather.rain_chance_cd": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "g_fct_weather",
+			          "ConceptualProperty": "rain_chance_cd"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Category:": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "g_fct_weather.wind_kph_cd": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "g_fct_weather",
+			          "ConceptualProperty": "wind_kph_cd"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Category:": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "g_fct_weather.wind_miph_cd": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "g_fct_weather",
+			          "ConceptualProperty": "wind_miph_cd"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Category:": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "g_fct_weather.precip_mm_cd": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "g_fct_weather",
+			          "ConceptualProperty": "precip_mm_cd"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Category:": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "g_dim_country.country_cd": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "g_dim_country",
+			          "ConceptualProperty": "country_cd"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Country": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "g_dim_city.city_nm": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "g_dim_city",
+			          "ConceptualProperty": "city_nm"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "City": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measure.cloud_coverage__1_day": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measure",
+			          "ConceptualProperty": "Cloud Coverage - 1 day"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "table_measure.windkm_h__2_weeks": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measure",
+			          "ConceptualProperty": "Wind(km/h) - 2 weeks"
+			        }
+			      },
+			      "State": "Generated"
+			    },
+			    "g_fct_weather.max_m_valid_dt": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "g_fct_weather",
+			          "ConceptualProperty": "Max m_valid_dt"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Last refresh date:": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "table_measure.cloud_coverage__3_days": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measure",
+			          "ConceptualProperty": "Cloud Coverage - 3 days"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Cloud Coverage - 3 days": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    }
+			  }
+			}
+		contentType: json
+

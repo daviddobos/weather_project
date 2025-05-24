@@ -1,0 +1,13 @@
+expression 'DirectQuery to AS - sm_weather' =
+		let
+		    Source = AnalysisServices.Database("powerbi://api.powerbi.com/v1.0/myorg/weather_ws_dev", "sm_weather"),
+		    Cubes = Table.Combine(Source[Data]),
+		    Cube = Cubes{[Id="Model", Kind="Cube"]}[Data]
+		in
+		    Cube
+	lineageTag: 6326098a-e0dc-40f0-a889-86f3c6800058
+
+	annotation PBI_IncludeFutureArtifacts = True
+
+	annotation PBI_RemovedChildren = [{"remoteItemId":{"analysisServicesObject":{"sourceName":null,"sourceLineageTag":"23fe208d-c613-4de1-9e3a-4331a06e63c1"}},"objectType":"Table"}]
+

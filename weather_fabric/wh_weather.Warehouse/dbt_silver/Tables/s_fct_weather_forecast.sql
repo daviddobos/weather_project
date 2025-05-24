@@ -7,7 +7,7 @@ CREATE TABLE [dbt_silver].[s_fct_weather_forecast] (
 	[city_fk] varchar(256) NULL, 
 	[country_cd] varchar(2) NULL, 
 	[country_nm] varchar(30) NULL, 
-	[county_nm] varchar(23) NULL, 
+	[county_nm] varchar(50) NULL, 
 	[cloud_coverage_pct] int NULL, 
 	[cloud_coverage_cd] varchar(19) NOT NULL, 
 	[gust_kph_no] decimal(14,4) NULL, 

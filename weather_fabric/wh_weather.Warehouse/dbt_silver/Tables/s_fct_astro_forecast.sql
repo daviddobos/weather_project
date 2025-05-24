@@ -7,7 +7,7 @@ CREATE TABLE [dbt_silver].[s_fct_astro_forecast] (
 	[city_fk] varchar(256) NULL, 
 	[country_cd] varchar(2) NULL, 
 	[country_nm] varchar(50) NULL, 
-	[county_nm] varchar(23) NULL, 
+	[county_nm] varchar(50) NULL, 
 	[moon_up_flg] bit NULL, 
 	[sun_up_flg] bit NULL, 
 	[moon_illumination_pct] int NULL, 

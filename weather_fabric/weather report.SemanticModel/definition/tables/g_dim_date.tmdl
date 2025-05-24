@@ -1,0 +1,138 @@
+table g_dim_date
+	lineageTag: 148ed1a0-2842-4807-b0b6-df084128abff
+	sourceLineageTag: 50da8e06-b858-49b7-bc5f-8d98206d9260
+
+	column date
+		dataType: dateTime
+		isNullable: false
+		formatString: yyyy-mm-dd
+		lineageTag: 868fc626-db65-4248-bc24-e66e8ab8e373
+		sourceLineageTag: df943e1c-47a9-4282-a431-053d4b941d80
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: date
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column date_dttm
+		dataType: dateTime
+		formatString: General Number
+		lineageTag: 76a2738f-edc7-40e9-907c-ba85c230427d
+		sourceLineageTag: 9f73e3fa-5f3c-4994-893d-65c03987496c
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: date_dttm
+
+		annotation SummarizationSetBy = User
+
+	column year_num
+		dataType: int64
+		formatString: 0
+		lineageTag: 10847ac8-b094-4101-b492-38e7dc82fa78
+		sourceLineageTag: eb8e757c-f1a0-47bc-a088-26efde8e1cf1
+		dataCategory: Uncategorized
+		summarizeBy: sum
+		sourceColumn: year_num
+
+		annotation SummarizationSetBy = User
+
+	column year_txt
+		dataType: string
+		lineageTag: 2764c72c-0201-4c27-b583-d35bfce13816
+		sourceLineageTag: b5d16e99-270e-4b05-9a00-85be5808c2d0
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: year_txt
+
+		annotation SummarizationSetBy = User
+
+	column quarter_num
+		dataType: string
+		lineageTag: 985efebd-b865-4969-9535-a814944d867b
+		sourceLineageTag: bffe218f-dcfb-4bb0-97a8-456b19b58398
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: quarter_num
+
+		annotation SummarizationSetBy = User
+
+	column quarter_txt
+		dataType: string
+		lineageTag: 1cf92f9d-90cb-4465-a029-a14ddac9f9c4
+		sourceLineageTag: 7297e5c5-7a61-42c5-8392-d2e1fad465fa
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: quarter_txt
+
+		annotation SummarizationSetBy = User
+
+	column month_num
+		dataType: string
+		lineageTag: e2013f03-73c1-4bf2-8dfb-29c6d9791466
+		sourceLineageTag: 424622f0-1990-490a-bd08-b4817e463133
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: month_num
+
+		annotation SummarizationSetBy = User
+
+	column month_txt
+		dataType: string
+		lineageTag: 91de42c3-a910-4743-a9c4-377978bc9ed6
+		sourceLineageTag: 5a8fab5a-c032-4e13-b4d9-1951093e7d09
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: month_txt
+
+		annotation SummarizationSetBy = User
+
+	column day_num
+		dataType: string
+		lineageTag: 9223b114-88d9-4580-8894-c8a9d9715ad1
+		sourceLineageTag: 2d42fe8c-879e-4145-a279-4e338ad466a1
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: day_num
+
+		annotation SummarizationSetBy = User
+
+	column day_txt
+		dataType: string
+		lineageTag: 58d38484-a69e-471a-a645-5892f326363f
+		sourceLineageTag: 76f1f14b-a744-4649-acd7-49e85fe6f7f6
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: day_txt
+
+		annotation SummarizationSetBy = User
+
+	column year_quarter_txt
+		dataType: string
+		lineageTag: 7703966a-6621-41a5-a6f3-1f645ee957c7
+		sourceLineageTag: 97f0a6fa-8ea1-41f2-8fe8-f66d383fa549
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: year_quarter_txt
+
+		annotation SummarizationSetBy = User
+
+	column year_month_txt
+		dataType: string
+		lineageTag: 55003bff-6430-4346-be92-ee812c10c6bb
+		sourceLineageTag: 624ea938-322e-403e-99c1-b21448f16b1e
+		dataCategory: Uncategorized
+		summarizeBy: none
+		sourceColumn: year_month_txt
+
+		annotation SummarizationSetBy = User
+
+	partition g_dim_date = entity
+		mode: directQuery
+		source
+			entityName: g_dim_date
+			expressionSource: 'DirectQuery to AS - sm_weather'
+
