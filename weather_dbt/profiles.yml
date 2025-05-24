@@ -1,0 +1,13 @@
+weather_dbt:
+  target: dev2 #default target environment when you run dbt 
+  outputs:
+    dev2:
+      authentication: CLI #Use Azure client for authentication -> run in terminal: az login 
+      database: wh_weather #Name of Fabric Warehouse (!) -> check pic 
+      driver: ODBC Driver 18 for SQL Server 
+      host: xe6b73af6wce5cpkwv3dpk3vzi-v4uffjwyd6tedauuvtxmhjxl2u.datawarehouse.fabric.microsoft.com #SQL endpoint -> check pic 
+      schema: dbt #default prefix for the schema name (create your own with initials) 
+      threads: 4 
+      type: fabric    
+      connect_retries: 3
+
